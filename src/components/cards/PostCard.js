@@ -12,12 +12,6 @@ const PostCard = ({ post }) => {
   const { images, title, description, slug } = post;
   return (
     <>
-      {post && post.ratings && post.ratings.length > 0 ? (
-        showAverage(post)
-      ) : (
-        <div className="text-center pt-1 pb-3">No rating yet</div>
-      )}
-
       <Card
         cover={
           <img

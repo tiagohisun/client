@@ -179,6 +179,7 @@ const Shop = () => {
   let categoreypost = [];
   let latestpost = [];
 
+
   //latestpost.push(posts[0]);
   for (let i = 0; i < posts.length; i++) {
     const element = posts[i];
@@ -191,14 +192,11 @@ const Shop = () => {
       categoreypost.push(posts[i]);
     }
   }
-  // for (let i = 0; i < 1; i++) {
-  //   const element = posts[i];
-  //   if (i === 0) {
-  //     latestpost.push(element);
-  //   }
-  // }
+
   let newcategoreypost = categoreypost.slice(1, 2);
   let latestdentail = categoreypost.slice(-1);
+
+
   console.log(categoreypost);
   //console.log(latestpost);
 
@@ -213,33 +211,30 @@ const Shop = () => {
 
         {posts.length < 1 && <p>No posts found</p>}
 
-        <div className="row pb-5">
-          {/* {posts.map((p) => (
-            <div key={p._id} className="col-md-4 mt-3">
+        <div>
+        <div class="container"> 
+        <div class="row text-center">
+        <div class="col-xs-6 col-sm-4 block1"><h2>{newcategoreypost.map((p) => (
+            <div key={p._id} className="col width=90px">
               <PostCard post={p} />
             </div>
-          ))} */}
+          ))}</h2></div>
+        <div class="col-xs-6 col-sm-4 block2"><h2>{latestdentail.map((p) => (
+            <div key={p._id} className="col width=90px">
+              <PostCard style={{width: "80px"}} post={p} />
+            </div>
+          ))}</h2></div>
+        <div class="col-xs-6 col-sm-4 block3"><h2>
+        Column 3
+        
+        </h2></div>
+        </div>
 
-          {/* {categoreypost.map((p) => (
-            <div key={p._id} className="col-md-4 mt-3">
-              <PostCard post={p} />
-            </div>
-          ))} */}
-
-         {newcategoreypost.map((p) => (
-            <div key={p._id} className="col-md-4 mt-3">
-              <PostCard post={p} />
-            </div>
-          ))}
-
-          {latestdentail.map((p) => (
-            <div key={p._id} className="col-md-4 mt-3">
-              <PostCard post={p} />
-            </div>
-          ))}
+        </div> 
+      </div>
         </div>
       </div>
-    </div>
+   
   );
 };
 
