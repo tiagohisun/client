@@ -187,7 +187,7 @@ const Shop = () => {
       latestpost.push(posts[i]);
     }
     //console.log(element.postcategory.name === "Dental News");
-    if (element.postcategory.name === "Dental News" && i !== posts.length - 1) {
+    if (element.postcategory.name === "Dental News") {
       // console.log(i, ":", element.postcategory.name);
       categoreypost.push(posts[i]);
     }
@@ -195,7 +195,7 @@ const Shop = () => {
 
   let newcategoreypost = categoreypost.slice(1, 2);
   let latestdentail = categoreypost.slice(-1);
-
+  
 
   console.log(categoreypost);
   //console.log(latestpost);
@@ -225,7 +225,11 @@ const Shop = () => {
             </div>
           ))}</h2></div>
         <div class="col-xs-6 col-sm-4 block3"><h2>
-        Column 3
+        {categoreypost.slice(0).reverse().map((p) => (
+                      <div key={p._id} className="col width=90px">
+                        <PostCard style={{ width: "80px" }} post={p} />
+                      </div>
+                    ))}
         
         </h2></div>
         </div>
