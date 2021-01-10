@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
+import Slider from "react-slick";
 import { getPostsByCount, fetchPostsByFilter } from "../functions/post";
 import { getCategories } from "../functions/category";
 import { getTags } from "../functions/posttag";
 import { useSelector, useDispatch } from "react-redux";
-import PostCard from "../components/cards/PostCard";
-import { Menu, Slider, Checkbox, Card } from "antd";
+import ColumnPostCard from "../components/cards/post/ColumnPostCard";
+import HeadPostCard from "../components/cards/post/HeadPostCard";
+import TextPostCard from "../components/cards/post/TextPostCard";
+import LinePostCard from "../components/cards/post/LinePostCard";
+import MiniLinePostCard from "../components/cards/post/MiniLinePostCard";
+import MiniTextPostCard from "../components/cards/post/MiniTextPostCard";
+import { Menu, Checkbox, Card } from "antd";
 import {
   DollarOutlined,
   DownSquareOutlined,
@@ -28,6 +34,41 @@ const Shop = () => {
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
+
+  const settings = {
+    dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
 
   useEffect(() => {
     loadAllPosts();
@@ -178,7 +219,8 @@ const Shop = () => {
   };
   let categoreypost = [];
   let latestpost = [];
-
+  let educategorypostdesc = [];
+  let techcategorypostdesc  = [];
 
   //latestpost.push(posts[0]);
   for (let i = 0; i < posts.length; i++) {
@@ -191,54 +233,142 @@ const Shop = () => {
       // console.log(i, ":", element.postcategory.name);
       categoreypost.push(posts[i]);
     }
+    else if (element.postcategory.name === "Education") {
+      educategorypostdesc.push(posts[i]);
+
+} else if (element.postcategory.name === "Technology") { 
+      techcategorypostdesc.push(posts[i]);
+  
+}
   }
 
   let newcategoreypost = categoreypost.slice(1, 2);
   let latestdentail = categoreypost.slice(-1);
   
-
   console.log(categoreypost);
   //console.log(latestpost);
 
+
   return (
-    <div className="container-fluid">
-      <div className="col-md-9 pt-2">
-        {loading ? (
-          <h4 className="text-danger">Loading...</h4>
-        ) : (
-          <h4 className="text-danger">Posts</h4>
-        )}
-
-        {posts.length < 1 && <p>No posts found</p>}
-
-        <div>
-        <div class="container"> 
-        <div class="row text-center">
-        <div class="col-xs-6 col-sm-4 block1"><h2>{newcategoreypost.map((p) => (
-            <div key={p._id} className="col width=90px">
-              <PostCard post={p} />
+    <div className="container-col mt-5 ml-5" style={{width:"1200px", height:"1500px", backgroundColor:"white"}}>
+        <div className="row">
+        <div className="container-row" style={{position:"relative", width:"300px", height: "300px", left:"17px"}}>
+        <h2>{categoreypost.slice(-1).reverse().map((p) => (
+            <div key={p._id} className="col">
+                <HeadPostCard post={p} />
             </div>
-          ))}</h2></div>
-        <div class="col-xs-6 col-sm-4 block2"><h2>{latestdentail.map((p) => (
-            <div key={p._id} className="col width=90px">
-              <PostCard style={{width: "80px"}} post={p} />
+        ))}</h2>
+        </div>
+        <div className="container-row" style={{position:"relative", width:"300px", height: "400px", left:"23px"}}>
+        <h2>{categoreypost.slice(-1).reverse().map((p) => (
+            <div key={p._id} className="col">
+                <HeadPostCard post={p} />
             </div>
-          ))}</h2></div>
-        <div class="col-xs-6 col-sm-4 block3"><h2>
-        {categoreypost.slice(0).reverse().map((p) => (
-                      <div key={p._id} className="col width=90px">
-                        <PostCard style={{ width: "80px" }} post={p} />
-                      </div>
-                    ))}
+        ))}</h2>
+        </div>
+
+        <div className="container-row" style={{position:"relative", width:"150px", 
+        height: "400px", left:"180px"}}>
+        <h2>{categoreypost.slice(-1).reverse().map((p) => (
+            <div key={p._id} className="col">
+                <HeadPostCard post={p} />
+            </div>
+        ))}</h2>
+        </div>
+        </div>
+        <div className="container-row" style={{position:"absolute", width:"150px", 
+        height: "400px", left:"355px"}}>
+        <h2>{educategorypostdesc.slice(0,2).reverse().map((p) => (
+            <div key={p._id} className="col">
+                <TextPostCard post={p} />
+            </div>
+        ))}</h2>
+        </div>
+        <div className="container-row"style={{position:"absolute", width:"150px", 
+        height: "400px", left:"662px",  transform:"translateY(-28px)"}}> >
+        <h2>{educategorypostdesc.slice(0,2).reverse().map((p) => (
+            <div key={p._id} className="col">
+                < ColumnPostCard post={p} />
+            </div>
+        ))}</h2>
+        </div>
+        <div className="container-row" style={{position:"absolute", width:"150px", 
+        height: "400px", top: "515px"}}>
+        <h2>{educategorypostdesc.slice(0,2).reverse().map((p) => (
+            <div key={p._id} className="col">
+                < ColumnPostCard post={p} />
+            </div>
+        ))}</h2>
+        </div>
+        <hr />
+        <div className="row">
+        <div className="container-row" style={{position:"absolute", width:"150px", 
+        height: "400px", right:"1359px", top: "746px"}}>
+        <h2>{educategorypostdesc.slice(0,3).reverse().map((p) => (
+            <div key={p._id} className="col">
+                < LinePostCard post={p} />
+            </div>
+        ))}</h2>
+        </div>
+        <div className="container-row" style={{position:"relative", maxHeight:"100px",
+         width:"200px", left:"17px" , top:"179px"}}>
+        <h2>{categoreypost.slice(0,3).reverse().map((p) => (
+            <div key={p._id} className="col">
+                <MiniLinePostCard post={p} />
+            </div>
+        ))}</h2>
+        </div>
+
+        <div className="container-col" style={{position:"relative", 
+         left:"17px", top:"249px"}}>
+        <h2>{categoreypost.slice(0,2).reverse().map((p) => (
+            <div key={p._id} className="col">
+                <MiniTextPostCard post={p} />
+            </div>
+        ))}</h2>
+        </div>
         
-        </h2></div>
+        <div className="container-col" style={{position:"relative", left:"413px", 
+        bottom:"428px", backgroundColor:"blue", height: "1085px", width:"270px"}}>
+        <h2>
+            <div className="col">
+                ADS
+            </div>
+        </h2>
         </div>
-
-        </div> 
-      </div>
         </div>
+        <div style={{backgroundColor:"orange", 
+        transform:"translateY(-400px"}}>
+        <h2> Responsive </h2>
+        <Slider {...settings}>
+          <div>
+            <h3>1</h3>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+          <div>
+            <h3>7</h3>
+          </div>
+          <div>
+            <h3>8</h3>
+          </div>
+        </Slider>
       </div>
-   
+        
+    </div>
   );
 };
 
