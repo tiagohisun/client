@@ -10,9 +10,11 @@ import {
   ShoppingOutlined,
   ContactsOutlined,
   IdcardOutlined,
-  CustomerServiceOutlined
+  CustomerServiceOutlined,
+  BookOutlined
   
 } from "@ant-design/icons";
+import logo from "../../static/images/logo/logonb.png"
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,6 +48,10 @@ const Header = () => {
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+      <Item>
+      <img width="85px" src={logo} />
+      </Item>
+      
       <Item key="home" icon={<AppstoreOutlined />}>
         <Link to="/">Home</Link>
       </Item>
@@ -54,7 +60,7 @@ const Header = () => {
       <Link to="/shop">Shop</Link>
       </Item>
 
-      <Item key="blog" icon={<ShoppingOutlined />}>
+      <Item key="blog" icon={<BookOutlined />}>
       <Link to="/posts">Blog</Link>
       </Item>
 

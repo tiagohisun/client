@@ -6,6 +6,16 @@ import {RiBuilding2Line} from 'react-icons/ri'
 import { useSelector } from "react-redux";
 import { getRelated } from "../functions/product";
 import ProductCard from "../components/cards/ProductCard";
+import sales from "../static/images/solutions/sales.png"; // with import
+import leadership from "../static/images/solutions/leadership.png"
+import support from "../static/images/solutions/support.png"
+import news from "../static/images/solutions/news.png"
+import classifieds from "../static/images/solutions/classifieds.jpg" 
+import diagnostic from "../static/images/solutions/diagnostic.jpg"
+import pan from "../static/images/solutions/pan.jpg"
+import repair from"../static/images/solutions/repair.jpg"
+
+//const logo = require('./logo.jpeg); // with require
 
 const Service = () => {
     return (
@@ -18,7 +28,7 @@ const Service = () => {
                         position: "relative",
                         color: 'white'
                     }}>
-                    <img width="100%" src="../static/images/solutions/solutions.png" alt="Card image" />
+                    <img width="100%" alt="Card image" />
                    
                 </div>
             </div>
@@ -36,10 +46,10 @@ const Service = () => {
                 <div className="row">
                     <div className="col">
                         <div className="ml-4">
-                        <img width="70%" src="../static/images/solutions/support.png" alt="Card image" />
+                        <img className="ml-5" width="40%" src={support} alt="Card image" />
                         </div>
-                        <div className="mr-3">
-                            <h3 style={{marginTop: "40px"}}>Technical Support</h3>
+                        <div className="text-center mr-3">
+                            <h3 style={{marginTop: "42.5px"}}>Technical Support</h3>
                             <p>We provide remote service for 
                                 dental units. Check it out.
                             </p>
@@ -47,10 +57,10 @@ const Service = () => {
                     </div>
                     <div className="col">
                     <div className="ml-4">
-                    <img width="70%" src="../static/images/solutions/sales.png" alt="Card image" />
+                    <img className="ml-5" width="40%" src={sales} alt="Card image" />
                         </div>
-                        <div className="mr-3">
-                            <h3 style={{marginTop: "78px"}}>Sales</h3>
+                        <div className="text-center mr-3">
+                            <h3 style={{marginTop: "62.5px"}}>Sales</h3>
                             <p>Always searching for customers
                                 to buy your dental office used product.
                             </p>
@@ -58,9 +68,9 @@ const Service = () => {
                     </div>
                     <div className="col">
                     <div className="ml-4">
-                    <img width="70%" src="../static/images/solutions/leadership.png" alt="Card image" />
+                    <img className="ml-5" width="40%" src={leadership} alt="Card image" />
                         </div>
-                        <div className="mr-3">
+                        <div className="mr-3 text-center">
                             <h3 style={{marginTop: "40px"}}> Guidance</h3>
                             <p>We provide advice on units sale and support.
                             </p>
@@ -68,9 +78,9 @@ const Service = () => {
                     </div>
                     <div className="col">
                     <div className="ml-4">
-                    <img width="70%" src="../static/images/solutions/news.png" alt="Card image" />
+                    <img className="ml-5" width="40%" src={news} alt="Card image" />
                         </div>
-                        <div className="mr-3">
+                        <div className="text-center mr-3">
                             <h3 style={{marginTop: "40px"}}> News</h3>
                             <p>Take a look at our blog section to know the trending
                                 world dental news.
@@ -84,8 +94,8 @@ const Service = () => {
                 <div className="container bg-light">
                      <div className="row mt-3">
                         <div className="col m-3">
-                            <h3>Our Practice Areas</h3> <br/>
-                            <p>Take a consultation at one of our expertises below to find what
+                            <h3 className="text-center">Our Practice Areas</h3> <br/>
+                            <p className="text-center">Take a consultation at one of our expertises below to find what
                                 best suits for you.
                             </p>
                         </div>
@@ -93,19 +103,19 @@ const Service = () => {
                     <h3 className="text-center h2">Dental Imaging</h3> <br/>
                     <div className="row m-1">
                         <div className="col-md-3">
-                            <img style={{minWidth:"250px", maxWidth: "250px", minHeight:"190px",  maxHeight:"190px"}} src="../static/images/solutions/classifieds.jpg" alt="classifieds" />
+                            <img style={{minWidth:"250px", maxWidth: "250px", minHeight:"190px",  maxHeight:"190px"}} src={classifieds} alt="classifieds" />
                             <p style={{marginTop:"10px"}}>Dental Office Used Items</p>
                         </div>
                         <div className="col-md-3">
-                            <img style={{minWidth:"250px", maxWidth: "250px", minHeight:"190px",  maxHeight:"190px"}} src="../static/images/solutions/diagnostic.jpg" alt="diagnnostic" />
+                            <img style={{minWidth:"250px", maxWidth: "250px", minHeight:"190px",  maxHeight:"190px"}} src={diagnostic} alt="diagnnostic" />
                             <p style={{marginTop:"10px"}}>CBCT Software Instructions (Ondemand3D)</p>
                         </div>
                         <div className="col-md-3">
-                            <img style={{minWidth:"250px", maxWidth: "250px", minHeight:"190px",  maxHeight:"190px"}} src="../static/images/solutions/pan.jpg" alt="pan" />
+                            <img style={{minWidth:"250px", maxWidth: "250px", minHeight:"190px",  maxHeight:"190px"}} src={pan} alt="pan" />
                             <p style={{marginTop:"10px"}}>Dental 2D Imaging and Software <br/> Q & A</p>
                         </div>
                         <div className="col-md-3 ">
-                            <img style={{minWidth:"250px", maxWidth: "250px", minHeight:"190px",  maxHeight:"190px"}} src="../static/images/solutions/repair.jpg" alt="repair" />
+                            <img style={{minWidth:"250px", maxWidth: "250px", minHeight:"190px",  maxHeight:"190px"}} src={repair} alt="repair" />
                             <p style={{marginTop:"10px"}}>Dental Units Repair</p>
                         </div>
                     </div>
@@ -117,7 +127,7 @@ const Service = () => {
                     <div className="row">
                         <div className="col mt-5 mb-5 text-center">
                             <div className="mt-5">
-                                <h1>WE'D LOVE TO HEAR FROM YOU</h1>
+                                <h1 className="text-white">WE'D LOVE TO HEAR FROM YOU</h1>
                                 <a href="/contact">
                                 <button
                                 style={{padding:'10px 40px',

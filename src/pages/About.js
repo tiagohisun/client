@@ -1,45 +1,64 @@
 import React from 'react'
 import { BsArrowRightShort } from 'react-icons/bs'
+import repair from"../static/images/solutions/repair.jpg"
+import { HashLink as Link } from 'react-router-hash-link';
 
 const About = () => {
     return (
-      <>
-        <div className="row">
-          
-         <div className="col-sm-2 col-md-2 col-lg-2">
-         <div style={{backgroundColor:'gray',padding:'10px'}}>
-          <h5>About Us</h5>
-           <p>Bem Vindos à DENTAL04!</p>
-           <p>Nossa Visão</p>
-           <p>Nossa Qualidade</p>
-           <p>Sobre a DENTAL04</p>
-           <p>Nossa Missão</p>
-           <p>Política de Privacidade</p>
-           <p>Política de Entrega</p>
-           <p>Restrições e Guias</p>
-           <p>Política de Garantia</p>
-           <p>Política de Garantia</p>
-           <p>Política de Segurança</p>
-          </div>
+        <div className="container-fluid mt-4" style={{width:"1200px"}}>
+            <div className="row" style={{ width:"1200px"}} >
+         <div className="card-sm-3" style={{left:"110px", position:"fixed", height: "480px"}}>
+             <div className="card-body">
+             <Link to="/about#aboutUs">
+                 <h5>About Us</h5>
+             </Link>
+             <Link to="/about#welcome">
+             <p>Bem Vindos à DENTAL04!</p>
+             </Link>
+             <Link to="/about#ourVision">
+             <p>Nossa Visão</p>
+             </Link>
+             <Link to="/about#ourQuality">
+             <p>Nossa Qualidade</p>
+             </Link>
+             <Link to="/about#aboutDental">
+             <p>Sobre a DENTAL04</p>
+             </Link>
+             <Link to="/about#ourMission">
+              <p>Nossa Missão</p>
+             </Link>
+             <Link to="/about#privacy">
+             <p>Política de Privacidade</p>
+             </Link>
+             <Link to="/about#cookies">
+             <p>Cookies</p>
+             </Link>
+             <Link to="/about#delivery">
+              <p>Política de Entrega</p>
+             </Link>
+             <Link to="/about#guidance">
+              <p>Restrições e Guias</p>
+             </Link>
+             <Link to="/about#warranty">
+              <p>Política de Garantia</p>
+             </Link>
+              <Link to="/about#security">
+              <p>Segurança</p>
+             </Link>
+            </div>
          </div>
-         <div className="col-sm-10 col-md-10 col-lg-10">
-           <h1>About US</h1>
-           <div>
-            <h2>Bem Vindos à DENTAL04!</h2>
+
+         <div className="col-sm-6 ml-2 pt-4" style={{left:"290px"}}>
+            <h2 className="pb-3">About Us</h2>
+         
+            <h5 id="welcome">Bem Vindos à DENTAL04!</h5>
             <p>
                 A empresa foi fundada em Setembro de 2018 por técnicos com mais
                 de 10 anos de experiência no ramo de assistência técnica, com o
                 objetivo de fornecer um serviço aprimorado e diferenciado.
               </p>
-           </div>
-           <div className="col text-center">
-                  <img
-                    src="../../static/images/about/3.png"
-                    width="343px"
-                    height="229px"
-                    alt="firstimage"
-                  />
-                  <h2>Quem Somos Nós</h2>
+
+               <h5 id="">Quem Somos Nós</h5>
                   <p>
                     A DENTAL04 é uma empresa que presta serviços de assistência
                     técnica, anúncios de aparelhos de raios-x e programas
@@ -48,15 +67,7 @@ const About = () => {
                     aos produtos do programa ONDEMAND3D de diagnóstico para
                     tomografias usado mundialmente.
                   </p>
-                </div>
-                <div className="col text-center">
-                  <img
-                    src="../../static/images/about/1.jpg"
-                    width="343px"
-                    height="229px"
-                    alt="firstimage"
-                  />
-                  <h2>Nossa Visão</h2>
+                  <h5 id="ourVision">Nossa Visão</h5>
                   <p>
                     Hoje atendemos diversas clínicas de radiologia em todo
                     território brasileiro. Fornecemos assistência rápida e de
@@ -64,136 +75,77 @@ const About = () => {
                     raios-x usados. Mais satisfação e confiança em nossos
                     serviços.
                   </p>
-                </div>    
-                <div className="col text-center">
-                  <img
-                    src="../../static/images/about/2.jpeg"
-                    width="343px"
-                    height="229px"
-                    alt="firstimage"
-                  />
-                  <h2>Nossa Qualidade</h2>
+                   <h5 id="ourQuality">Nossa Qualidade</h5>
                   <p>
                     Fornecemos serviços íntegros e de qualidade. Experimente!
                   </p>
-                </div>
-         </div>
+                    <h5 id="aboutDental">Sobre a DENTAL04</h5>
 
-          
-          <div className="col-12 mt-5">
-            <div className="container">
-              <div id="accordion">
-                <div class="card">
-                  <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                      <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#collapseOne"
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                      >
-                        Sobre a DENTAL04
-                      </button>
-                    </h5>
-                  </div>
-
-                  <div
-                    id="collapseOne"
-                    class="collapse show"
-                    aria-labelledby="headingOne"
-                    data-parent="#accordion"
-                  >
-                    <div class="card-body">
                       A DENTAL04 é uma empresa que presta serviços de
                       assistência técnica, anúncio de aparelhos de raios-x e
                       programas odontológicos provenientes de clínicas de
-                      radiologia e consultórios odontológicos além de suporte
-                      aos produtos do famoso programa ONDEMAND3D (programa de
-                      diagnóstico tomografias da marca CYBMERMED) usado
-                      mundialmente. A empresa nasceu em Setembro de 2018 por
-                      meio de técnicos com mais de 10 anos de experiência no
-                      ramo de assistência técnica com o objetivo de fornecer uma
-                      assistência aprimorada e diferenciada. Hoje atendemos
-                      diversas clínicas de radiologia em todo território
-                      brasileiro, fornecendo assistência rápida e de qualidade,
-                      além de ajudarmos nas vendas de seus aparelhos de raios-x
-                      usados gerando mais satisfação e confiança em nossos
+                      radiologia e consultórios odontológicos além de à alguns
+                      programas de diagnósticos tais como ONDEMAND3D usados
+                      mundialmente. 
+                      
+                      A empresa nasceu em Setembro de 2018 por meio de técnicos 
+                      com mais de 10 anos de experiência no ramo de assistência 
+                      técnica com o objetivo de fornecer uma assistência aprimorada
+                      e diferenciada. Hoje atendemos diversas clínicas de radiologia
+                      em todo território brasileiro, fornecendo assistência rápida
+                      e de qualidade, além de ajudarmos nas vendas de seus aparelhos
+                      de raios-x usados gerando mais satisfação e confiança em nossos
                       serviços.
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                      <button
-                        class="btn btn-link collapsed"
-                        data-toggle="collapse"
-                        data-target="#collapseTwo"
-                        aria-expanded="false"
-                        aria-controls="collapseTwo"
-                      >
-                        Nossa Missão
-                      </button>
-                    </h5>
-                  </div>
-                  <div
-                    id="collapseTwo"
-                    class="collapse"
-                    aria-labelledby="headingTwo"
-                    data-parent="#accordion"
-                  >
-                    <div class="card-body">
+
+                       <br />
+                       <br />
+
+                      <h5 id="ourMission"> Nossa Missão </h5>
+                                    
                       A missão da DENTAL04 é fornecer assistência rápida e
                       eficaz à seus clientes, bem como ajudar nos trâmites de
-                      itens usados de suas clínicas.".
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                      <button
-                        class="btn btn-link collapsed"
-                        data-toggle="collapse"
-                        data-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >
-                        Política de Privacidade
-                      </button>
-                    </h5>
-                  </div>
-                  <div
-                    id="collapseThree"
-                    class="collapse"
-                    aria-labelledby="headingThree"
-                    data-parent="#accordion"
-                  >
-                    <div class="card-body">
+                      itens usados de suas clínicas.
+                      
+                       <br />
+                       <br />
+                 
+                      <h5 id="privacy"> Política de Privacidade </h5>
+                     
                       Priorizamos a privacidade de nossos visitantes à este site
                       por isso, disponibilizamos abaixo os tipos de informações
                       que são coletadas e manuseadas. Para mais informações
                       contate-nos através do e-mail tiagohisun@gmail.com.
                       Arquivos de Log A DENTAL04 segue o procedimento padrão de
-                      uso dos arquivos de log. Esses arquivos logam os
-                      visitantes enquanto eles visitam o sites. As empresas
-                      fazem isso e é parte do serviço analítico dos servidores.
+                      uso dos arquivos de log. 
+                      
+                      Esses arquivos logam os visitantes enquanto eles visitam o sites. 
+                      As empresas fazem isso e é parte do serviço analítico dos servidores.
                       As informações coletadas incluem endereços de IP, tipo de
-                      página ISP, data, páginas de referência/saída e
-                      possívelmente o número de cliques. Essas informações de
-                      log não estão ligadas à nenhuma informação pessoal
-                      indentificável. Seu propósito é somente analizar as
+                      página ISP, data, páginas de referência/saída e possívelmente o 
+                      número de cliques. 
+                      
+                      Essas informações de log não estão ligadas à nenhuma informação 
+                      pessoal indentificável. Seu propósito é somente analizar as
                       tendências, administrando o site, rastreando os movimentos
-                      dos usuários. Cookies e Web Beacons Como qualquer outro
-                      website, a DENTAL04 utiliza 'cookies'. Eles são usados
-                      para armazenar informações que incluem, as preferências
-                      dos visitantes e as páginas que eles acessam. São usados
-                      para otimizar a experiência do usuário baseadas nessas
-                      informações. Política de Privacidade de Terceiros A
+                      dos usuários. 
+                      
+                       <br />
+                       <br />
+                      
+                      <h5 id="cookies">  Cookies e Web Beacons </h5>
+                      
+                      Como qualquer outro website, a DENTAL04 utiliza 'cookies'.
+                      
+                      Eles são usados para armazenar informações que incluem, 
+                      as preferências dos visitantes e as páginas que eles acessam. 
+                      São usados para otimizar a experiência do usuário baseadas 
+                      nessas informações. 
+                      
+                      Política de Privacidade de Terceiros A
                       política de privacidade da DENTAL04 não se aplica à nenhum
-                      outro anunciante ou sites de terceiros. Sendo assim,
-                      aconselhamos à consultar suas respectivas políticas de
+                      outro anunciante ou sites de terceiros. 
+                      
+                      Sendo assim, aconselhamos à consultar suas respectivas políticas de
                       privacidade Você poderá desabilitar a função de cookies
                       nas opções de sua página. Não colhemos informações alguma
                       de indivíduos abaixo de 18 anos. Caso ache algum equívoco
@@ -207,44 +159,29 @@ const About = () => {
                       site. Acordo Usando este site, você declara estar ciente
                       de nossa Política de Privacidade e concorda com seus
                       Termos e Condições.
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingfi">
-                    <h5 class="mb-0">
-                      <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#headingfive"
-                        aria-expanded="true"
-                        aria-controls="headingfive"
-                      >
-                        Política de Entrega, Prazos e Valores
-                      </button>
-                    </h5>
-                  </div>
+                   
+                       <br />
+                       <br />
 
-                  <div
-                    id="headingfive"
-                    class="collapse"
-                    aria-labelledby="headingfi"
-                    data-parent="#accordion"
-                  >
-                    <div class="card-body">
+                      <h5 id="delivery"> Política de Entrega, Prazos e Valores </h5>
+                      
                       Quanto ao Transporte: Nas negociações de vendas dos
                       aparelhos de raios-x, a DENTAL04 não fornece transporte
                       aos mesmos em nenhum caso. Por isso, os preços e prazos de
                       transporte estão por conta das transportadoras escolhidas
                       por uma das partes (comprador ou vendedor). Quanto aos
+                      
                       Suportes Remotos e Presenciais: Os valores e prazos médios
                       de assistência remota e presencial poderão ser cotados
                       mediante a solicitação do cliente com a empresa.
+                      
                       Transportadoras: A empresa transportadora dos aparelhos no
                       caso das vendas deles, estão à cargo da escolha das partes
                       do negócio tratado, isto é; comprador ou vendedor do
                       produto negociado. Opções de Pagamento: Quanto Ao
-                      Transporte: A DENTAL04 não recebe pagamento algum relativo
+                      Transporte: 
+                      
+                      A DENTAL04 não recebe pagamento algum relativo
                       à transporte das máquinas negociadas. O mesmo deverá ser
                       tratado diretamente com a transportadora. Quanto À
                       Assistência Presencial Ou Remota: A DENTAL04 não recebe
@@ -252,31 +189,12 @@ const About = () => {
                       e remotos. Sempre é solicitado ao comprador do serviço
                       (cliente) à realizar o pagamento após o serviço ser
                       concluído com sucesso ou o problema diagnosticado.
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingsi">
-                    <h5 class="mb-0">
-                      <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#headingsix"
-                        aria-expanded="true"
-                        aria-controls="headingsix"
-                      >
-                        Restrições e Guias
-                      </button>
-                    </h5>
-                  </div>
+                
+                       <br />
+                       <br />
 
-                  <div
-                    id="headingsix"
-                    class="collapse"
-                    aria-labelledby="headingsi"
-                    data-parent="#accordion"
-                  >
-                    <div class="card-body">
+                      <h5 id="guidance"> Restrições e Guias </h5>
+                     
                       Quanto À Assistência Presencial Ou Remota: A DENTAL04
                       atende a todas regiões incluindo exterior nos idiomas
                       Português e Inglês. Quanto Ao Meio de Transporte ou
@@ -286,99 +204,80 @@ const About = () => {
                       decidir mediante a contrato o prazo ou política de
                       devolução do aparelho caso o mesmo apresente defeitos. Tal
                       política é informada ao comprador antes do ato
-                      (fechamento) da venda. No Caso de Acesso Remoto: O Meio
+                      (fechamento) da venda. 
+                      
+                      No Caso de Acesso Remoto: O Meio
                       principal utilizado para acesso é o programa de acesso
                       teamviewer, com o título da empresa no acesso. Por motivos
                       necessários, poderá ser usado outros programas de
-                      acesso,SEMPRE com o consentimento prévio do cliente.
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingse">
-                    <h5 class="mb-0">
-                      <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#headingseven"
-                        aria-expanded="true"
-                        aria-controls="headingseven"
-                      >
-                        Política de Garantia
-                      </button>
-                    </h5>
-                  </div>
+                      acesso, SEMPRE com o consentimento prévio do cliente.
+                 
+                       <br />
+                       <br />
 
-                  <div
-                    id="headingseven"
-                    class="collapse"
-                    aria-labelledby="headingse"
-                    data-parent="#accordion"
-                  >
-                    <div class="card-body">
+                      <h5 id="warranty"> Política de Garantia </h5>
+                    
                       A DENTAL04 não fornece garantia nas intermediações feitas
                       pela mesma nas vendas dos aparelhos. Porém é lei federal
                       conforme Código de Defesa do Consumidor – Lei 8.078/90 o
                       mínimo de 3 meses em qualquer venda realizada contra
                       defeitos do aparelho, sendo tal defeito oriundo da
                       máquina, não provocado por falhas de terceiros.
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingei">
-                    <h5 class="mb-0">
-                      <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#headingeight"
-                        aria-expanded="true"
-                        aria-controls="headingeight"
-                      >
-                        Política de Segurança
-                      </button>
-                    </h5>
-                  </div>
+                                        
+                       <br />
+                       <br />
 
-                  <div
-                    id="headingeight"
-                    class="collapse"
-                    aria-labelledby="headingei"
-                    data-parent="#accordion"
-                  >
-                    <div class="card-body">
+                      <h5 id="security"> Política de Segurança </h5>
+                      
                       Embora a DENTAL04 aplique certos filtros de segurança no
                       tratamento de vendas das máquinas em que ela está
                       envolvida, ainda sim é recomendado observar as precauções
                       padrão e adcionais na venda das máquinas realizadas
                       cliente-à-cliente para mais segurança das partes do
-                      negócio tratado, tais como: 1. Conheça ao máximo o
+                      negócio tratado, tais como: 
+                      
+                      1. Conheça ao máximo o
                       comprador, observe se o mesmo possui local de trabalho
                       físico (clínica, consultório,etc), característico de
-                      potencial comprador de aparelhosde raios-x. 2. Não forneça
+                      potencial comprador de aparelhosde raios-x. 
+                      
+                      2. Não forneça
                       nenhum dado pessoal de documentos sem averiguar quem é o
-                      possível comprador/vendedor. 3. Jamais compre ou venda se
+                      possível comprador/vendedor. 
+                      
+                      3. Jamais compre ou venda se
                       fazer um contrato em que ambas as partes registrem suas
-                      assinaturas em cartório. 4. Jamais baseie a compra ou
+                      assinaturas em cartório. 
+                      
+                      4. Jamais baseie a compra ou
                       venda somente por textos ou mensagens de aplicativos, se
                       ambas as partes não se conhecem. Mesmo assim, perceba
-                      quaisquer tramas sutis. 5. Jamais se encontre pessoalmente
+                      quaisquer tramas sutis. 
+                      
+                      5. Jamais se encontre pessoalmente
                       sem ter conhecimento do comprador ou vendedor previamente.
+                      
                       6. Fique atento à possíveis mensagens enganosas de
                       solicitação de pagamentos, ou dados pessoais
-                      principalmente antecipados. 7. Grave todas as mensagens e
+                      principalmente antecipados.
+                      
+                      7. Grave todas as mensagens e
                       ligações ou vídeo chamadas das conversas nas negociações.
                       8. Obtenha o número de série do aparelho ou produto e
                       rastreie-o.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </>
-    );
+                      
+         </div>
+        <div className="col-sm-3 pt-4" style={{width:"150px"}}>
+
+<div className="card ml-2" style={{left:"285px", width:"250px"}}>
+  <img className="card-img-top" src={repair} alt="Card image cap" />
+  <div className="card-body">
+    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+</div>
+</div>
+</div>      
+          );
 }
 export default About;

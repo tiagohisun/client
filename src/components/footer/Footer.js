@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 //import { AiFillPhone } from "react-icons/ai";
 import { MdEmail, MdLocationOn } from "react-icons/md";
+import logo from "../../static/images/logo/logonb.png"
 //import emailjs from "emailjs-com";
 const Footer = () => {
   //const [message, setMessage] = useState("");
@@ -43,7 +44,7 @@ const Footer = () => {
               <div style={{ margin: "20px" }}>
                 <img
                   style={{ width: "150px", paddingBottom: "20px" }}
-                  src="../../static/images/logo/logonb.png"
+                  src={logo}
                 />
 
                 <div style={{ display: "flex" }} className="mb-3">
