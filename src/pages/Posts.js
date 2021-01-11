@@ -16,11 +16,16 @@ import {
   DownSquareOutlined,
   StarOutlined,
 } from "@ant-design/icons";
+import Laptop from "../images/laptop.png";
+import { FiMessageCircle } from "react-icons/fi";
+import { WiTime1 } from "react-icons/wi";
+import {FiEdit} from "react-icons/fi"
+import { FaGreaterThan } from "react-icons/fa"
 import Star from "../components/forms/Star";
 
 const { SubMenu, ItemGroup } = Menu;
 
-const Shop = () => {
+const Post = ({post}) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState([0, 0]);
@@ -40,7 +45,7 @@ const Shop = () => {
       infinite: false,
       speed: 500,
       slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToScroll: 1,
       initialSlide: 0,
       responsive: [
         {
@@ -248,6 +253,10 @@ const Shop = () => {
   console.log(categoreypost);
   //console.log(latestpost);
 
+  const digituniq = [...new Set(post)]
+    .filter((item) => item.postcategory === "Dental News")
+    .slice(0, 8);
+
 
   return (
     <div className="container-col mt-5 ml-5" style={{width:"1200px", height:"1500px", backgroundColor:"white"}}>
@@ -329,7 +338,7 @@ const Shop = () => {
         </div>
         
         <div className="container-col" style={{position:"relative", left:"413px", 
-        bottom:"428px", backgroundColor:"blue", height: "1085px", width:"270px"}}>
+        bottom:"428px", backgroundColor:"blue", height: "1100px", width:"270px"}}>
         <h2>
             <div className="col">
                 ADS
@@ -337,39 +346,31 @@ const Shop = () => {
         </h2>
         </div>
         </div>
-        <div style={{backgroundColor:"orange", 
-        transform:"translateY(-400px"}}>
+        <div className="container bg-light" style={{backgroundColor:"orange", transform:"translateY(-390px"}}>
         <h2> Responsive </h2>
-        <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>
-          </div>
-          <div>
-            <h3>8</h3>
-          </div>
-        </Slider>
+         <Slider {...settings}>
+         {categoreypost.slice(0).reverse().map((p) => {
+                return (
+                      <div style={{padding:"30px"}} >
+                        <div className="card" style={{padding:"30px",  width:"400px", height: "200px"}}>
+                          <div className="card-img-overlay" style={{position:"absolute", transform:"translate(-30px, -20px)"}} >
+                          <img className="p-1"  src={p.images && p.images.length ? p.images[0].url : Laptop}
+                          style={{width:"300px", height: "200px", objectFit: "cover" }}
+            
+          />
+                            <h5 style={{padding: "3px", borderRadius: "3px", display: "inline-block", backgroundSize:"auto", backgroundColor:"rgba(0, 0, 0, 0.3)", marginTop:"80%", color:"white", backgroundSize:"auto", backgroundColor:"rgba(0, 0, 0, 0.3)"}}>
+                              {p.title}
+                            </h5>
+                             
+                          </div>
+                        </div>
+                      </div>
+                );
+              })}
+            </Slider>
       </div>
-        
-    </div>
+      </div>
   );
 };
 
-export default Shop;
+export default Post;

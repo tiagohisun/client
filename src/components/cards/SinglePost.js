@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AdminNav from '../../components/nav/AdminNav';
 import renderHTML from 'react-render-html';
+import Laptop from "../../images/laptop.png";
+
 const SinglePost = props => {
     const [post, setPost] = useState('');
 
@@ -15,12 +17,19 @@ const SinglePost = props => {
     }, []);
 
     return (
-        <div className="container-fluid">
-        <div className="row">
+        <div className="container-row" style={{position:"relative", width:"700px", 
+        left:"200px"}}>
+
+        <div className="container-col">
            
             <br />
             <div>
-            <h1>{post.title}</h1>
+             <img className="p-1" 
+            src={post.images && post.images.length ? post.images[0].url : Laptop}
+            style={{width:"800px", height: "300px", objectFit: "cover" }}
+            
+          />
+          <div> {post.title} </div>
             <hr />    
              <div className="lead pt-3">{renderHTML(post && post.description)}</div>
                         <p>
@@ -28,7 +37,10 @@ const SinglePost = props => {
                             <span className="badge">{new Date(post.createdAt).toLocaleString()}</span>
                         </p>
             </div>
-            
+            </div>
+            <div className="container-colt" style={{position:"absolute", height:"650px", 
+            width:"250px", left:"800px", top:"25px", backgroundColor:"blue"}}>
+            ADS
             </div>
         </div>
     );

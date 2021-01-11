@@ -8,6 +8,10 @@ import {
   UserAddOutlined,
   LogoutOutlined,
   ShoppingOutlined,
+  ContactsOutlined,
+  IdcardOutlined,
+  CustomerServiceOutlined
+  
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
@@ -54,15 +58,15 @@ const Header = () => {
       <Link to="/posts">Blog</Link>
       </Item>
 
-      <Item key="services" icon={<ShoppingOutlined />}>
+      <Item key="services" icon={<CustomerServiceOutlined />}>
       <Link to="/services">Services</Link>
       </Item>
 
-      <Item key="about" icon={<ShoppingOutlined />}>
+      <Item key="about" icon={<IdcardOutlined />}>
       <Link to="/about">About</Link>
       </Item>
 
-      <Item key="contact" icon={<ShoppingOutlined />}>
+      <Item key="contact" icon={<ContactsOutlined />}>
       <Link to="/contact">Contact</Link>
       </Item>
 

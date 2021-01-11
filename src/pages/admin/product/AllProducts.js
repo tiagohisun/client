@@ -56,7 +56,7 @@ const AllProducts = () => {
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
-            <h4>All Products</h4>
+            <h4 className="mt-3">Update/Delete Products</h4>
           )}
           <div className="row">
             {products.map((product) => (

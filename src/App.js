@@ -39,6 +39,8 @@ import Footer from "./components/footer/Footer"
 const Login = lazy(() => import('./pages/auth/Login'));
 const Register = lazy(() => import('./pages/auth/Register'));
 const Home =lazy(() => import('./pages/Home'));
+const Services =lazy(() => import('./pages/Services'));
+const About =lazy(() => import('./pages/About'));
 const Contact =lazy(() => import ('./pages/Contact'))
 const Header =lazy(() => import('./components/nav/Header'));
 const RegisterComplete = lazy(() => import('./pages/auth/RegisterComplete'));
@@ -116,6 +118,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/services" component={Services} />
+        <Route exact path="/about" component={About} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/register/complete" component={RegisterComplete} />

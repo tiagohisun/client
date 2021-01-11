@@ -32,7 +32,7 @@ const ProductCreateForm = ({
   } = values;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="pt-3">
       <div className="form-group">
         <label>Title</label>
         <input

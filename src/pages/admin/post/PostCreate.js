@@ -104,7 +104,7 @@ const PostCreate = () => {
           {loading ? (
             <LoadingOutlined className="text-danger h1" />
           ) : (
-            <h4>Product create</h4>
+            <h4>Create Post</h4>
           )}
           <hr />
 

@@ -154,7 +154,7 @@ const PostUpdate = ({ match, history }) => {
           <PostUpdateForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
-            handleChange={handleBody}
+            handleBody={handleBody}
             setValues={setValues}
             setBody={setBody}
             values={values}

@@ -11,28 +11,27 @@ const AdminProductCard = ({ product, handleRemove }) => {
   const { model, description, images, slug } = product;
 
   return (
-    <Card
+    <Card style={{position:"absolute", top:"20px"}}
       cover={
-        <img
-          src={images && images.length ? images[0].url : laptop}
-          style={{ height: "150px", objectFit: "cover" }}
+        <div style={{height:"5px"}}>
+        <img src={images && images.length ? images[0].url : laptop}
+          style={{ height: "50px", width: "50px", objectFit: "cover" }}
           className="p-1"
         />
-      }
-      actions={[
-        <Link to={`/admin/product/${slug}`}>
-          <EditOutlined className="text-warning" />
-        </Link>,
+        <Link to={`/admin/product/${slug}`} style={{position:"absolute", marginLeft:"10px", transform:"translateY(1px)"}}>
+        {product.title}</Link>
+        
+        <Link to={`/admin/product/${slug}`} >
+          <EditOutlined className="text-warning" style={{position:"absolute", left:"55px", top:"30px"}} />
+        </Link>
         <DeleteOutlined
           onClick={() => handleRemove(slug)}
           className="text-danger"
-        />,
-      ]}
+          style={{position:"absolute", top:"30px", marginLeft:"35px"}}
+        />
+        </div>
+      }  
     >
-      <Meta
-        title={product.model}
-        description={`${description && description.substring(0, 40)}...`}
-      />
     </Card>
   );
 };

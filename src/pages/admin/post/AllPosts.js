@@ -57,7 +57,7 @@ const AllPosts = () => {
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
-            <h4>All Posts</h4>
+            <h4 className="mt-3">Update/Delete Posts</h4>
           )}
           <div className="row">
             {posts.map((post) => (

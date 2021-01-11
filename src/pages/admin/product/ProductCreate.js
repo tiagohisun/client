@@ -106,13 +106,13 @@ const ProductCreate = () => {
           {loading ? (
             <LoadingOutlined className="text-danger h1" />
           ) : (
-            <h4>Product create</h4>
+            <h4 className="mt-3">Create Product</h4>
           )}
           <hr />
 
           {/* {JSON.stringify(values.images)} */}
 
-          <div className="p-3">
+          <div className="pl-2">
             <FileUpload
               values={values}
               setValues={setValues}

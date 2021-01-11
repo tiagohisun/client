@@ -10,7 +10,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="col">
-          <h4>Admin Dashboard</h4>
+          <h4 className="mt-2">Admin Dashboard</h4>
         </div>
       </div>
     </div>
