@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Tabs } from "antd";
 import { Link } from "react-router-dom";
-import { HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { HeartOutlined, ContactsOutlined } from "@ant-design/icons";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Laptop from "../../images/laptop.png";
@@ -49,7 +49,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         <Card
           actions={[
             <>
-              <ShoppingCartOutlined className="text-success" /> <br />
+              <ContactsOutlined className="text-success" /> <br />
               Contact
             </>,
            

@@ -11,16 +11,15 @@ import {
   ContactsOutlined,
   IdcardOutlined,
   CustomerServiceOutlined,
-  BookOutlined
-  
+  BookOutlined,
 } from "@ant-design/icons";
-import logo from "../../static/images/logo/logonb.png"
+import logo from "../../static/images/logo/logonb.png";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Search from "../forms/Search";
-const Shop = lazy(() => import('../../pages/Shop'));
+const Shop = lazy(() => import("../../pages/Shop"));
 
 const { SubMenu, Item } = Menu;
 
@@ -49,31 +48,31 @@ const Header = () => {
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
       <Item>
-      <img width="85px" src={logo} />
+        <img width="85px" src={logo} />
       </Item>
-      
+
       <Item key="home" icon={<AppstoreOutlined />}>
         <Link to="/">Home</Link>
       </Item>
 
       <Item key="shop" icon={<ShoppingOutlined />}>
-      <Link to="/shop">Shop</Link>
+        <Link to="/shop">Shop</Link>
       </Item>
 
       <Item key="blog" icon={<BookOutlined />}>
-      <Link to="/posts">Blog</Link>
+        <Link to="/posts">Blog</Link>
       </Item>
 
       <Item key="services" icon={<CustomerServiceOutlined />}>
-      <Link to="/services">Services</Link>
+        <Link to="/services">Services</Link>
       </Item>
 
       <Item key="about" icon={<IdcardOutlined />}>
-      <Link to="/about">About</Link>
+        <Link to="/about">About</Link>
       </Item>
 
       <Item key="contact" icon={<ContactsOutlined />}>
-      <Link to="/contact">Contact</Link>
+        <Link to="/contact">Contact</Link>
       </Item>
 
       {!user && (

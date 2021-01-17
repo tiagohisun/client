@@ -86,10 +86,10 @@ const Footer = () => {
                 <p style={{ fontSize: "20px", fontWeight: "bold" }}>FEATURES</p>
                 <div style={{ fontSize: "14px", color: "grey" }}>
                   <p>
-                    <a>Blog</a>
+                    <a style={{color:"grey"}} href="/posts">Blog</a>
                   </p>
                   <p>
-                    <a>Classifieds</a>
+                    <a style={{color:"grey"}} href="/shop">Classifieds</a>
                   </p>
                 </div>
               </div>
@@ -97,13 +97,13 @@ const Footer = () => {
                 <p style={{ fontSize: "20px", fontWeight: "bold" }}>COMPANY</p>
                 <div style={{ fontSize: "14px", color: "grey" }}>
                   <p>
-                    <a>About</a>
+                    <a style={{color:"grey"}} href="/about">About</a>
                   </p>
                   <p>
-                    <a>Goal</a>
+                    <a style={{color:"grey"}} href="/about#ourMission">Goal</a>
                   </p>
                   <p>
-                    <a>Policy</a>
+                    <a style={{color:"grey"}} href="/about#privacy">Policy</a>
                   </p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ const Footer = () => {
                 </p>
                 <div style={{ fontSize: "14px", color: "grey" }}>
                   <p>
-                    <a>Contact</a>
+                    <a style={{color:"grey"}} href="/contact">Contact</a>
                   </p>
                 </div>
               </div>

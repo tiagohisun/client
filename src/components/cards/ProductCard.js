@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { EyeOutlined, ContactsOutlined } from "@ant-design/icons";
 import laptop from "../../images/laptop.png";
 import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
@@ -31,7 +31,7 @@ const ProductCard = ({ product }) => {
             <EyeOutlined className="text-warning" /> <br /> View Product
           </Link>,
           <>
-            <ShoppingCartOutlined className="text-danger" /> <br /> Contact
+            <ContactsOutlined className="text-danger" /> <br /> Contact
           </>,
         ]}
       >

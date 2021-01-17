@@ -3,11 +3,13 @@ import Slider from "react-slick";
 import { getPostsByCount, fetchPostsByFilter } from "../functions/post";
 import { getCategories } from "../functions/category";
 import { getTags } from "../functions/posttag";
+// import Search from "../components/forms/Search";
 import { useSelector, useDispatch } from "react-redux";
 import ColumnPostCard from "../components/cards/post/ColumnPostCard";
 import HeadPostCard from "../components/cards/post/HeadPostCard";
 import TextPostCard from "../components/cards/post/TextPostCard";
 import LinePostCard from "../components/cards/post/LinePostCard";
+import RowCard from "../components/cards/post/RowCard";
 import MiniLinePostCard from "../components/cards/post/MiniLinePostCard";
 import MiniTextPostCard from "../components/cards/post/MiniTextPostCard";
 import { Menu, Checkbox, Card } from "antd";
@@ -19,13 +21,13 @@ import {
 import Laptop from "../images/laptop.png";
 import { FiMessageCircle } from "react-icons/fi";
 import { WiTime1 } from "react-icons/wi";
-import {FiEdit} from "react-icons/fi"
-import { FaGreaterThan } from "react-icons/fa"
+import { FiEdit } from "react-icons/fi";
+import { FaGreaterThan } from "react-icons/fa";
 import Star from "../components/forms/Star";
 
 const { SubMenu, ItemGroup } = Menu;
 
-const Post = ({post}) => {
+const Post = ({ post }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState([0, 0]);
@@ -39,193 +41,197 @@ const Post = ({post}) => {
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
-
+  useEffect(() => {
+    getPostsByCount(20).then((p) => {
+      setPosts(p.data);
+    });
+  }, []);
   const settings = {
     dots: true,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true
-          }
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
         },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2
-          }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
         },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    };
-
-  useEffect(() => {
-    loadAllPosts();
-    // fetch categories
-    getCategories().then((res) => setCategories(res.data));
-    // fetch tagcategories
-    getTags().then((res) => setTags(res.data));
-  }, []);
-
-  const fetchPosts = (arg) => {
-    fetchPostsByFilter(arg).then((res) => {
-      setPosts(res.data);
-    });
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
-  // 1. load posts by default on page load
-  const loadAllPosts = () => {
-    getPostsByCount(12).then((p) => {
-      setPosts(p.data);
-      setLoading(false);
-    });
-  };
+  // useEffect(() => {
+  //   loadAllPosts();
+  //   // fetch categories
+  //   getCategories().then((res) => setCategories(res.data));
+  //   // fetch tagcategories
+  //   getTags().then((res) => setTags(res.data));
+  // }, []);
 
-  // 2. load posts on user search input
-  useEffect(() => {
-    const delayed = setTimeout(() => {
-      fetchPosts({ query: text });
-    }, 300);
-    return () => clearTimeout(delayed);
-  }, [text]);
+  // const fetchPosts = (arg) => {
+  //   fetchPostsByFilter(arg).then((res) => {
+  //     setPosts(res.data);
+  //   });
+  // };
 
-  // 3. load posts based on price range
-  useEffect(() => {
-    console.log("ok to request");
-    fetchPosts({ price });
-  }, [ok]);
+  // // 1. load posts by default on page load
+  // const loadAllPosts = () => {
+  //   getPostsByCount(12).then((p) => {
+  //     setPosts(p.data);
+  //     setLoading(false);
+  //   });
+  // };
 
-  const handleSlider = (value) => {
-    dispatch({
-      type: "SEARCH_QUERY",
-      payload: { text: "" },
-    });
+  // // 2. load posts on user search input
+  // useEffect(() => {
+  //   const delayed = setTimeout(() => {
+  //     fetchPosts({ query: text });
+  //   }, 300);
+  //   return () => clearTimeout(delayed);
+  // }, [text]);
 
-    // reset
-    setCategoryIds([]);
-    setPrice(value);
-    setStar("");
-    setTag("");
-    setTimeout(() => {
-      setOk(!ok);
-    }, 300);
-  };
+  // // 3. load posts based on price range
+  // useEffect(() => {
+  //   console.log("ok to request");
+  //   fetchPosts({ price });
+  // }, [ok]);
 
-  // 4. load posts based on category
-  // show categories in a list of checkbox
-  const showCategories = () =>
-    categories.map((c) => (
-      <div key={c._id}>
-        <Checkbox
-          onChange={handleCheck}
-          className="pb-2 pl-4 pr-4"
-          value={c._id}
-          name="category"
-          checked={categoryIds.includes(c._id)}
-        >
-          {c.name}
-        </Checkbox>
-        <br />
-      </div>
-    ));
+  // const handleSlider = (value) => {
+  //   dispatch({
+  //     type: "SEARCH_QUERY",
+  //     payload: { text: "" },
+  //   });
 
-  // handle check for categories
-  const handleCheck = (e) => {
-    // reset
-    dispatch({
-      type: "SEARCH_QUERY",
-      payload: { text: "" },
-    });
-    setPrice([0, 0]);
-    setStar("");
-    setTag("");
-    // console.log(e.target.value);
-    let inTheState = [...categoryIds];
-    let justChecked = e.target.value;
-    let foundInTheState = inTheState.indexOf(justChecked); // index or -1
+  //   // reset
+  //   setCategoryIds([]);
+  //   setPrice(value);
+  //   setStar("");
+  //   setTag("");
+  //   setTimeout(() => {
+  //     setOk(!ok);
+  //   }, 300);
+  // };
 
-    // indexOf method ?? if not found returns -1 else return index [1,2,3,4,5]
-    if (foundInTheState === -1) {
-      inTheState.push(justChecked);
-    } else {
-      // if found pull out one item from index
-      inTheState.splice(foundInTheState, 1);
-    }
+  // // 4. load posts based on category
+  // // show categories in a list of checkbox
+  // const showCategories = () =>
+  //   categories.map((c) => (
+  //     <div key={c._id}>
+  //       <Checkbox
+  //         onChange={handleCheck}
+  //         className="pb-2 pl-4 pr-4"
+  //         value={c._id}
+  //         name="category"
+  //         checked={categoryIds.includes(c._id)}
+  //       >
+  //         {c.name}
+  //       </Checkbox>
+  //       <br />
+  //     </div>
+  //   ));
 
-    setCategoryIds(inTheState);
-    // console.log(inTheState);
-    fetchPosts({ category: inTheState });
-  };
+  // // handle check for categories
+  // const handleCheck = (e) => {
+  //   // reset
+  //   dispatch({
+  //     type: "SEARCH_QUERY",
+  //     payload: { text: "" },
+  //   });
+  //   setPrice([0, 0]);
+  //   setStar("");
+  //   setTag("");
+  //   // console.log(e.target.value);
+  //   let inTheState = [...categoryIds];
+  //   let justChecked = e.target.value;
+  //   let foundInTheState = inTheState.indexOf(justChecked); // index or -1
 
-  // 5. show posts by star rating
-  const handleStarClick = (num) => {
-    // console.log(num);
-    dispatch({
-      type: "SEARCH_QUERY",
-      payload: { text: "" },
-    });
-    setPrice([0, 0]);
-    setCategoryIds([]);
-    setStar(num);
-    setTag("");
-    fetchPosts({ stars: num });
-  };
+  //   // indexOf method ?? if not found returns -1 else return index [1,2,3,4,5]
+  //   if (foundInTheState === -1) {
+  //     inTheState.push(justChecked);
+  //   } else {
+  //     // if found pull out one item from index
+  //     inTheState.splice(foundInTheState, 1);
+  //   }
 
-  const showStars = () => (
-    <div className="pr-4 pl-4 pb-2">
-      <Star starClick={handleStarClick} numberOfStars={5} />
-      <Star starClick={handleStarClick} numberOfStars={4} />
-      <Star starClick={handleStarClick} numberOfStars={3} />
-      <Star starClick={handleStarClick} numberOfStars={2} />
-      <Star starClick={handleStarClick} numberOfStars={1} />
-    </div>
-  );
+  //   setCategoryIds(inTheState);
+  //   // console.log(inTheState);
+  //   fetchPosts({ category: inTheState });
+  // };
 
-  // 6. show posts by tag category
-  const showTags = () =>
-    tags.map((s) => (
-      <div
-        key={s._id}
-        onClick={() => handleTag(s)}
-        className="p-1 m-1 badge badge-secondary"
-        style={{ cursor: "pointer" }}
-      >
-        {s.name}
-      </div>
-    ));
+  // // 5. show posts by star rating
+  // const handleStarClick = (num) => {
+  //   // console.log(num);
+  //   dispatch({
+  //     type: "SEARCH_QUERY",
+  //     payload: { text: "" },
+  //   });
+  //   setPrice([0, 0]);
+  //   setCategoryIds([]);
+  //   setStar(num);
+  //   setTag("");
+  //   fetchPosts({ stars: num });
+  // };
 
-  const handleTag = (tag) => {
-    // console.log("SUB", tag);
-    setTag(tag);
-    dispatch({
-      type: "SEARCH_QUERY",
-      payload: { text: "" },
-    });
-    setPrice([0, 0]);
-    setCategoryIds([]);
-    setStar("");
-    fetchPosts({ tag });
-  };
+  // const showStars = () => (
+  //   <div className="pr-4 pl-4 pb-2">
+  //     <Star starClick={handleStarClick} numberOfStars={5} />
+  //     <Star starClick={handleStarClick} numberOfStars={4} />
+  //     <Star starClick={handleStarClick} numberOfStars={3} />
+  //     <Star starClick={handleStarClick} numberOfStars={2} />
+  //     <Star starClick={handleStarClick} numberOfStars={1} />
+  //   </div>
+  // );
+
+  // // 6. show posts by tag category
+  // const showTags = () =>
+  //   tags.map((s) => (
+  //     <div
+  //       key={s._id}
+  //       onClick={() => handleTag(s)}
+  //       className="p-1 m-1 badge badge-secondary"
+  //       style={{ cursor: "pointer" }}
+  //     >
+  //       {s.name}
+  //     </div>
+  //   ));
+
+  // const handleTag = (tag) => {
+  //   // console.log("SUB", tag);
+  //   setTag(tag);
+  //   dispatch({
+  //     type: "SEARCH_QUERY",
+  //     payload: { text: "" },
+  //   });
+  //   setPrice([0, 0]);
+  //   setCategoryIds([]);
+  //   setStar("");
+  //   fetchPosts({ tag });
+  // };
   let categoreypost = [];
   let latestpost = [];
   let educategorypostdesc = [];
-  let techcategorypostdesc  = [];
+  let techcategorypostdesc = [];
 
   //latestpost.push(posts[0]);
   for (let i = 0; i < posts.length; i++) {
@@ -238,138 +244,603 @@ const Post = ({post}) => {
       // console.log(i, ":", element.postcategory.name);
       categoreypost.push(posts[i]);
     }
-    else if (element.postcategory.name === "Education") {
+    if (element.postcategory.name === "Education") {
       educategorypostdesc.push(posts[i]);
-
-} else if (element.postcategory.name === "Technology") { 
+    }
+    if (element.postcategory.name === "Technology") {
       techcategorypostdesc.push(posts[i]);
-  
-}
+    }
   }
 
   let newcategoreypost = categoreypost.slice(1, 2);
+
   let latestdentail = categoreypost.slice(-1);
-  
-  console.log(categoreypost);
-  //console.log(latestpost);
+  let latesteduc = educategorypostdesc.slice(-1);
+  let latesttech = techcategorypostdesc.slice(-1);
+  let allblglatest = [...latestdentail, ...latesteduc, ...latesttech];
+
+  let second_latest_o = [...categoreypost.slice(-2, -1)];
+  let second_latest_t = [...educategorypostdesc.slice(-2, -1)];
+  let second_latest_th = [...techcategorypostdesc.slice(-2, -1)];
+
+  let third_latest_o = [...categoreypost.slice(-3, -2)];
+  let third_latest_t = [...educategorypostdesc.slice(-3, -2)];
+  let third_latest_th = [...techcategorypostdesc.slice(-3, -2)];
+
+  let four_five_six_edulatest = [
+    ...educategorypostdesc.slice(-3, -2),
+    ...educategorypostdesc.slice(-2, -1),
+    ...educategorypostdesc.slice(-1),
+  ];
+  let four_five_six_dentlatest = [
+    ...categoreypost.slice(-3, -2),
+    ...categoreypost.slice(-2, -1),
+    ...categoreypost.slice(-1),
+  ];
+
+  //console.log(four_five_six_dentlatest);
 
   const digituniq = [...new Set(post)]
     .filter((item) => item.postcategory === "Dental News")
     .slice(0, 8);
 
-
   return (
-    <div className="container-col mt-5 ml-5" style={{width:"1200px", height:"1500px", backgroundColor:"white"}}>
-        <div className="row">
-        <div className="container-row" style={{position:"relative", width:"300px", height: "300px", left:"17px"}}>
-        <h2>{categoreypost.slice(-1).reverse().map((p) => (
-            <div key={p._id} className="col">
-                <HeadPostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
-        <div className="container-row" style={{position:"relative", width:"300px", height: "400px", left:"23px"}}>
-        <h2>{categoreypost.slice(-1).reverse().map((p) => (
-            <div key={p._id} className="col">
-                <HeadPostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
+    <>
+      {/* <span className="float-right p-1">
+        <Search />
+      </span> */}
 
-        <div className="container-row" style={{position:"relative", width:"150px", 
-        height: "400px", left:"180px"}}>
-        <h2>{categoreypost.slice(-1).reverse().map((p) => (
-            <div key={p._id} className="col">
-                <HeadPostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
-        </div>
-        <div className="container-row" style={{position:"absolute", width:"150px", 
-        height: "400px", left:"355px"}}>
-        <h2>{educategorypostdesc.slice(0,2).reverse().map((p) => (
-            <div key={p._id} className="col">
-                <TextPostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
-        <div className="container-row"style={{position:"absolute", width:"150px", 
-        height: "400px", left:"662px",  transform:"translateY(-28px)"}}> >
-        <h2>{educategorypostdesc.slice(0,2).reverse().map((p) => (
-            <div key={p._id} className="col">
-                < ColumnPostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
-        <div className="container-row" style={{position:"absolute", width:"150px", 
-        height: "400px", top: "515px"}}>
-        <h2>{educategorypostdesc.slice(0,2).reverse().map((p) => (
-            <div key={p._id} className="col">
-                < ColumnPostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
-        <hr />
-        <div className="row">
-        <div className="container-row" style={{position:"absolute", width:"150px", 
-        height: "400px", right:"1359px", top: "746px"}}>
-        <h2>{educategorypostdesc.slice(0,3).reverse().map((p) => (
-            <div key={p._id} className="col">
-                < LinePostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
-        <div className="container-row" style={{position:"relative", maxHeight:"100px",
-         width:"200px", left:"17px" , top:"179px"}}>
-        <h2>{categoreypost.slice(0,3).reverse().map((p) => (
-            <div key={p._id} className="col">
-                <MiniLinePostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
+      {/* // custome code */}
+      {/* <div
+          // className="container-col mt-5 ml-5"
+          style={{
+            width: "1200px",
+            height: "1500px",
+            backgroundColor: "white",
+          }}
+        >
+          <div
+            className="container-row"
+            style={{
+              position: "relative",
+              width: "150px",
+              height: "400px",
+              left: "180px",
+            }}
+          >
+            <h2>
+              {second_latest
+                .slice(-1)
+                .reverse()
+                .map((p) => (
+                  <div key={p._id} className="col">
+                    <HeadPostCard post={p} />
+                  </div>
+                ))}
+            </h2>
+          </div>
+          <div
+            className="container-row"
+            style={{
+              position: "relative",
+              width: "150px",
+              height: "400px",
+              left: "180px",
+            }}
+          >
+            <h2>
+              {second_latest
+                .slice(-2)
+                .reverse()
+                .map((p) => (
+                  <div key={p._id} className="col">
+                    <HeadPostCard post={p} />
+                  </div>
+                ))}
+            </h2>
+          </div>
+          <div
+            className="container-row"
+            style={{
+              position: "relative",
+              width: "150px",
+              height: "400px",
+              left: "180px",
+            }}
+          >
+            <h2>
+              {second_latest
+                .slice(-3)
+                .reverse()
+                .map((p) => (
+                  <div key={p._id} className="col">
+                    <HeadPostCard post={p} />
+                  </div>
+                ))}
+            </h2>
+          </div>
+        </div> */}
+      {/* <div
+          className="container-row"
+          style={{
+            position: "absolute",
+            width: "150px", 
+            height: "400px",
+            left: "355px",
+          }}
+        >
+          <h2>
+            {educategorypostdesc
+              .slice(0, 2)
+              .reverse()
+              .map((p) => (
+                <div key={p._id} className="col">
+                  <TextPostCard post={p} />
+                </div>
+              ))}
+          </h2>
+        </div> */}
+      {/* <div
+          className="container-row"
+          style={{
+            position: "absolute",
+            width: "150px",
+            height: "400px",
+            left: "662px",
+            transform: "translateY(-28px)",
+          }}
+        >
+          <h2>
+            {educategorypostdesc
+              .slice(0, 2)
+              .reverse()
+              .map((p) => (
+                <div key={p._id} className="col">
+                  <ColumnPostCard post={p} />
+                </div>
+              ))}
+          </h2>
+        </div> */}
+      {/* <div
+          className="container-row"
+          style={{
+            position: "absolute",
+            width: "150px",
+            height: "400px",
+            top: "515px",
+          }}
+        >
+          <h2>
+            {educategorypostdesc
+              .slice(0, 2)
+              .reverse()
+              .map((p) => (
+                <div key={p._id} className="col">
+                  <ColumnPostCard post={p} />
+                </div>
+              ))}
+          </h2>
+        </div> */}
+      <hr />
+      <div className="row">
+        {/* <div
+            className="container-row"
+            style={{
+              position: "absolute",
+              width: "150px",
+              height: "400px",
+              right: "1359px",
+              top: "746px",
+            }}
+          >
+            <h2>
+              {educategorypostdesc
+                .slice(0, 3)
+                .reverse()
+                .map((p) => (
+                  <div key={p._id} className="col">
+                    <LinePostCard post={p} />
+                  </div>
+                ))}
+            </h2>
+          </div> */}
+        {/* <div
+            className="container-row"
+            style={{
+              position: "relative",
+              maxHeight: "100px",
+              width: "200px",
+              left: "17px",
+              top: "179px",
+            }}
+          >
+            <h2>
+              {categoreypost
+                .slice(0, 3)
+                .reverse()
+                .map((p) => (
+                  <div key={p._id} className="col">
+                    <MiniLinePostCard post={p} />
+                  </div>
+                ))}
+            </h2>
+          </div> */}
+        {/* 
+          <div
+            className="container-col"
+            style={{ position: "relative", left: "17px", top: "249px" }}
+          >
+            <h2>
+              {categoreypost
+                .slice(0, 2)
+                .reverse()
+                .map((p) => (
+                  <div key={p._id} className="col">
+                    <MiniTextPostCard post={p} />
+                  </div>
+                ))}
+            </h2>
+          </div> */}
 
-        <div className="container-col" style={{position:"relative", 
-         left:"17px", top:"249px"}}>
-        <h2>{categoreypost.slice(0,2).reverse().map((p) => (
-            <div key={p._id} className="col">
-                <MiniTextPostCard post={p} />
-            </div>
-        ))}</h2>
-        </div>
-        
-        <div className="container-col" style={{position:"relative", left:"413px", 
-        bottom:"428px", backgroundColor:"blue", height: "1100px", width:"270px"}}>
-        <h2>
-            <div className="col">
-                ADS
-            </div>
-        </h2>
-        </div>
-        </div>
-        <div className="container bg-light" style={{backgroundColor:"orange", transform:"translateY(-390px"}}>
-        <h2> Responsive </h2>
-         <Slider {...settings}>
-         {categoreypost.slice(0).reverse().map((p) => {
-                return (
-                      <div style={{padding:"30px"}} >
-                        <div className="card" style={{padding:"30px",  width:"400px", height: "200px"}}>
-                          <div className="card-img-overlay" style={{position:"absolute", transform:"translate(-30px, -20px)"}} >
-                          <img className="p-1"  src={p.images && p.images.length ? p.images[0].url : Laptop}
-                          style={{width:"300px", height: "200px", objectFit: "cover" }}
-            
-          />
-                            <h5 style={{padding: "3px", borderRadius: "3px", display: "inline-block", backgroundSize:"auto", backgroundColor:"rgba(0, 0, 0, 0.3)", marginTop:"80%", color:"white", backgroundSize:"auto", backgroundColor:"rgba(0, 0, 0, 0.3)"}}>
-                              {p.title}
-                            </h5>
-                             
-                          </div>
+        <div className="row">
+          <div className="col-md-8">
+            <div
+              className="container-col mt-5 ml-5"
+              style={{
+                width: "1200px",
+                height: "2100px",
+                backgroundColor: "white",
+              }}
+            >
+              <div className="row">
+                <div
+                  className="container-row"
+                  style={{
+                    position: "relative",
+                    width: "300px",
+                    height: "300px",
+                    left: "17px",
+                  }}
+                >
+                  {/* <h2>
+            {categoreypost
+              .slice(-1)
+              .reverse()
+              .map((p) => (
+                <div key={p._id} className="col">
+                  <HeadPostCard post={p} />
+                </div>
+              ))}
+          </h2> */}
+                  <h2>
+                    {allblglatest
+                      .slice(-3)
+                      .reverse()
+                      .map((p) => (
+                        <div key={p._id} className="col">
+                          <HeadPostCard post={p} />
                         </div>
+                      ))}
+                  </h2>
+                </div>
+                <div
+                  className="container-row"
+                  style={{
+                    position: "relative",
+                    width: "300px",
+                    height: "3  00px",
+                    left: "23px",
+                  }}
+                >
+                  {/* <h2>
+            {categoreypost
+              .slice(-1)
+              .reverse()
+              .map((p) => (
+                <div key={p._id} className="col">
+                  <HeadPostCard post={p} />
+                </div>
+              ))}
+          </h2> */}
+                  <h2>
+                    {allblglatest
+                      .slice(-1)
+                      .reverse()
+                      .map((p) => (
+                        <div key={p._id} className="col">
+                          <HeadPostCard post={p} />
+                        </div>
+                      ))}
+                  </h2>
+                </div>
+
+                <div
+                  className="container-row"
+                  style={{
+                    position: "relative",
+                    width: "150px",
+                    height: "300px",
+                    left: "180px",
+                  }}
+                >
+                  {/* <h2>
+            {categoreypost
+              .slice(-1)
+              .reverse()
+              .map((p) => (
+                <div key={p._id} className="col">
+                  <HeadPostCard post={p} />
+                </div>
+              ))}
+          </h2> */}
+                  <h2>
+                    {allblglatest
+                      .slice(-2)
+                      .reverse()
+                      .map((p) => (
+                        <div key={p._id} className="col">
+                          <HeadPostCard post={p} />
+                        </div>
+                      ))}
+                  </h2>
+                </div>
+              </div>
+              {/* // custome code */}
+              <div className="container ml-0 pl-0">
+                <div className="row">
+                  <div
+                    className="container-row"
+                    style={{
+                      position: "relative",
+                      width: "300px",
+                      height: "300px",
+                      left: "17px",
+                    }}
+                  >
+                    <h2>
+                      {second_latest_o
+                        .slice(-1)
+                        .reverse()
+                        .map((p) => (
+                          <div key={p._id} className="col">
+                            <HeadPostCard post={p} />
+                          </div>
+                        ))}
+                    </h2>
+                  </div>
+                  <div
+                    className="container-row"
+                    style={{
+                      position: "relative",
+                      width: "300px",
+                      height: "300px",
+                      left: "23px",
+                    }}
+                  >
+                    <h2>
+                      {second_latest_t
+                        .slice(-2)
+                        .reverse()
+                        .map((p) => (
+                          <div key={p._id} className="col">
+                            <HeadPostCard post={p} />
+                          </div>
+                        ))}
+                    </h2>
+                  </div>
+
+                  <div
+                    className="container-row"
+                    style={{
+                      position: "relative",
+                      width: "150px",
+                      height: "300px",
+                      left: "180px",
+                    }}
+                  >
+                    <h2>
+                      {second_latest_th
+                        .slice(-3)
+                        .reverse()
+                        .map((p) => (
+                          <div key={p._id} className="col">
+                            <HeadPostCard post={p} />
+                          </div>
+                        ))}
+                    </h2>
+                  </div>
+                </div>
+                {/* row2 */}
+                <div className="row">
+                  <div
+                    className="container-row"
+                    style={{
+                      position: "relative",
+                      width: "300px",
+                      height: "300px",
+                      left: "17px",
+                    }}
+                  >
+                    <h2>
+                      {third_latest_o
+                        .slice(-1)
+                        .reverse()
+                        .map((p) => (
+                          <div key={p._id} className="col">
+                            <HeadPostCard post={p} />
+                          </div>
+                        ))}
+                    </h2>
+                  </div>
+                  <div
+                    className="container-row"
+                    style={{
+                      position: "relative",
+                      width: "300px",
+                      height: "300px",
+                      left: "23px",
+                    }}
+                  >
+                    <h2>
+                      {third_latest_t
+                        .slice(-2)
+                        .reverse()
+                        .map((p) => (
+                          <div key={p._id} className="col">
+                            <HeadPostCard post={p} />
+                          </div>
+                        ))}
+                    </h2>
+                  </div>
+
+                  <div
+                    className="container-row"
+                    style={{
+                      position: "relative",
+                      width: "150px",
+                      height: "300px",
+                      left: "180px",
+                    }}
+                  >
+                    <h2>
+                      {third_latest_th
+                        .slice(-3)
+                        .reverse()
+                        .map((p) => (
+                          <div key={p._id} className="col">
+                            <HeadPostCard post={p} />
+                          </div>
+                        ))}
+                    </h2>
+                  </div>
+                </div>
+              </div>
+              {/* for horizontal  card */}
+              <div classNae="conatiner">
+                <div className="row">
+                  <div classname="col-md-8">
+                    <div classname="col-12">
+                      {four_five_six_dentlatest.map((p) => {
+                        return (
+                          <div>
+                            <RowCard
+                              post={p}
+                              img_width={300}
+                              fontsizet={23}
+                              fontsized={16}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div classname="col-12"></div>
+                    <div classname="col-12"></div>
+                  </div>
+                  <div classname="col-md-4">
+                    <div classname="col-12">
+                      {four_five_six_edulatest.map((p) => {
+                        return (
+                          <div>
+                            <RowCard
+                              post={p}
+                              img_width={100}
+                              fontsizet={9}
+                              fontsized={12}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* for horizontal  card */}
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div
+              className="container-col"
+              style={{
+                // position: "relative",
+                // left: "413px",
+                // bottom: "428px",
+                backgroundColor: "blue",
+                height: "1100px",
+                width: "270px",
+              }}
+            >
+              <h2>
+                <div className="col">ADS</div>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div
+          className="container bg-light"
+          style={{ backgroundColor: "orange", transform: "translateY(-390px" }}
+        >
+          <h2> Responsive </h2>
+          <Slider {...settings}>
+            {categoreypost
+              .slice(0)
+              .reverse()
+              .map((p) => {
+                return (
+                  <div style={{ padding: "30px" }}>
+                    <div
+                      className="card"
+                      style={{
+                        padding: "30px",
+                        width: "400px",
+                        height: "200px",
+                      }}
+                    >
+                      <div
+                        className="card-img-overlay"
+                        style={{
+                          marginRight: "2px",
+                          position: "absolute",
+                          transform: "translate(-30px, -20px)",
+                        }}
+                      >
+                        <img
+                          className="p-1 img-fluid"
+                          src={
+                            p.images && p.images.length
+                              ? p.images[0].url
+                              : Laptop
+                          }
+                          // src="https://res.cloudinary.com/dhluc6ust/image/upload/v1609882148/vivwrz0a8ngg9tlf8mkn.jpg"
+                          style={{
+                            width: "280px",
+                            height: "200px",
+                            objectFit: "cover",
+                          }}
+                        />
+                        <h5
+                          style={{
+                            padding: "3px",
+                            borderRadius: "3px",
+                            display: "inline-block",
+                            backgroundSize: "auto",
+                            backgroundColor: "rgba(0, 0, 0, 0.3)",
+                            marginTop: "80%",
+                            color: "white",
+                            backgroundSize: "auto",
+                            backgroundColor: "rgba(0, 0, 0, 0.3)",
+                          }}
+                        >
+                          {p.title}
+                        </h5>
                       </div>
+                    </div>
+                  </div>
                 );
               })}
-            </Slider>
+          </Slider>
+        </div>
       </div>
-      </div>
+    </>
   );
 };
 
