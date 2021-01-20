@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 //import { AiFillPhone } from "react-icons/ai";
 import { MdEmail, MdLocationOn } from "react-icons/md";
 import logo from "../../static/images/logo/logonb.png"
@@ -42,10 +43,12 @@ const Footer = () => {
           <div className="col-sm-12 col-md-3">
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ margin: "20px" }}>
+              <Link to="/">
                 <img
                   style={{ width: "150px", paddingBottom: "20px" }}
                   src={logo}
                 />
+                </Link>
 
                 <div style={{ display: "flex" }} className="mb-3">
                   <div>

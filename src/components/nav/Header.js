@@ -48,7 +48,9 @@ const Header = () => {
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
       <Item>
+      <Link to="/">
         <img width="85px" src={logo} />
+        </Link>
       </Item>
 
       <Item key="home" icon={<AppstoreOutlined />}>

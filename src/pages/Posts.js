@@ -7,6 +7,16 @@ import { getTags } from "../functions/posttag";
 import { useSelector, useDispatch } from "react-redux";
 import ColumnPostCard from "../components/cards/post/ColumnPostCard";
 import HeadPostCard from "../components/cards/post/HeadPostCard";
+import LgImgCard from "../components/cards/post/imagecards/LgImgCard";
+import MdImgCard from "../components/cards/post/imagecards/MdImgCard";
+import ModelCard from "../components/cards/post/imagecards/MdImgCard";
+import SmImgCard from "../components/cards/post/imagecards/SmImgCard";
+import MdSmImgCard from "../components/cards/post/imagecards/MdSmImgCard";
+import SmSmImgCard from "../components/cards/post/imagecards/SmSmImgCard";
+import MdSmSmImgCard from "../components/cards/post/imagecards/MdSmSmImgCard";
+import SmMdImgCard from "../components/cards/post/imagecards/SmMdImgCard";
+import SmLgImgCard from "../components/cards/post/imagecards/SmLgImgCard";
+
 import TextPostCard from "../components/cards/post/TextPostCard";
 import LinePostCard from "../components/cards/post/LinePostCard";
 import RowCard from "../components/cards/post/RowCard";
@@ -274,8 +284,8 @@ const Post = ({ post }) => {
   ];
   let four_five_six_dentlatest = [
     ...categoreypost.slice(-3, -2),
-    ...categoreypost.slice(-2, -1),
-    ...categoreypost.slice(-1),
+    //...categoreypost.slice(-2, -1),
+   // ...categoreypost.slice(-1),
   ];
 
   //console.log(four_five_six_dentlatest);
@@ -286,560 +296,307 @@ const Post = ({ post }) => {
 
   return (
     <>
-      {/* <span className="float-right p-1">
-        <Search />
-      </span> */}
+     <ul class="nav nav-tabs position-relative mt-5" style={{marginLeft:"145px"}}>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Main</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Dental News</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Technology</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Education</a>
+        </li>
+    </ul>
 
-      {/* // custome code */}
-      {/* <div
-          // className="container-col mt-5 ml-5"
-          style={{
-            width: "1200px",
-            height: "1500px",
-            backgroundColor: "white",
-          }}
-        >
-          <div
-            className="container-row"
-            style={{
-              position: "relative",
-              width: "150px",
-              height: "400px",
-              left: "180px",
-            }}
-          >
-            <h2>
-              {second_latest
-                .slice(-1)
-                .reverse()
-                .map((p) => (
-                  <div key={p._id} className="col">
-                    <HeadPostCard post={p} />
-                  </div>
-                ))}
-            </h2>
-          </div>
-          <div
-            className="container-row"
-            style={{
-              position: "relative",
-              width: "150px",
-              height: "400px",
-              left: "180px",
-            }}
-          >
-            <h2>
-              {second_latest
-                .slice(-2)
-                .reverse()
-                .map((p) => (
-                  <div key={p._id} className="col">
-                    <HeadPostCard post={p} />
-                  </div>
-                ))}
-            </h2>
-          </div>
-          <div
-            className="container-row"
-            style={{
-              position: "relative",
-              width: "150px",
-              height: "400px",
-              left: "180px",
-            }}
-          >
-            <h2>
-              {second_latest
-                .slice(-3)
-                .reverse()
-                .map((p) => (
-                  <div key={p._id} className="col">
-                    <HeadPostCard post={p} />
-                  </div>
-                ))}
-            </h2>
-          </div>
-        </div> */}
-      {/* <div
-          className="container-row"
-          style={{
-            position: "absolute",
-            width: "150px", 
-            height: "400px",
-            left: "355px",
-          }}
-        >
-          <h2>
-            {educategorypostdesc
-              .slice(0, 2)
-              .reverse()
-              .map((p) => (
-                <div key={p._id} className="col">
-                  <TextPostCard post={p} />
-                </div>
-              ))}
-          </h2>
-        </div> */}
-      {/* <div
-          className="container-row"
-          style={{
-            position: "absolute",
-            width: "150px",
-            height: "400px",
-            left: "662px",
-            transform: "translateY(-28px)",
-          }}
-        >
-          <h2>
-            {educategorypostdesc
-              .slice(0, 2)
-              .reverse()
-              .map((p) => (
-                <div key={p._id} className="col">
-                  <ColumnPostCard post={p} />
-                </div>
-              ))}
-          </h2>
-        </div> */}
-      {/* <div
-          className="container-row"
-          style={{
-            position: "absolute",
-            width: "150px",
-            height: "400px",
-            top: "515px",
-          }}
-        >
-          <h2>
-            {educategorypostdesc
-              .slice(0, 2)
-              .reverse()
-              .map((p) => (
-                <div key={p._id} className="col">
-                  <ColumnPostCard post={p} />
-                </div>
-              ))}
-          </h2>
-        </div> */}
-      <hr />
-      <div className="row">
-        {/* <div
-            className="container-row"
-            style={{
-              position: "absolute",
-              width: "150px",
-              height: "400px",
-              right: "1359px",
-              top: "746px",
-            }}
-          >
-            <h2>
-              {educategorypostdesc
-                .slice(0, 3)
-                .reverse()
-                .map((p) => (
-                  <div key={p._id} className="col">
-                    <LinePostCard post={p} />
-                  </div>
-                ))}
-            </h2>
-          </div> */}
-        {/* <div
-            className="container-row"
-            style={{
-              position: "relative",
-              maxHeight: "100px",
-              width: "200px",
-              left: "17px",
-              top: "179px",
-            }}
-          >
-            <h2>
-              {categoreypost
-                .slice(0, 3)
-                .reverse()
-                .map((p) => (
-                  <div key={p._id} className="col">
-                    <MiniLinePostCard post={p} />
-                  </div>
-                ))}
-            </h2>
-          </div> */}
-        {/* 
-          <div
-            className="container-col"
-            style={{ position: "relative", left: "17px", top: "249px" }}
-          >
-            <h2>
-              {categoreypost
-                .slice(0, 2)
-                .reverse()
-                .map((p) => (
-                  <div key={p._id} className="col">
-                    <MiniTextPostCard post={p} />
-                  </div>
-                ))}
-            </h2>
-          </div> */}
-
-        <div className="row">
-          <div className="col-md-8">
-            <div
-              className="container-col mt-5 ml-5"
-              style={{
-                width: "1200px",
-                height: "2100px",
-                backgroundColor: "white",
-              }}
-            >
-              <div className="row">
-                <div
-                  className="container-row"
-                  style={{
-                    position: "relative",
-                    width: "300px",
-                    height: "300px",
-                    left: "17px",
-                  }}
-                >
-                  {/* <h2>
-            {categoreypost
-              .slice(-1)
-              .reverse()
-              .map((p) => (
-                <div key={p._id} className="col">
-                  <HeadPostCard post={p} />
-                </div>
-              ))}
-          </h2> */}
-                  <h2>
-                    {allblglatest
-                      .slice(-3)
-                      .reverse()
-                      .map((p) => (
-                        <div key={p._id} className="col">
-                          <HeadPostCard post={p} />
-                        </div>
+     <div className="container col-9 bg-info">
+     <div className="row" style={{maxHeight:"310px"}}>
+     <div className="col-5 bg-warning" style={{maxHeight:"310px"}}>
+     
+        <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col-5 position-relative" 
+    style={{transform:"translateX(-29px)"}} >
+        <LgImgCard post={p} />
+    </div>
                       ))}
                   </h2>
-                </div>
-                <div
-                  className="container-row"
-                  style={{
-                    position: "relative",
-                    width: "300px",
-                    height: "3  00px",
-                    left: "23px",
-                  }}
-                >
-                  {/* <h2>
-            {categoreypost
-              .slice(-1)
-              .reverse()
-              .map((p) => (
-                <div key={p._id} className="col">
-                  <HeadPostCard post={p} />
-                </div>
-              ))}
-          </h2> */}
-                  <h2>
-                    {allblglatest
-                      .slice(-1)
-                      .reverse()
-                      .map((p) => (
-                        <div key={p._id} className="col">
-                          <HeadPostCard post={p} />
-                        </div>
+     </div>   
+     <div className="col-7 bg-success">
+        <div className="row" style={{height:"170px"}}>
+         <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col-5 position-relative" 
+    style={{transform:"translateX(-19px)"}} >
+        <MdImgCard post={p} />
+    </div>
                       ))}
                   </h2>
-                </div>
-
-                <div
-                  className="container-row"
-                  style={{
-                    position: "relative",
-                    width: "150px",
-                    height: "300px",
-                    left: "180px",
-                  }}
-                >
-                  {/* <h2>
-            {categoreypost
-              .slice(-1)
-              .reverse()
-              .map((p) => (
-                <div key={p._id} className="col">
-                  <HeadPostCard post={p} />
-                </div>
-              ))}
-          </h2> */}
-                  <h2>
-                    {allblglatest
-                      .slice(-2)
-                      .reverse()
-                      .map((p) => (
-                        <div key={p._id} className="col">
-                          <HeadPostCard post={p} />
-                        </div>
-                      ))}
-                  </h2>
-                </div>
-              </div>
-              {/* // custome code */}
-              <div className="container ml-0 pl-0">
-                <div className="row">
-                  <div
-                    className="container-row"
-                    style={{
-                      position: "relative",
-                      width: "300px",
-                      height: "300px",
-                      left: "17px",
-                    }}
-                  >
-                    <h2>
-                      {second_latest_o
-                        .slice(-1)
-                        .reverse()
-                        .map((p) => (
-                          <div key={p._id} className="col">
-                            <HeadPostCard post={p} />
-                          </div>
-                        ))}
-                    </h2>
-                  </div>
-                  <div
-                    className="container-row"
-                    style={{
-                      position: "relative",
-                      width: "300px",
-                      height: "300px",
-                      left: "23px",
-                    }}
-                  >
-                    <h2>
-                      {second_latest_t
-                        .slice(-2)
-                        .reverse()
-                        .map((p) => (
-                          <div key={p._id} className="col">
-                            <HeadPostCard post={p} />
-                          </div>
-                        ))}
-                    </h2>
-                  </div>
-
-                  <div
-                    className="container-row"
-                    style={{
-                      position: "relative",
-                      width: "150px",
-                      height: "300px",
-                      left: "180px",
-                    }}
-                  >
-                    <h2>
-                      {second_latest_th
-                        .slice(-3)
-                        .reverse()
-                        .map((p) => (
-                          <div key={p._id} className="col">
-                            <HeadPostCard post={p} />
-                          </div>
-                        ))}
-                    </h2>
-                  </div>
-                </div>
-                {/* row2 */}
-                <div className="row">
-                  <div
-                    className="container-row"
-                    style={{
-                      position: "relative",
-                      width: "300px",
-                      height: "300px",
-                      left: "17px",
-                    }}
-                  >
-                    <h2>
-                      {third_latest_o
-                        .slice(-1)
-                        .reverse()
-                        .map((p) => (
-                          <div key={p._id} className="col">
-                            <HeadPostCard post={p} />
-                          </div>
-                        ))}
-                    </h2>
-                  </div>
-                  <div
-                    className="container-row"
-                    style={{
-                      position: "relative",
-                      width: "300px",
-                      height: "300px",
-                      left: "23px",
-                    }}
-                  >
-                    <h2>
-                      {third_latest_t
-                        .slice(-2)
-                        .reverse()
-                        .map((p) => (
-                          <div key={p._id} className="col">
-                            <HeadPostCard post={p} />
-                          </div>
-                        ))}
-                    </h2>
-                  </div>
-
-                  <div
-                    className="container-row"
-                    style={{
-                      position: "relative",
-                      width: "150px",
-                      height: "300px",
-                      left: "180px",
-                    }}
-                  >
-                    <h2>
-                      {third_latest_th
-                        .slice(-3)
-                        .reverse()
-                        .map((p) => (
-                          <div key={p._id} className="col">
-                            <HeadPostCard post={p} />
-                          </div>
-                        ))}
-                    </h2>
-                  </div>
-                </div>
-              </div>
-              {/* for horizontal  card */}
-              <div classNae="conatiner">
-                <div className="row">
-                  <div classname="col-md-8">
-                    <div classname="col-12">
-                      {four_five_six_dentlatest.map((p) => {
-                        return (
-                          <div>
-                            <RowCard
-                              post={p}
-                              img_width={300}
-                              fontsizet={23}
-                              fontsized={16}
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <div classname="col-12"></div>
-                    <div classname="col-12"></div>
-                  </div>
-                  <div classname="col-md-4">
-                    <div classname="col-12">
-                      {four_five_six_edulatest.map((p) => {
-                        return (
-                          <div>
-                            <RowCard
-                              post={p}
-                              img_width={100}
-                              fontsizet={9}
-                              fontsized={12}
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* for horizontal  card */}
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div
-              className="container-col"
-              style={{
-                // position: "relative",
-                // left: "413px",
-                // bottom: "428px",
-                backgroundColor: "blue",
-                height: "1100px",
-                width: "270px",
-              }}
-            >
-              <h2>
-                <div className="col">ADS</div>
-              </h2>
-            </div>
-          </div>
         </div>
-        <div
-          className="container bg-light"
-          style={{ backgroundColor: "orange", transform: "translateY(-390px" }}
-        >
-          <h2> Responsive </h2>
-          <Slider {...settings}>
-            {categoreypost
-              .slice(0)
-              .reverse()
-              .map((p) => {
-                return (
-                  <div style={{ padding: "30px" }}>
-                    <div
-                      className="card"
-                      style={{
-                        padding: "30px",
-                        width: "400px",
-                        height: "200px",
-                      }}
-                    >
-                      <div
-                        className="card-img-overlay"
-                        style={{
-                          marginRight: "2px",
-                          position: "absolute",
-                          transform: "translate(-30px, -20px)",
-                        }}
-                      >
-                        <img
-                          className="p-1 img-fluid"
-                          src={
-                            p.images && p.images.length
-                              ? p.images[0].url
-                              : Laptop
-                          }
-                          // src="https://res.cloudinary.com/dhluc6ust/image/upload/v1609882148/vivwrz0a8ngg9tlf8mkn.jpg"
-                          style={{
-                            width: "280px",
-                            height: "200px",
-                            objectFit: "cover",
-                          }}
-                        />
-                        <h5
-                          style={{
-                            padding: "3px",
-                            borderRadius: "3px",
-                            display: "inline-block",
-                            backgroundSize: "auto",
-                            backgroundColor: "rgba(0, 0, 0, 0.3)",
-                            marginTop: "80%",
-                            color: "white",
-                            backgroundSize: "auto",
-                            backgroundColor: "rgba(0, 0, 0, 0.3)",
-                          }}
-                        >
-                          {p.title}
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-          </Slider>
+        <div className="row" style={{height:"140px", width:"556px"}}>
+        <div className="col" style={{height:"140px", width:"277px"}}>
+       
+        <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)", height:"140px"}} >
+        <SmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
         </div>
-      </div>
+        <div className="col" style={{height:"140px", width:"278px"}}>
+        <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col ml-1 position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+        </div>
+        </div>
+     </div> 
+     </div>
+     </div>
+     
+     <div className="container col-9 bg-info mt-5" style={{height:"350px"}}>
+     <div className="row bg-info">
+     <div className="col-4 bg-warning">
+     <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <MdSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+     <div className="col-5">
+     <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+    sdfsdfsf
+     </div>
+     <div className="col-3 bg-success">
+     <span className="">
+     facebook icon
+     </span>
+
+     </div>
+     </div>
+     
+     </div>
+     <div className="container col-9 bg-info mt-5" style={{height:"550px"}}>
+     <div className="row">
+     <div className="col-4 mr-4 bg-success" style={{height:"216px", marginLeft:"6.8px"}}>
+     <div className="col">
+      <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <MdSmSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+     <div className="row bg-success">
+     <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+     <div className="row bg-light">
+     <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+    
+     </div>
+     <div className="col-4 mr-4 bg-warning" style={{height:"216px"}}>
+     <div className="col">
+      <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <MdSmSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+     <div className="row bg-success">
+    <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+     <div className="row bg-light">
+    <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+
+     </div>
+
+     <div className="col-3 ml-4 bg-light">
+     asfdsadf
+     </div>
+
+     </div>
+
+     <div className="row">
+     
+     </div>
+     </div>
+
+    <div className="container col-9 bg-info mt-5" style={{height:"180px"}}>
+    <div className="row">
+
+     <div className="bg-light ml-2 mr-2" style={{width:"220px", height:"170px"}}>
+     <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmMdImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+     <div className="bg-light ml-2 mr-2" style={{width:"220px", height:"170px"}}>
+     <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmMdImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+     <div className="bg-light ml-2 mr-2" style={{width:"220px", height:"170px"}}>
+     <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-34px)"}} >
+        <SmMdImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+     </div>
+    </div>
+    </div>
+
+    <div className="container col-9 bg-info mt-5" style={{height:"550px"}}>
+    <div className="row bg-primary" style={{width:"900px"}}>
+    <div className="mt-2 mr-2 bg-dark" style={{width:"350px", height:"220px"}}>
+    <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    >
+        <SmLgImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+    </div>
+    <div className="mt-2 bg-dark" style={{ width:"350px", height:"220px"}}>
+    <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+     >
+        <SmLgImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+    </div>
+    </div>
+    <div className="row bg-primary" style={{width:"900px"}}>
+    <div className="mt-2 mr-2 bg-dark" style={{width:"350px", height:"220px"}}>
+    <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    >
+        <SmLgImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+    </div>
+    <div className="mt-2 bg-dark" style={{width:"350px",
+     height:"220px"}}>
+    <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    >
+        <SmLgImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+    </div>
+    </div>
+    
+    </div>
+
     </>
   );
 };

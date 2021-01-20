@@ -23,7 +23,7 @@ const RowCard = ({ post, img_width, fontsized, fontsizet }) => {
           style={
             {
               // minHeight: "67px",
-              // maxHeight: "67px",
+              maxHeight: "150px",
               // minWidth: "100px",
               // maxWidth: "100px",
               //   marginTop: "4px",
