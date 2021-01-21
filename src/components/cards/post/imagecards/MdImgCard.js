@@ -13,8 +13,8 @@ const MdImgCard = ({ post }) => {
   const { images, title, description, slug } = post;
   return (
     
-    <div className="card mb-3" style={{minWidth:"556px", maxWidth:"556px", 
-       minHeight:"170px", maxHeight:"170px"}}>
+    <div className="card mb-3" style={{minWidth:"560px", maxWidth:"560px", 
+       minHeight:"190px", maxHeight:"190px"}}>
        
         <img className="img-fluid"  
         style={{minWidth:"556px", maxWidth:"556px", height:"170px"}}      

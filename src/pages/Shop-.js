@@ -14,10 +14,10 @@ import {
   StarOutlined,
 } from "@ant-design/icons";
 import Star from "../components/forms/Star";
+
 const { SubMenu, ItemGroup } = Menu;
 
 const Shop = () => {
-  
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState([0, 0]);
@@ -27,15 +27,28 @@ const Shop = () => {
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
-  const [brands, setBrands] = useState([]);
+  const [brands, setBrands] = useState([
+    "Apple",
+    "Samsung",
+    "Microsoft",
+    "Lenovo",
+    "ASUS",
+  ]);
   const [brand, setBrand] = useState("");
+  const [colors, setColors] = useState([
+    "Black",
+    "Brown",
+    "Silver",
+    "White",
+    "Blue",
+  ]);
+  const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
-  const [clickCount, setClickCount] = useState();
-  
+
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
-  console.log(clickCount)
+
   useEffect(() => {
     loadAllProducts();
     // fetch categories
@@ -43,30 +56,26 @@ const Shop = () => {
     // fetch subcategories
     getSubs().then((res) => setSubs(res.data));
   }, []);
-  
+
   const fetchProducts = (arg) => {
     fetchProductsByFilter(arg).then((res) => {
-      console.log("Search Filters",res.data)
-       setProducts(res.data);
+      setProducts(res.data);
     });
   };
-  
+
   // 1. load products by default on page load
   const loadAllProducts = () => {
     getProductsByCount(12).then((p) => {
-      let b  = p.data.map(b => b.brand) 
-      setBrands([...new Set(b)])
       setProducts(p.data);
       setLoading(false);
     });
   };
-  
-  
+
   // 2. load products on user search input
   useEffect(() => {
     const delayed = setTimeout(() => {
-      fetchProducts();
-      if (!text) { 
+      fetchProducts({ query: text });
+      if (!text) {
         loadAllProducts();
       }
     }, 300);
@@ -80,7 +89,6 @@ const Shop = () => {
   }, [ok]);
 
   const handleSlider = (value) => {
-    FiltersProducts('price',"<",price[1])
     dispatch({
       type: "SEARCH_QUERY",
       payload: { text: "" },
@@ -92,6 +100,7 @@ const Shop = () => {
     setStar("");
     setSub("");
     setBrand("");
+    setColor("");
     setShipping("");
     setTimeout(() => {
       setOk(!ok);
@@ -115,17 +124,9 @@ const Shop = () => {
         <br />
       </div>
     ));
-    const FiltersProducts = async (filterBy,operator,arg) => {
-      const json= await fetch(`http://localhost:8000/api/search/filters?${filterBy}${operator}${arg}`)
-      const res =await json.json()
-      if (res) {
-        setProducts(res)
-      } 
-  }
+
   // handle check for categories
   const handleCheck = (e) => {
-    FiltersProducts("category","=",e.target.value);
-  
     // reset
     dispatch({
       type: "SEARCH_QUERY",
@@ -135,6 +136,7 @@ const Shop = () => {
     setStar("");
     setSub("");
     setBrand("");
+    setColor("");
     setShipping("");
     // console.log(e.target.value);
     let inTheState = [...categoryIds];
@@ -157,7 +159,6 @@ const Shop = () => {
   // 5. show products by star rating
   const handleStarClick = (num) => {
     // console.log(num);
-    FiltersProducts('ratings',"=",num)
     dispatch({
       type: "SEARCH_QUERY",
       payload: { text: "" },
@@ -167,6 +168,7 @@ const Shop = () => {
     setStar(num);
     setSub("");
     setBrand("");
+    setColor("");
     setShipping("");
     fetchProducts({ stars: num });
   };
@@ -205,16 +207,16 @@ const Shop = () => {
     setCategoryIds([]);
     setStar("");
     setBrand("");
+    setColor("");
     setShipping("");
     fetchProducts({ sub });
   };
 
   // 7. show products based on brand name
   const showBrands = () =>
-    brands.map((b, i) => (
-     
+    brands.map((b) => (
       <Radio
-        key={i}
+        key={b}
         value={b}
         name={b}
         checked={b === brand}
@@ -226,44 +228,37 @@ const Shop = () => {
     ));
 
   const handleBrand = (e) => {
-    
-    FiltersProducts('brand',"=",e.target.value)
-
     setSub("");
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
     setPrice([0, 0]);
     setCategoryIds([]);
     setStar("");
+    setColor("");
     setBrand(e.target.value);
     setShipping("");
-    // fetchProducts({ brand: e.target.value });
+    fetchProducts({ brand: e.target.value });
   };
 
-  // 9. show products based on shipping yes/no
-  const showShipping = () => (
-    <>
-      <Checkbox
-        className="pb-2 pl-4 pr-4"
-        onChange={handleShippingchange}
-        value="AVAILABLE"
-        checked={shipping === "AVAILABLE"}
+  // 8. show products based on color
+  const showColors = () =>
+    colors.map((c) => (
+      <Radio
+        key={c}
+        value={c}
+        name={c}
+        checked={c === color}
+        onChange={handleColor}
+        className="pb-1 pl-4 pr-4"
       >
-        Yes
-      </Checkbox>
+        {c}
+      </Radio>
+    ));
 
-      <Checkbox
-        className="pb-2 pl-4 pr-4"
-        onChange={handleShippingchange}
-        value="SOLD"
-        checked={shipping === "SOLD"}
-      >
-        No
-      </Checkbox>
-    </>
-  );
-
-  const handleShippingchange = (e) => {
+  const handleColor = (e) => {
     setSub("");
-    FiltersProducts('availability',"=",e.target.value)
     dispatch({
       type: "SEARCH_QUERY",
       payload: { text: "" },
@@ -272,10 +267,49 @@ const Shop = () => {
     setCategoryIds([]);
     setStar("");
     setBrand("");
+    setColor(e.target.value);
+    setShipping("");
+    fetchProducts({ color: e.target.value });
+  };
+
+  // 9. show products based on shipping yes/no
+  const showShipping = () => (
+    <>
+      <Checkbox
+        className="pb-2 pl-4 pr-4"
+        onChange={handleShippingchange}
+        value="Yes"
+        checked={shipping === "Yes"}
+      >
+        Yes
+      </Checkbox>
+
+      <Checkbox
+        className="pb-2 pl-4 pr-4"
+        onChange={handleShippingchange}
+        value="No"
+        checked={shipping === "No"}
+      >
+        No
+      </Checkbox>
+    </>
+  );
+
+  const handleShippingchange = (e) => {
+    setSub("");
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryIds([]);
+    setStar("");
+    setBrand("");
+    setColor("");
     setShipping(e.target.value);
     fetchProducts({ shipping: e.target.value });
   };
-  console.log("Price",price[1])
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -303,7 +337,7 @@ const Shop = () => {
                   range
                   value={price}
                   onChange={handleSlider}
-                  max="10000"
+                  max="4999"
                 />
               </div>
             </SubMenu>
@@ -332,7 +366,19 @@ const Shop = () => {
               <div style={{ maringTop: "-10px" }}>{showStars()}</div>
             </SubMenu>
 
-            
+            {/* sub category */}
+            <SubMenu
+              key="4"
+              title={
+                <span className="h6">
+                  <DownSquareOutlined /> Sub Categories
+                </span>
+              }
+            >
+              <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
+                {showSubs()}
+              </div>
+            </SubMenu>
 
             {/* brands */}
             <SubMenu
@@ -348,7 +394,20 @@ const Shop = () => {
               </div>
             </SubMenu>
 
-           
+            {/* colors */}
+            <SubMenu
+              key="6"
+              title={
+                <span className="h6">
+                  <DownSquareOutlined /> Colors
+                </span>
+              }
+            >
+              <div style={{ maringTop: "-10px" }} className="pr-5">
+                {showColors()}
+              </div>
+            </SubMenu>
+
             {/* shipping */}
             <SubMenu
               key="7"
@@ -388,5 +447,3 @@ const Shop = () => {
 };
 
 export default Shop;
-
-

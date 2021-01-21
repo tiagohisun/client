@@ -13,10 +13,11 @@ const LgImgCard = ({ post }) => {
   const { images, title, description, slug } = post;
   return (
     
-    <div className="card mb-3" style={{marginLeft:"5px", minWidth:"380px", maxWidth:"380px", 
-       minHeight:"310px", maxHeight:"310px"}}>
+    <div className="card mb-3" 
+    style={{marginLeft:"5px", minWidth:"430px", maxWidth:"430px", 
+       minHeight:"342px", maxHeight:"342px"}}>
         <img className="img-fluid"  
-        style={{minWidth:"380px", maxWidth:"380px", height:"310px"}}      
+        style={{minWidth:"410px", maxWidth:"410px", height:"310px"}}      
         src={images && images.length ? images[0].url : laptop} />
 
          <div className="card-body position-relative" style={{transform:"translateY(-130px)"}}>

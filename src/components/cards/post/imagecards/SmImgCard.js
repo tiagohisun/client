@@ -13,11 +13,11 @@ const SmImgCard = ({ post }) => {
   const { images, title, description, slug } = post;
   return (
         
-      <div className="card mt-1 mb-3" style={{minWidth:"275px", maxWidth:"275px", 
+      <div className="card mt-4" style={{minWidth:"275px", maxWidth:"275px", 
        minHeight:"132px", maxHeight:"132px"}}>
 
         <img className="img-fluid"  
-        style={{minWidth:"278px", maxWidth:"278px", minHeight:"136px", 
+        style={{minWidth:"278px", maxWidth:"145px", minHeight:"145px", 
         maxHeight:"135px"}}      
         src={images && images.length ? images[0].url : laptop} />
 

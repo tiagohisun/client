@@ -13,7 +13,7 @@ const SmSmImgCard = ({ post }) => {
   const { images, title, description, slug } = post;
   return (
     
-       <div className="card mb-3 ml-1" style={{width:"380px", height:"90px"}}>
+       <div className="card m-0" style={{width:"420px", height:"90px"}}>
         <div className="row">
         <div className="col">
         <img className="img-fluid"  

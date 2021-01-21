@@ -13,9 +13,9 @@ const MdSmImgCard = ({ post }) => {
   const { images, title, description, slug } = post;
   return (
       
-        <div className="card mb-3" style={{minWidth:"300px", maxWidth:"300px"}}>
+        <div className="card ml-2 mb-1" style={{minWidth:"344px", maxWidth:"344px"}}>
             <img className="img-fluid"  
-            style={{minWidth:"300px", maxWidth:"300px", height:"170px"}}      
+            style={{minWidth:"344px", maxWidth:"344px", minHeight:"250px", maxHeight:"250px"}}      
             src={images && images.length ? images[0].url : laptop} />
 
         <div className="card-body">
