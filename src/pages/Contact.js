@@ -1,26 +1,46 @@
 import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, notification } from "antd";
 import axios from "axios";
 const Contact = () => {
+
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phonenumber, setPhonenumber] = useState(null);
   const [message, setMessage] = useState("");
 
+  const openNotification = (message,description) => {
+    notification.open({
+      message: message,
+      description:description,
+      onClick: () => {
+        console.log('Notification Clicked!');
+      },
+    });
+  };
+
+
   const mailsender = () => {
     if (name === "" || email === "" || message === "") {
       alert("please fill the form");
     } else {
-      var data = { message, phonenumber };
+      var data = 'This is your data from here';
 
       axios
         .post(`${process.env.REACT_APP_API}/email`, {
           name: name,
-          email: email,
-          msg: data,
+          from: email,
+          text: message,
         })
-        .then((r) => console.log("msg send", r))
-        .catch((e) => console.log("error", e));
+        .then((r) => {
+          openNotification("Email Send Successfully", "We will contact you as soon as possible")
+          setEmail('')
+          setMessage('')
+          setName('')
+          setPhonenumber('')
+        }
+        )
+        .catch((e) => openNotification("Something error here","Check your internet connecting..."));
     }
   };
   const layout = {

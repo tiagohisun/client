@@ -1,0 +1,117 @@
+.main-blog-posts{
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.inside-hero-image1{
+    position: absolute;
+    bottom: 10%;
+    left: 6%;
+    h5{
+        color: white;
+        background-color: orangered;
+        padding: 5px 6px;   
+        opacity: 90%;
+        margin-right:800px;
+    }
+    div {   
+        padding: 10px;
+        color: white;
+        margin-right: 200px;
+    }
+    @media screen and (max-width:576px){
+        h2{
+            font-size: 20px;
+            margin-right:50px;
+        }
+        div {
+            font-size: 10px;
+            margin-right: 50px;
+        }
+
+    }
+    @media screen and (max-width:376px){
+        h2{
+            font-size: 20px;
+            margin-right:50px;
+        }
+        div {
+            font-size: 10px;
+            margin-right: 50px;
+        }
+
+    }
+    @media screen and (max-width:1000px){
+        h2{
+            margin-right:200px;
+        }
+        div {
+            margin-right: 50px;
+        }
+
+    }
+}
+.black-heading{
+    display: flex;
+    justify-content: space-between;
+    span{
+        background-color: black;
+        color:white;
+        padding: 5px 10px;
+        font-weight: bold;
+    }
+    p{
+        color: gray;
+        padding: 0px;
+        margin:0px
+    }
+}
+
+.featured-card1{
+    position: relative;
+	margin-bottom: 17px;
+    background-color: white;
+    box-shadow: 10px 10px 10px  rgba($color: #f5f5f5, $alpha: 1.0)
+}
+.featured-card-overly1{
+    position: absolute;
+    bottom: -16px;
+    left: 0%;
+    p{
+        font-size: 12px;
+        color:white;
+        background-color:black;
+        padding: 3px 8px;
+    }
+}
+.most-popular{
+    display: flex;
+    margin-bottom: 6px;
+    p{
+        font-size: 16px;
+        font-weight: bold;
+        margin-left: 4px;
+    }
+    span{
+        font-size: 10px;
+        margin-left: 4px;
+        color: gray;
+    }
+}
+.featured-card{
+    position: relative;
+	margin-bottom: 17px;
+    background-color: white;
+    box-shadow: 10px 10px 10px  rgba($color: #f5f5f5, $alpha: 1.0)
+}
+.featured-card-overly{
+    position: absolute;
+    bottom: -15%;
+    left: 0%;
+    p{
+        font-size: 20px;
+        color:white;
+        background-color:#03adee;
+        padding: 2px 15px;
+    }
+}

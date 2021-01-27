@@ -14,6 +14,7 @@ import {
   StarOutlined,
 } from "@ant-design/icons";
 import Star from "../components/forms/Star";
+import axios from "axios";
 const { SubMenu, ItemGroup } = Menu;
 
 const Shop = () => {
@@ -23,30 +24,28 @@ const Shop = () => {
   const [price, setPrice] = useState([0, 0]);
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [categoryIds, setCategoryIds] = useState([]);
+  const [categoryIds, setCategoryIds] = useState("");
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
   const [brands, setBrands] = useState([]);
   const [brand, setBrand] = useState("");
   const [shipping, setShipping] = useState("");
-  const [clickCount, setClickCount] = useState();
   
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
-  console.log(clickCount)
+ 
   useEffect(() => {
     loadAllProducts();
     // fetch categories
-    getCategories().then((res) => setCategories(res.data));
+     getCategories().then((res) => setCategories(res.data));
     // fetch subcategories
     getSubs().then((res) => setSubs(res.data));
   }, []);
   
   const fetchProducts = (arg) => {
     fetchProductsByFilter(arg).then((res) => {
-      console.log("Search Filters",res.data)
        setProducts(res.data);
     });
   };
@@ -57,6 +56,8 @@ const Shop = () => {
       let b  = p.data.map(b => b.brand) 
       setBrands([...new Set(b)])
       setProducts(p.data);
+      console.log("Category",p.data)
+      //setCategories(p.data)
       setLoading(false);
     });
   };
@@ -74,20 +75,20 @@ const Shop = () => {
   }, [text]);
 
   // 3. load products based on price range
-  useEffect(() => {
-    console.log("ok to request");
-    fetchProducts({ price });
-  }, [ok]);
-
+  // useEffect(() => {
+  //   console.log("ok to request");
+  //   fetchProducts({ price });
+  // }, [ok]);
+console.log(products)
   const handleSlider = (value) => {
-    FiltersProducts('price',"<",price[1])
+    FiltersProducts('price',"=",price[1])
     dispatch({
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
 
     // reset
-    setCategoryIds([]);
+    setCategoryIds("");
     setPrice(value);
     setStar("");
     setSub("");
@@ -98,32 +99,34 @@ const Shop = () => {
     }, 300);
   };
 
+
   // 4. load products based on category
   // show categories in a list of checkbox
   const showCategories = () =>
     categories.map((c) => (
       <div key={c._id}>
-        <Checkbox
+        <Radio
           onChange={handleCheck}
           className="pb-2 pl-4 pr-4"
           value={c._id}
-          name="category"
-          checked={categoryIds.includes(c._id)}
+          name={c._id}
+          checked={c._id===categoryIds}
         >
           {c.name}
-        </Checkbox>
+        </Radio>
         <br />
       </div>
     ));
-    const FiltersProducts = async (filterBy,operator,arg) => {
-      const json= await fetch(`http://localhost:8000/api/search/filters?${filterBy}${operator}${arg}`)
-      const res =await json.json()
-      if (res) {
-        setProducts(res)
-      } 
+  let FiltersProducts = (filterBy, operator, arg) => {
+      setTimeout(async() => {
+        const json= await axios.get(`http://localhost:8000/api/search/filters?${filterBy}${operator}${arg}`)
+        setProducts([...json.data])
+       },1000) 
   }
   // handle check for categories
   const handleCheck = (e) => {
+    setCategoryIds(e.target.value)
+    
     FiltersProducts("category","=",e.target.value);
   
     // reset
@@ -135,40 +138,25 @@ const Shop = () => {
     setStar("");
     setSub("");
     setBrand("");
+    
     setShipping("");
-    // console.log(e.target.value);
-    let inTheState = [...categoryIds];
-    let justChecked = e.target.value;
-    let foundInTheState = inTheState.indexOf(justChecked); // index or -1
 
-    // indexOf method ?? if not found returns -1 else return index [1,2,3,4,5]
-    if (foundInTheState === -1) {
-      inTheState.push(justChecked);
-    } else {
-      // if found pull out one item from index
-      inTheState.splice(foundInTheState, 1);
-    }
-
-    setCategoryIds(inTheState);
-    // console.log(inTheState);
-    fetchProducts({ category: inTheState });
   };
 
   // 5. show products by star rating
   const handleStarClick = (num) => {
-    // console.log(num);
-    FiltersProducts('ratings',"=",num)
+    console.log(num);
+    FiltersProducts('stars',"=",num)
     dispatch({
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
     setPrice([0, 0]);
-    setCategoryIds([]);
+    setCategoryIds("");
     setStar(num);
     setSub("");
     setBrand("");
     setShipping("");
-    fetchProducts({ stars: num });
   };
 
   const showStars = () => (
@@ -202,7 +190,7 @@ const Shop = () => {
       payload: { text: "" },
     });
     setPrice([0, 0]);
-    setCategoryIds([]);
+    setCategoryIds("");
     setStar("");
     setBrand("");
     setShipping("");
@@ -231,7 +219,7 @@ const Shop = () => {
 
     setSub("");
     setPrice([0, 0]);
-    setCategoryIds([]);
+    setCategoryIds("");
     setStar("");
     setBrand(e.target.value);
     setShipping("");
@@ -269,7 +257,7 @@ const Shop = () => {
       payload: { text: "" },
     });
     setPrice([0, 0]);
-    setCategoryIds([]);
+    setCategoryIds("");
     setStar("");
     setBrand("");
     setShipping(e.target.value);
@@ -299,11 +287,11 @@ const Shop = () => {
               <div>
                 <Slider
                   className="ml-4 mr-4"
-                  tipFormatter={(v) => `$${v}`}
+                  tipFormatter={(v) => `R$${v}`}
                   range
                   value={price}
                   onChange={handleSlider}
-                  max="10000"
+                  max="500000"
                 />
               </div>
             </SubMenu>

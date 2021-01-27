@@ -14,14 +14,14 @@ const SmMdImgCard = ({ post }) => {
   return (
     
        <div className="card mb-3" style={{marginLeft:"19px", minWidth:"220px", maxWidth:"220px", 
-       minHeight:"170px", maxHeight:"170px"}}>
+       minHeight:"210px", maxHeight:"210px"}}>
             <img className="img-fluid"  
             style={{minWidth:"220px", maxWidth:"220px", height:"100px"}}      
             src={images && images.length ? images[0].url : laptop} />
 
-        <div className="card-body position-relative" style={{transform:"translateY(-130px)"}}>
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div className="card-body position-relative" style={{transform:"translateY(-45px)"}}>
+            <h6 className="card-title text-white" style={{fontSize:"13px", fontWeight:"bold"}}>Card title</h6>
+            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
             <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
         </div>  
         </div>

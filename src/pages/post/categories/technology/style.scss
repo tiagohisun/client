@@ -1,0 +1,92 @@
+.hero-image{
+    position: relative;
+}
+.inside-hero-image{
+    position: absolute;
+    bottom: 10%;
+    left: 6%;
+    h2{
+        color: white;
+        background-color: orangered;
+        padding: 10px 12px;
+        opacity: 90%;
+        margin-right:800px;
+    }
+    div {
+        background-color: black;
+        opacity: 80%;
+        padding: 10px;
+        color: white;
+        margin-right: 200px;
+    }
+    @media screen and (max-width:576px){
+        h2{
+            font-size: 20px;
+            margin-right:50px;
+        }
+        div {
+            font-size: 10px;
+            margin-right: 50px;
+        }
+
+    }
+    @media screen and (max-width:376px){
+        h2{
+            font-size: 20px;
+            margin-right:50px;
+        }
+        div {
+            font-size: 10px;
+            margin-right: 50px;
+        }
+
+    }
+    @media screen and (max-width:1000px){
+        h2{
+            margin-right:200px;
+        }
+        div {
+            margin-right: 50px;
+        }
+
+    }
+}
+.colored {
+    border: 0;   /* in order to override TWBS stylesheet */
+    height: 5px;
+  
+    background: -moz-linear-gradient(left, rgba(196,222,138,1) 0%, rgba(196,222,138,1) 12.5%, rgba(245,253,212,1) 12.5%, rgba(245,253,212,1) 25%, rgba(255,208,132,1) 25%, rgba(255,208,132,1) 37.5%, rgba(242,122,107,1) 37.5%, rgba(242,122,107,1) 50%, rgba(223,157,185,1) 50%, rgba(223,157,185,1) 62.5%, rgba(192,156,221,1) 62.5%, rgba(192,156,221,1) 75%, rgba(95,156,217,1) 75%, rgba(95,156,217,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 100%);  /* FF3.6+ */
+    background: -webkit-linear-gradient(left, rgba(196,222,138,1) 0%, rgba(196,222,138,1) 12.5%, rgba(245,253,212,1) 12.5%, rgba(245,253,212,1) 25%, rgba(255,208,132,1) 25%, rgba(255,208,132,1) 37.5%, rgba(242,122,107,1) 37.5%, rgba(242,122,107,1) 50%, rgba(223,157,185,1) 50%, rgba(223,157,185,1) 62.5%, rgba(192,156,221,1) 62.5%, rgba(192,156,221,1) 75%, rgba(95,156,217,1) 75%, rgba(95,156,217,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(196,222,138,1) 0%, rgba(196,222,138,1) 12.5%, rgba(245,253,212,1) 12.5%, rgba(245,253,212,1) 25%, rgba(255,208,132,1) 25%, rgba(255,208,132,1) 37.5%, rgba(242,122,107,1) 37.5%, rgba(242,122,107,1) 50%, rgba(223,157,185,1) 50%, rgba(223,157,185,1) 62.5%, rgba(192,156,221,1) 62.5%, rgba(192,156,221,1) 75%, rgba(95,156,217,1) 75%, rgba(95,156,217,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(196,222,138,1) 0%, rgba(196,222,138,1) 12.5%, rgba(245,253,212,1) 12.5%, rgba(245,253,212,1) 25%, rgba(255,208,132,1) 25%, rgba(255,208,132,1) 37.5%, rgba(242,122,107,1) 37.5%, rgba(242,122,107,1) 50%, rgba(223,157,185,1) 50%, rgba(223,157,185,1) 62.5%, rgba(192,156,221,1) 62.5%, rgba(192,156,221,1) 75%, rgba(95,156,217,1) 75%, rgba(95,156,217,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 100%); /* IE10+ */
+    background: linear-gradient(to right, rgba(196,222,138,1) 0%, rgba(196,222,138,1) 12.5%, rgba(245,253,212,1) 12.5%, rgba(245,253,212,1) 25%, rgba(255,208,132,1) 25%, rgba(255,208,132,1) 37.5%, rgba(242,122,107,1) 37.5%, rgba(242,122,107,1) 50%, rgba(223,157,185,1) 50%, rgba(223,157,185,1) 62.5%, rgba(192,156,221,1) 62.5%, rgba(192,156,221,1) 75%, rgba(95,156,217,1) 75%, rgba(95,156,217,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 87.5%, rgba(94,190,227,1) 100%); /* W3C */
+  }
+
+  .post-heading{
+      background-color: black;
+      overflow: hidden;
+      padding: 10px 0px;
+      span{
+          background-color: orangered;
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+          padding: 10px;
+          border: 1px solid orangered;
+      }
+  }
+  .most-popular{
+    display: flex;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    p{
+        font-size: 16px;
+        font-weight: bold;
+        margin-left: 4px;
+    }
+    span{
+        font-size: 10px;
+        margin-left: 4px;
+        color: gray;
+    }
+}

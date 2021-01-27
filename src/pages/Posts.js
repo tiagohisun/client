@@ -16,7 +16,7 @@ import SmSmImgCard from "../components/cards/post/imagecards/SmSmImgCard";
 import MdSmSmImgCard from "../components/cards/post/imagecards/MdSmSmImgCard";
 import SmMdImgCard from "../components/cards/post/imagecards/SmMdImgCard";
 import SmLgImgCard from "../components/cards/post/imagecards/SmLgImgCard";
-
+import SmSmSmImgCard from "../components/cards/post/imagecards/SmSmSmImgCard";
 import TextPostCard from "../components/cards/post/TextPostCard";
 import LinePostCard from "../components/cards/post/LinePostCard";
 import RowCard from "../components/cards/post/RowCard";
@@ -29,6 +29,7 @@ import {
   StarOutlined,
 } from "@ant-design/icons";
 import Laptop from "../images/laptop.png";
+import image from "../static/images/boxes/classifieds.jpg"
 import { FiMessageCircle } from "react-icons/fi";
 import { WiTime1 } from "react-icons/wi";
 import { FiEdit } from "react-icons/fi";
@@ -305,19 +306,19 @@ const Post = ({ post }) => {
             <a class="nav-link" href="#">Main</a>
         </li>
         <li class="nav-item" style={{borderRight:"1px solid #ccc" }} >
-            <a class="nav-link" href="#">Dental News</a>
+            <a class="nav-link" href="/posts/dentalnews">Dental News</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" style={{borderRight:"1px solid #ccc" }} href="#">Technology</a>
+            <a class="nav-link" style={{borderRight:"1px solid #ccc" }} href="/posts/technology">Technology</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" style={{borderRight:"1px solid #ccc" }} href="#">Education</a>
+            <a class="nav-link" style={{borderRight:"1px solid #ccc" }} href="/posts/education">Education</a>
         </li>
     </ul>
 
-     <div className="container col-9 mt-4 bg-info" style={{maxHeight:"348px"}}>
+     <div className="container col-9 mt-4 " style={{maxHeight:"348px"}}>
      <div className="row">
-     <div className="col-5 bg-warning" style={{maxHeight:"348px"}}>
+     <div className="col-5 " style={{maxHeight:"348px"}}>
      
         <h2>{latestdentail
             .slice(-3)
@@ -330,7 +331,7 @@ const Post = ({ post }) => {
                       ))}
                   </h2>
      </div>   
-     <div className="col-7 bg-success" style={{maxWidth:"700px", height:"346px"}}>
+     <div className="col-7 " style={{maxWidth:"700px", height:"346px"}}>
         <div className="row" style={{height:"170px"}}>
          <h2>{latestdentail
             .slice(-3)
@@ -374,9 +375,10 @@ const Post = ({ post }) => {
      </div>
      </div>
      
-     <div className="container col-9 bg-info mt-5" style={{height:"410px"}}>
-     <div className="row bg-info" style={{height:"410px"}}>
-     <div className="col-4 bg-warning" style={{height:"410px"}}>
+     <div className=" border mt-4"></div>
+     <div className="container col-9  mt-3" style={{height:"410px"}}>
+     <div className="row " style={{height:"410px"}}>
+     <div className="col-4 " style={{height:"410px"}}>
      <h2>{latestdentail
             .slice(-3)
             .reverse()
@@ -441,31 +443,50 @@ const Post = ({ post }) => {
      </div>
 
      </div>
-     <div className="col-3 bg-success">
+     <div className="col-3 ">
+
      <span className="">
-     facebook icon
+
+     <div className="span">facebook icon</div>
+
+     <img className="mr-5"
+                  style={{ width: "220px", height:"220px", paddingBottom: "20px" }}
+                  src={image}
+                />
      </span>
 
+      <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative ml-1" 
+    style={{transform:"translate(-23px, 5px)"}} >
+        <SmSmSmImgCard post={p} />
+    </div>
+                      ))}
+      </h2>
+
      </div>
      </div>
      
      </div>
-     <div className="container col-9 bg-info mt-5" style={{height:"220px"}}>
+     <div className=" border mt-4"></div>
+     <div className="container col-10  mt-4" style={{height:"220px"}}>
      <div className="row">
-     <div className="col-4 mr-4 bg-success" style={{height:"216px", marginLeft:"6.8px"}}>
+     <div className="col " style={{height:"216px"}}>
      <div className="col">
       <h2>{latestdentail
             .slice(-3)
             .reverse()
             .map((p) => (
     <div key={p._id} className="col position-relative" 
-    style={{transform:"translateX(-34px)"}} >
+    style={{transform:"translateX(-4px)"}} >
         <MdSmSmImgCard post={p} />
     </div>
                       ))}
                   </h2>
      </div>
-     <div className="row bg-success">
+     <div className="row ">
      
      </div>
      <div className="row bg-light">
@@ -473,30 +494,36 @@ const Post = ({ post }) => {
      </div>
     
      </div>
-     <div className="col-4 mr-4 bg-warning" style={{height:"216px"}}>
+     <div className="col mr-4 " style={{height:"216px"}}>
      <div className="col">
       <h2>{latestdentail
             .slice(-3)
             .reverse()
             .map((p) => (
     <div key={p._id} className="col position-relative" 
-    style={{transform:"translateX(-34px)"}} >
+    style={{transform:"translateX(-110px)"}} >
         <MdSmSmImgCard post={p} />
     </div>
                       ))}
                   </h2>
      </div>
-     <div className="row bg-success">
-   
-     </div>
-     <div className="row bg-light">
     
      </div>
 
-     </div>
-
-     <div className="col-3 ml-4 bg-light">
-     asfdsadf
+    <div className="col">
+    <h2>{latestdentail
+            .slice(-3)
+            .reverse()
+            .map((p) => (
+    <div key={p._id} className="col position-relative" 
+    style={{transform:"translateX(-225px)"}} >
+        <MdSmSmImgCard post={p} />
+    </div>
+                      ))}
+                  </h2>
+    </div>
+     <div className="col">
+     
      </div>
 
      </div>
@@ -505,106 +532,6 @@ const Post = ({ post }) => {
      
      </div>
      </div>
-
-    <div className="container col-9 bg-info mt-5" style={{height:"180px"}}>
-    <div className="row">
-
-     <div className="bg-light ml-2 mr-2" style={{width:"220px", height:"170px"}}>
-     <h2>{latestdentail
-            .slice(-3)
-            .reverse()
-            .map((p) => (
-    <div key={p._id} className="col position-relative" 
-    style={{transform:"translateX(-34px)"}} >
-        <SmMdImgCard post={p} />
-    </div>
-                      ))}
-                  </h2>
-     </div>
-     <div className="bg-light ml-2 mr-2" style={{width:"220px", height:"170px"}}>
-     <h2>{latestdentail
-            .slice(-3)
-            .reverse()
-            .map((p) => (
-    <div key={p._id} className="col position-relative" 
-    style={{transform:"translateX(-34px)"}} >
-        <SmMdImgCard post={p} />
-    </div>
-                      ))}
-                  </h2>
-     </div>
-     <div className="bg-light ml-2 mr-2" style={{width:"220px", height:"170px"}}>
-     <h2>{latestdentail
-            .slice(-3)
-            .reverse()
-            .map((p) => (
-    <div key={p._id} className="col position-relative" 
-    style={{transform:"translateX(-34px)"}} >
-        <SmMdImgCard post={p} />
-    </div>
-                      ))}
-                  </h2>
-     </div>
-    </div>
-    </div>
-
-    <div className="container col-9 bg-info mt-5" style={{height:"550px"}}>
-    <div className="row bg-primary" style={{width:"900px"}}>
-    <div className="mt-2 mr-2 bg-dark" style={{width:"350px", height:"220px"}}>
-    <h2>{latestdentail
-            .slice(-3)
-            .reverse()
-            .map((p) => (
-    <div key={p._id} className="col position-relative" 
-    >
-        <SmLgImgCard post={p} />
-    </div>
-                      ))}
-                  </h2>
-    </div>
-    <div className="mt-2 bg-dark" style={{ width:"350px", height:"220px"}}>
-    <h2>{latestdentail
-            .slice(-3)
-            .reverse()
-            .map((p) => (
-    <div key={p._id} className="col position-relative" 
-     >
-        <SmLgImgCard post={p} />
-    </div>
-                      ))}
-                  </h2>
-    </div>
-    </div>
-    <div className="row bg-primary" style={{width:"900px"}}>
-    <div className="mt-2 mr-2 bg-dark" style={{width:"350px", height:"220px"}}>
-    <h2>{latestdentail
-            .slice(-3)
-            .reverse()
-            .map((p) => (
-    <div key={p._id} className="col position-relative" 
-    >
-        <SmLgImgCard post={p} />
-    </div>
-                      ))}
-                  </h2>
-    </div>
-    <div className="mt-2 bg-dark" style={{width:"350px",
-     height:"220px"}}>
-    <h2>{latestdentail
-            .slice(-3)
-            .reverse()
-            .map((p) => (
-    <div key={p._id} className="col position-relative" 
-    >
-        <SmLgImgCard post={p} />
-    </div>
-                      ))}
-                  </h2>
-    </div>
-    </div>
-    
-    </div>
-
     </>
   );
 };
