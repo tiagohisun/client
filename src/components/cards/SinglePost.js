@@ -16,7 +16,6 @@ const SinglePost = (props) => {
       setPosts(p.data);
     });
   }, []);
-  console.log("sigel card", posts);
 
   useEffect(() => {
     axios
@@ -53,7 +52,6 @@ const SinglePost = (props) => {
     ...educategorypostdesc.slice(-2),
     ...techcategorypostdesc.slice(-2),
   ];
-  console.log(six_card);
 
   return (
     <div

@@ -56,7 +56,6 @@ const Shop = () => {
       let b  = p.data.map(b => b.brand) 
       setBrands([...new Set(b)])
       setProducts(p.data);
-      console.log("Category",p.data)
       //setCategories(p.data)
       setLoading(false);
     });
@@ -65,13 +64,27 @@ const Shop = () => {
   
   // 2. load products on user search input
   useEffect(() => {
-    const delayed = setTimeout(() => {
-      fetchProducts();
-      if (!text) { 
-        loadAllProducts();
+    let mounted = true;
+    if (mounted) {
+      if (text.length > 3) {
+        axios.get(`${process.env.REACT_APP_API}/search/filters?query=${text}`)
+        // .then((res) => res.json())
+          .then((result) => {
+            setProducts(result.data)
+            console.log('Search Result', result.data)
+          })
+        .catch((err) => console.log(err));
       }
-    }, 300);
-    return () => clearTimeout(delayed);
+     
+    }
+    return () => mounted = false;
+    // const delayed = setTimeout(() => {
+    //   fetchProducts();
+    //   if (!text) { 
+    //     loadAllProducts();
+    //   }
+    // }, 300);
+    // return () => clearTimeout(delayed);
   }, [text]);
 
   // 3. load products based on price range
@@ -79,7 +92,7 @@ const Shop = () => {
   //   console.log("ok to request");
   //   fetchProducts({ price });
   // }, [ok]);
-console.log(products)
+
   const handleSlider = (value) => {
     FiltersProducts('price',"=",price[1])
     dispatch({
@@ -145,7 +158,6 @@ console.log(products)
 
   // 5. show products by star rating
   const handleStarClick = (num) => {
-    console.log(num);
     FiltersProducts('stars',"=",num)
     dispatch({
       type: "SEARCH_QUERY",
@@ -263,7 +275,6 @@ console.log(products)
     setShipping(e.target.value);
     fetchProducts({ shipping: e.target.value });
   };
-  console.log("Price",price[1])
   return (
     <div className="container-fluid">
       <div className="row">

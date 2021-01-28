@@ -15,19 +15,22 @@ const Search = () => {
       type: "SEARCH_QUERY",
       payload: { text: e.target.value },
     });
+    
+      history.push(`/shop?${text}`);
+  
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    history.push(`/shop?${text}`);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/shop?${text}`);
+  // };
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   history.push(`/posts?${text}`);
   // };
 
   return (
-    <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
+    <div className="form-inline my-2 my-lg-0" >
       <input
         onChange={handleChange}
         type="search"
@@ -35,8 +38,8 @@ const Search = () => {
         className="form-control mr-sm-2"
         placeholder="Search"
       />
-      <SearchOutlined onClick={handleSubmit} style={{ cursor: "pointer" }} />
-    </form>
+      <SearchOutlined  style={{ cursor: "pointer" }} />
+    </div>
   );
 };
 
