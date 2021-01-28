@@ -11,7 +11,7 @@ const TradingImageLeftAndRight = () => {
 				alt=" source"
 			/>
 			<div className="image-overly">
-				<h4>Here is Title of the Blog Here is Title of the Blog Here is Title of the Blog</h4>
+				<h6>Here is Title of the Blog Here is Title</h6>
 				<div>
 					<p>World</p>
 					<span>Writer</span>
@@ -31,7 +31,7 @@ const TradingImageCenter = () => {
 				alt=" source"
 			/>
 			<div className="image-overly-center">
-				<h1>Here is Title of the Blog Here is Title of the Blog Here is Title of the Blog</h1>
+				<h3>Here is Title of the Blog Here is Title of the Blog Here is Title of the Blog</h3>
 				<div>
 					<p>World</p>
 					<span>Writer</span>
@@ -55,8 +55,8 @@ const FeaturedBlog = () => {
 					<p>Develop & design</p>
 				</div>
 			</div>
-			<div style={{ padding: '5px' }}>
-				<h3>Here is heading</h3>
+			<div style={{position:"relative", bottom:"65px", padding: '5px' }}>
+				<h5>Here is heading</h5>
 			</div>
 		</div>
 	);
@@ -67,15 +67,15 @@ const MostPopular = () => {
 		<div className="most-popular">
 			<div>
 				<img
-					width="120px"
-					height="100px"
+					width="60px"
+					height="60px"
 					src="https://images.unsplash.com/photo-1611338522368-3fccf11b4afd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
 					alt=" source"
 				/>
 			</div>
 			<div>
-				<p>Here is heading about the post blog</p>
-				<span>August 9,2020</span>
+				<h6 className="ml-1">Here is heading about the post blog</h6>
+				<p style={{fontSize:"10px", position:"relative", bottom:"3px"}}>August 9,2020</p>
 			</div>
 		</div>
 	);
@@ -83,25 +83,8 @@ const MostPopular = () => {
 
 function DentalNews() {
 	return (
-		<div className="container-fluid" style={{width:"999px"}}>
-			<div className="row">
-				<div className="col-12">
-					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-						<div style={{ display: 'flex' }}>
-							<p className="trading-p">Trending Now</p>
-							<span className="trading-span">Some text here</span>
-						</div>
-						<div>
-							<button className="button">
-								<AiOutlineLeft size={12} />
-							</button>
-							<button className="button">
-								<AiOutlineRight size={12} />
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div className="container-fluid mt-3" style={{width:"999px"}}>
+			
 			<div className="row">
 				<div className="col-sm-12 col-md-3 col-lg-3">
 					<TradingImageLeftAndRight />
@@ -141,7 +124,7 @@ function DentalNews() {
 					</div>
 				</div>
 				<div className="col-sm-12 col-md-3 col-lg-3">
-					<h5 style={{ backgroundColor: 'black', color: 'white', padding: '5px 10px', marginRight: '150px' }}>
+					<h5 style={{ width:"210px", backgroundColor: 'black', color: 'white', padding: '5px 10px', marginRight: '150px' }}>
 						Most Popular
 					</h5>
 					<hr />
