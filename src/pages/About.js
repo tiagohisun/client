@@ -1,6 +1,6 @@
 import React from "react";
 import { BsArrowRightShort } from "react-icons/bs";
-import repair from "../static/images/solutions/repair.jpg";
+import location from "../static/images/location/location.png";
 import { HashLink as Link } from "react-router-hash-link";
 
 const About = () => {
@@ -86,10 +86,14 @@ const About = () => {
           announcement of x-ray machines and dental programs from
           radiology clinics and dental offices in addition to the
           some diagnostic programs such as ONDEMAND3D used
-          worldwide. The company was born in September 2018 through
+          worldwide. 
+          
+          The company was born in September 2018 through
           technicians with over 10 years of experience in the service industry
           technical assistance with the aim of providing enhanced and
-          differentiated. Today we serve several radiology clinics throughout
+          differentiated. 
+          
+          Today we serve several radiology clinics throughout
           Brazilian territory, providing fast and quality assistance,
           in addition to helping to sell your used x-ray machines
           generating more satisfaction and confidence in our services.
@@ -201,11 +205,10 @@ const About = () => {
         </div>
         <div className="col-sm-3 pt-4" style={{ width: "150px" }}>
           <div className="card ml-2 mt-5" style={{ left: "110px", width: "250px" }}>
-            <img className="card-img-top" src={repair} alt="Card image cap" />
+            <img className="card-img-top" src={location} alt="Card image cap" />
             <div className="card-body">
               <p className="card-text">
-               Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+               DENTAL04 (Virtual Office) Front.
               </p>
             </div>
           </div>

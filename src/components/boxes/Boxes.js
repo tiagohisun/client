@@ -14,7 +14,7 @@ const Boxes = (props) => {
   return (
     <div className="wrapper container-fluid" style={{marginTop: '5px', display:'grid', gridGap: '0', justifyItems:'center', width:'1200px'}}>
     <Row>
-     <Link to="/posts">
+     <Link to="/">
       <Col >
       <div style={{ width:'350px', minheight:'300px'}} >
       
@@ -23,7 +23,7 @@ const Boxes = (props) => {
         <Card style={{ display:'absolute', zIndex:'2', width:'350px', height:'190px', transform:'translateY(-50px)',
         opacity:'0.7', textAlign:'center', }} body>
           
-          <CardTitle style={{color:"black", cursor:'pointer', transform:'translateY(-10px)' }}><strong>Articles</strong>
+          <CardTitle style={{color:"black", cursor:'pointer', transform:'translateY(-10px)' }}><strong>Articles - SOON!</strong>
           <hr className="hr" /></CardTitle>
           <CardText style={{color:"black"}}>Take a look at our blog with interesting articles on dental imaging.</CardText>
         </Card>

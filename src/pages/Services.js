@@ -81,7 +81,7 @@ const Service = () => {
                     <img className="ml-5" width="40%" src={news} alt="Card image" />
                         </div>
                         <div className="text-center mr-3">
-                            <h3 style={{marginTop: "40px"}}> News</h3>
+                            <h3 style={{marginTop: "40px"}}> News - SOON!</h3>
                             <p>Take a look at our blog section to know the trending
                                 world dental news.
                             </p>
