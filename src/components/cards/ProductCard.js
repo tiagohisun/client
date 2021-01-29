@@ -31,7 +31,9 @@ const ProductCard = ({ product }) => {
 						<EyeOutlined className="text-warning" /> <br /> View Product
 					</Link>,
 					<React.Fragment>
+					<Link to={`/contact`} >
 						<ContactsOutlined className="text-danger" /> <br /> Contact
+					</Link>
 					</React.Fragment>
 				]}
 			>
@@ -43,7 +45,7 @@ const ProductCard = ({ product }) => {
 
 				<Meta
 					className="pb-1"
-					title={`R$${price}`}
+					title={`R$ ${price}`}
 					description={`${description && description.substring(0, 40)}...`}
 				/>
 			</Card>

@@ -61,9 +61,9 @@ const Header = () => {
         <Link to="/shop">Shop</Link>
       </Item>
 
-      <Item key="blog" icon={<BookOutlined />}>
+      {/* <Item key="blog" icon={<BookOutlined />}>
         <Link to="/posts">Blog</Link>
-      </Item>
+      </Item> */}
 
       <Item key="services" icon={<CustomerServiceOutlined />}>
         <Link to="/services">Services</Link>
