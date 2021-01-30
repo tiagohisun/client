@@ -83,11 +83,11 @@ const Header = () => {
         </Item>
       )} */}
 
-      {/* {!user && (
+      {!user && (
         <Item key="login" icon={<UserOutlined />} className="float-right">
           <Link to="/login">Login</Link>
         </Item>
-      )} */}
+      )}
 
       {user && (
         <SubMenu
