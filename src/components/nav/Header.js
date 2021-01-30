@@ -77,11 +77,11 @@ const Header = () => {
         <Link to="/contact">Contact</Link>
       </Item>
 
-      {!user && (
+      {/* {!user && (
         <Item key="register" icon={<UserAddOutlined />} className="float-right">
           <Link to="/register">Register</Link>
         </Item>
-      )}
+      )} */}
 
       {!user && (
         <Item key="login" icon={<UserOutlined />} className="float-right">
