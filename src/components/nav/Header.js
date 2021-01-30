@@ -53,11 +53,11 @@ const Header = () => {
         </Link>
       </Item>
 
-      <Item key="home" icon={<AppstoreOutlined />}>
+      <Item key="home">
         <Link to="/">Home</Link>
       </Item>
 
-      <Item key="shop" icon={<ShoppingOutlined />}>
+      <Item key="shop">
         <Link to="/shop">Shop</Link>
       </Item>
 
@@ -65,15 +65,15 @@ const Header = () => {
         <Link to="/posts">Blog</Link>
       </Item> */}
 
-      <Item key="services" icon={<CustomerServiceOutlined />}>
+      <Item key="services">
         <Link to="/services">Services</Link>
       </Item>
 
-      <Item key="about" icon={<IdcardOutlined />}>
+      <Item key="about">
         <Link to="/about">About</Link>
       </Item>
 
-      <Item key="contact" icon={<ContactsOutlined />}>
+      <Item key="contact">
         <Link to="/contact">Contact</Link>
       </Item>
 
@@ -84,14 +84,14 @@ const Header = () => {
       )} */}
 
       {!user && (
-        <Item key="login" icon={<UserOutlined />} className="float-right">
+        <Item key="login" className="float-right">
           <Link to="/login">Login</Link>
         </Item>
       )}
 
       {user && (
         <SubMenu
-          icon={<SettingOutlined />}
+          
           title={user.email && user.email.split("@")[0]}
           className="float-right"
         >
@@ -107,7 +107,7 @@ const Header = () => {
             </Item>
           )}
 
-          <Item icon={<LogoutOutlined />} onClick={logout}>
+          <Item onClick={logout}>
             Logout
           </Item>
         </SubMenu>
