@@ -1,6 +1,5 @@
 import React from 'react';
 import { MdDateRange } from 'react-icons/md';
-import ReactPaginate from 'react-paginate';
 import {
 	AiOutlineComment,
 	AiOutlineArrowLeft,
