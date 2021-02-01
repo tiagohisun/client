@@ -61,9 +61,10 @@ const About = () => {
           <h5 id="welcome">Welcome to DENTAL04!</h5>
           <p>
             Welcome to DENTAL04!
-            The company was founded in September 2018 by Tiago Lemos
-            with over 10 years of experience in the field of dental units technical 
-            assistance, in order to provide an improved and differentiated service.
+            The company was founded in September 2018 with the aim of providing
+            a fast and reliable technical support for dental units as well as 
+            running sales negotiations by intermediating customers who has used
+            dental offices items or devices.
           </p>
            <br />
           <h5 id="">Who are we</h5>
