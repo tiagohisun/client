@@ -110,9 +110,7 @@ const App = () => {
   return (
     <Suspense fallback={
       <div className="col text-center p-5">
-        __ React Redux EC
-        <LoadingOutlined />
-        MMERCE __
+       Loading ...
       </div>
     }>
       <Uheader/>
