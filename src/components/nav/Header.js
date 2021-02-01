@@ -113,7 +113,7 @@ const Header = () => {
         </SubMenu>
       )}
 
-      <span className="float-right p-1" style={{marginLeft:""}}>
+      <span className="float-right p-1" style={{marginLeft:"300px"}}>
         <Search />
       </span>
     </Menu>
