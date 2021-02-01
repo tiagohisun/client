@@ -28,7 +28,7 @@ const Service = () => {
                         position: "relative",
                         color: 'white'
                     }}>
-                    <img width="100%" alt="Card image" />
+                  
                    
                 </div>
             </div>
