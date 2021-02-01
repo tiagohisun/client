@@ -1,0 +1,132 @@
+
+
+#fsectitle p, span {
+    display:inline;
+    margin-right:7px
+}
+
+#ssectitle p, span {
+    display:inline;
+    margin-right:7px
+}
+
+#tsectitle p, span {
+    display:inline;
+    margin-right:7px
+}
+
+
+#mostpopularimg {
+    margin-right:7px;
+}
+
+.main-blog-posts{
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.inside-hero-image{
+    position: absolute;
+    bottom: 10%;
+    left: 6%;
+    h2{
+        color: white;
+        background-color: orangered;
+        padding: 10px 12px;
+        opacity: 90%;
+        margin-right:800px;
+    }
+    div {
+        background-color: black;
+        opacity: 80%;
+        padding: 10px;
+        color: white;
+        margin-right: 200px;
+    }
+    @media screen and (max-width:576px){
+        h2{
+            font-size: 20px;
+            margin-right:50px;
+        }
+        div {
+            font-size: 10px;
+            margin-right: 50px;
+        }
+
+    }
+    @media screen and (max-width:376px){
+        h2{
+            font-size: 20px;
+            margin-right:50px;
+        }
+        div {
+            font-size: 10px;
+            margin-right: 50px;
+        }
+
+    }
+    @media screen and (max-width:1000px){
+        h2{
+            margin-right:200px;
+        }
+        div {
+            margin-right: 50px;
+        }
+
+    }
+}
+.featured-card{
+    position: relative;
+	margin-bottom: 17px;
+    background-color: white;
+    box-shadow: 10px 10px 10px  rgba($color: #f5f5f5, $alpha: 1.0)
+}
+.featured-card-overly{
+    position: absolute;
+    
+    p{
+        font-size: 10px;
+        color:white;
+        background-color:#03adee;
+        
+    }
+}
+.most-popular{
+    display: flex;
+    margin-bottom: 6px;
+    p{
+        font-size: 16px;
+        font-weight: bold;
+        margin-left: 4px;
+    }
+    span{
+        font-size: 10px;
+        margin-left: 4px;
+        color: gray;
+    }
+}
+ul {
+    display: inline-block;
+  }
+  
+  li {
+    display: inline-block;
+  }
+  .list-item {
+    padding: 7px 12px;
+    margin: 2px;
+    font-size: 14px;
+    border: 1px solid rgb(209, 208, 208);
+  }
+  .active {
+    background-color: #5eb5d8;
+    color: white;
+  }
+  .previous-class {
+    background-color: #5eb5d8;
+    padding: 6px 10px;
+  }
+  .disable-class {
+    display: none;
+  }
+  
