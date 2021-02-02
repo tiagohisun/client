@@ -53,45 +53,45 @@ const Header = () => {
         </Link>
       </Item>
 
-      <Item key="home" icon={<AppstoreOutlined />}>
+      <Item key="home">
         <Link to="/">Home</Link>
       </Item>
 
-      <Item key="shop" icon={<ShoppingOutlined />}>
+      <Item key="shop">
         <Link to="/shop">Shop</Link>
       </Item>
 
-      <Item key="blog" icon={<BookOutlined />}>
+      {/* <Item key="blog" icon={<BookOutlined />}>
         <Link to="/posts">Blog</Link>
-      </Item>
+      </Item> */}
 
-      <Item key="services" icon={<CustomerServiceOutlined />}>
+      <Item key="services">
         <Link to="/services">Services</Link>
       </Item>
 
-      <Item key="about" icon={<IdcardOutlined />}>
+      <Item key="about">
         <Link to="/about">About</Link>
       </Item>
 
-      <Item key="contact" icon={<ContactsOutlined />}>
+      <Item key="contact">
         <Link to="/contact">Contact</Link>
       </Item>
 
-      {!user && (
+      {/* {!user && (
         <Item key="register" icon={<UserAddOutlined />} className="float-right">
           <Link to="/register">Register</Link>
         </Item>
-      )}
+      )} */}
 
       {!user && (
-        <Item key="login" icon={<UserOutlined />} className="float-right">
+        <Item key="login" className="float-right">
           <Link to="/login">Login</Link>
         </Item>
       )}
 
       {user && (
         <SubMenu
-          icon={<SettingOutlined />}
+          
           title={user.email && user.email.split("@")[0]}
           className="float-right"
         >
@@ -107,13 +107,13 @@ const Header = () => {
             </Item>
           )}
 
-          <Item icon={<LogoutOutlined />} onClick={logout}>
+          <Item onClick={logout}>
             Logout
           </Item>
         </SubMenu>
       )}
 
-      <span className="float-right p-1">
+      <span className="float-right p-1" style={{marginLeft:"300px"}}>
         <Search />
       </span>
     </Menu>

@@ -11,7 +11,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
   const { model, description, images, slug } = product;
 
   return (
-    <Card style={{position:"absolute", top:"20px"}}
+    <Card style={{position:"relative", top:"5px", width:"300px", marginBottom:"5px"}}
       cover={
         <div style={{height:"5px"}}>
         <img src={images && images.length ? images[0].url : laptop}

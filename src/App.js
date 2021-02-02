@@ -75,7 +75,7 @@ const Product = lazy(() => import('./pages/Product'));
 const CategoryHome = lazy(() => import('./pages/category/CategoryHome'));
 const SubHome = lazy(() => import('./pages/sub/SubHome'));
 const Shop = lazy(() => import('./pages/Shop'));
-const Posts = lazy(() => import('./pages/Posts'));
+const Posts = lazy(() => import('./pages/post/main/index.js'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -110,9 +110,7 @@ const App = () => {
   return (
     <Suspense fallback={
       <div className="col text-center p-5">
-        __ React Redux EC
-        <LoadingOutlined />
-        MMERCE __
+       Loading ...
       </div>
     }>
       <Uheader/>

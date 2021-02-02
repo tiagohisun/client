@@ -124,7 +124,7 @@ const Footer = () => {
           </div>
           <div className="col-sm-12 col-md-3 mt-5">
             
-            <form >
+            {/* <form >
               <label>Weekly Newslatter</label>
               <br />
               <input
@@ -165,7 +165,7 @@ const Footer = () => {
                 }}
                 value="Subscribe"
               />
-            </form>
+            </form> */}
           </div>
         </div>
       </div>

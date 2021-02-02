@@ -27,7 +27,7 @@ const items = [
   {
     id: 3,
     src: { Slide3 },
-    altText: "Blog",
+    altText: "Blog - SOON!",
     caption: "DENTAL IMAGING",
   },
 ];
@@ -141,7 +141,7 @@ const Banner = (props) => {
             Read our articles and news about dental imaging
           </p>
           <button type="button" className="button3 btn btn-success fadeInLeft">
-            <a href="/posts">Check out</a>
+            <a>Check out</a>
           </button>
           <img
             className="img"
