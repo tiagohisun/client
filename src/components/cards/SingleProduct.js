@@ -126,12 +126,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
             
         ]}
         >
-          <p>ID : { product._id }</p>
-          <p>Title : { product.title }</p>
-          <p>Brand : { product.brand }</p>
-          <p>Location : {product.location}</p>
-          <p>Price : { product.price }</p>
-          <p>Description : {product.description}</p>
+          
           <p>Email </p>
           <Input value={email} type="email" onChange={(e)=>setEmail(e.target.value)} />
           <p>Name </p>
