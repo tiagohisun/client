@@ -10,6 +10,18 @@ const AdminNav = () => (
         </Link>
       </li>
 
+       <li className="nav-item">
+        <Link to="/admin/customersc" className="nav-link">
+          Create Customers
+        </Link>
+      </li>
+
+       <li className="nav-item" style={{borderBottom: "1px solid #ccc"}}>
+        <Link to="/admin/customersl" className="nav-link">
+          Customers
+        </Link>
+      </li>
+
       <li className="nav-item">
         <Link to="/admin/product" className="nav-link">
           Product

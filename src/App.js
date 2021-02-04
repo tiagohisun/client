@@ -59,6 +59,8 @@ const PostCategoryCreate = lazy(() => import('./pages/admin/postcategory/PostCat
 const PostCategoryUpdate = lazy(() => import('./pages/admin/postcategory/PostCategoryUpdate'));
 const TagCreate = lazy(() => import('./pages/admin/posttag/TagCreate'));
 const TagUpdate = lazy(() => import('./pages/admin/posttag/TagUpdate'));
+const CustomerCreate = lazy(() => import('./pages/admin/customers/CustomerCreate'));
+const AllCustomers = lazy(() => import('./pages/admin/customers/AllCustomers'));
 const ProductCreate = lazy(() => import('./pages/admin/product/ProductCreate'));
 const PostCreate = lazy(() => import('./pages/admin/post/PostCreate'));
 const AllProducts = lazy(() => import('./pages/admin/product/AllProducts'));
@@ -137,13 +139,11 @@ const App = () => {
         />
         <AdminRoute exact path="/admin/sub" component={SubCreate} />
         <AdminRoute exact path="/admin/sub/:slug" component={SubUpdate} />
+        <AdminRoute exact path="/admin/customersc" component={CustomerCreate}/>
+        <AdminRoute exact path="/admin/customersl" component={AllCustomers} />
         <AdminRoute exact path="/admin/product" component={ProductCreate} />
         <AdminRoute exact path="/admin/products" component={AllProducts} />
-        <AdminRoute
-          exact
-          path="/admin/product/:slug"
-          component={ProductUpdate}
-        />
+        <AdminRoute exact path="/admin/product/:slug" component={ProductUpdate} />
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/sub/:slug" component={SubHome} />
         <Route exact path="/shop" component={Shop} />
@@ -159,6 +159,7 @@ const App = () => {
         />
         <AdminRoute exact path="/admin/tag" component={TagCreate} />
         <AdminRoute exact path="/admin/tag/:slug" component={TagUpdate} />
+
         <AdminRoute exact path="/admin/post" component={PostCreate}/>
         <AdminRoute exact path="/admin/posts" component={AllPosts}/>
         <AdminRoute exact path="/post/:slug" component={SinglePost}/>

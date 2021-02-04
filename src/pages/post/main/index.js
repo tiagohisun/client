@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import { getPostsByCount, fetchPostsByFilter } from '../../../functions/post';
 import { MdDateRange } from 'react-icons/md';
 import {
 	AiOutlineComment,
@@ -8,25 +9,22 @@ import {
 	AiFillFacebook,
 	AiFillTwitterSquare
 } from 'react-icons/ai';
+import { useSelector, useDispatch } from 'react-redux';
+import RowCard from '../../../components/cards/post/RowCard';
+import MiniLinePostCard from '../../../components/cards/post/MiniLinePostCard';
+import MiniTextPostCard from '../../../components/cards/post/MiniTextPostCard';
+import { Menu, Checkbox, Card } from 'antd';
+import { DollarOutlined, DownSquareOutlined, StarOutlined } from '@ant-design/icons';
+import laptop from '../../../images/laptop.png';
+import image from '../../../static/images/boxes/classifieds.jpg';
+import { FiMessageCircle } from 'react-icons/fi';
+import { WiTime1 } from 'react-icons/wi';
+import { FiEdit } from 'react-icons/fi';
+import { FaGreaterThan } from 'react-icons/fa';
+import Star from '../../../components/forms/Star';
 import './style.scss';
-const MainBlogPosts = ({ right, height, width, fontSize, imgSrc }) => {
-	return (
-		<div className="mn-blg-pst" style={{ padding: '2px'}}>
-			<img right={right} width={width} height={height} src={imgSrc} alt="source" />
-			<div className="nsd-hr-img  ml-2" 
-			style={{transform:"translateY(-120%)"}}>
-				<div>
-					<h2 style={{color: 'white', fontSize: fontSize }}>
-						Lorem Ipsum is simply dummy text of the printing
-					</h2>
-					<span style={{color: 'white'}}>
-						By : Someone <MdDateRange /> March 12,2017 <AiOutlineComment /> 4
-					</span>
-				</div>
-			</div>
-		</div>
-	);
-};
+import MainBlogPosts from '../../../components/cards/post/imagecards/MainBlogPosts';
+
 
 const FeaturedBlog = () => {
 	return (
@@ -139,27 +137,176 @@ const SocialConnection = ({ Icon, sb, message }) => {
 	);
 };
 
-function Main() {
+function Main({post}) {
+	
+const [ posts, setPosts ] = useState([]);
+	const [ loading, setLoading ] = useState(false);
+	const [ price, setPrice ] = useState([ 0, 0 ]);
+	const [ ok, setOk ] = useState(false);
+	const [ categories, setCategories ] = useState([]);
+	const [ categoryIds, setCategoryIds ] = useState([]);
+	const [ star, setStar ] = useState('');
+	const [ tags, setTags ] = useState([]);
+	const [ tag, setTag ] = useState('');
+
+	let dispatch = useDispatch();
+	let { search } = useSelector((state) => ({ ...state }));
+	const { text } = search;
+	useEffect(() => {
+		getPostsByCount(20).then((p) => {
+			console.log(p.data);
+			setPosts(p.data);
+		});
+	}, []);
+	const settings = {
+		dots: true,
+		infinite: false,
+		speed: 500,
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		initialSlide: 0,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3,
+					infinite: true,
+					dots: true
+				}
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+					initialSlide: 2
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
+	};
+
+	let categoreypost = [];
+	let latestpost = [];
+	let educategorypostdesc = [];
+	let techcategorypostdesc = [];
+
+	//latestpost.push(posts[0]);
+	for (let i = 0; i < posts.length; i++) {
+		const element = posts[i];
+		if (i === posts.length - 1) {
+			latestpost.push(posts[i]);
+		}
+		//console.log(element.postcategory.name === "Dental News");
+		if (element.postcategory.name === 'Dental News') {
+			// console.log(i, ":", element.postcategory.name);
+      categoreypost.push(posts[i]);
+     
+		}
+		if (element.postcategory.name === 'Education') {
+			educategorypostdesc.push(posts[i]);
+		}
+		if (element.postcategory.name === 'Technology') {
+			techcategorypostdesc.push(posts[i]);
+		}
+	}
+console.log("categorypost",categoreypost)
+	let newcategoreypost = categoreypost.slice(1, 2);
+
+	let latestdentail = categoreypost.slice(-1);
+	let latesteduc = educategorypostdesc.slice(-1);
+	let latesttech = techcategorypostdesc.slice(-1);
+	let allblglatest = [ ...latestdentail, ...latesteduc, ...latesttech ];
+
+	let second_latest_o = [ ...categoreypost.slice(-2, -1) ];
+	let second_latest_t = [ ...educategorypostdesc.slice(-2, -1) ];
+	let second_latest_th = [ ...techcategorypostdesc.slice(-2, -1) ];
+
+	let third_latest_o = [ ...categoreypost.slice(-3, -2) ];
+	let third_latest_t = [ ...educategorypostdesc.slice(-3, -2) ];
+	let third_latest_th = [ ...techcategorypostdesc.slice(-3, -2) ];
+
+	let four_five_six_edulatest = [
+		...educategorypostdesc.slice(-3, -2),
+		...educategorypostdesc.slice(-2, -1),
+		...educategorypostdesc.slice(-1)
+	];
+	let four_five_six_dentlatest = [
+		...categoreypost.slice(-3, -2)
+		//...categoreypost.slice(-2, -1),
+		// ...categoreypost.slice(-1),
+	];
+
+	//console.log(four_five_six_dentlatest);
+
+	const digituniq = [ ...new Set(post) ].filter((item) => item.postcategory === 'Dental News').slice(0, 8);
+
+
 	return (
-		<div className="container-fluid mt-5" style={{width:"999px"}}>
+		<>
+		<ul
+				className="nav position-relative bg-dark mt-5"
+				style={{ fontSize: '12px', height: '35px', marginLeft: '145px', width: '970px' }}
+			>
+				<li className="nav-item" style={{ borderRight: '1px solid #ccc' }}>
+					<a className="nav-link" href="#">
+						Main
+					</a>
+				</li>
+				<li className="nav-item" style={{ borderRight: '1px solid #ccc' }}>
+					<a className="nav-link" href="/posts/dentalnews">
+						Dental News
+					</a>
+				</li>
+				<li className="nav-item">
+					<a className="nav-link" style={{ borderRight: '1px solid #ccc' }} href="/posts/technology">
+						Technology
+					</a>
+				</li>
+				<li className="nav-item">
+					<a className="nav-link" style={{ borderRight: '1px solid #ccc' }} href="/posts/education">
+						Education
+					</a>
+				</li>
+			</ul>
+		<div className="container-fluid mt-2" style={{width:"999px"}}>
 			<div className="row">
 				<div className="col-sm-12 col-md-6 col-lg-6 position-relative" style={{transform:"translateX(-4px)"}}>
-					<MainBlogPosts
+					<h2>
+							{latestdentail.slice(-3).reverse().map((p) => (
+								<div
+									key={p._id}
+									className="col position-relative"
+									style={{ transform: 'translateX(-30px)' }}
+								>
+								<MainBlogPosts post={p}
 						width="499px"
 						height="332.5px"
 						fontSize="22px"
-						imgSrc="https://images.unsplash.com/photo-1611564393146-2819eeb1f335?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80"
+						
 					/>
+					</div>
+							))}
+						</h2>
 				</div>
 				<div className="col-sm-12 col-md-6 col-lg-6">
 					<div className="row">
 						<div className="col-sm-12 col-md-12 col-lg-12">
-							<MainBlogPosts
+						
+							<MainBlogPosts 
+								
 								width="100%"
 								height="180px"
 								fontSize="20px"
-								imgSrc="https://images.unsplash.com/photo-1515940175183-6798529cb860?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1187&q=80"
 							/>
+							
 						</div>
 						<div className="col-sm-12 col-md-12 col-lg-12 position-absolute" style={{top:"182.5px"}}>
 							<div className="row position-relative">
@@ -289,6 +436,7 @@ function Main() {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 }
 
