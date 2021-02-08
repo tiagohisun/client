@@ -77,6 +77,7 @@ const Shop = () => {
       }
      
     }
+    //mounted 
     return () => mounted = false;
     // const delayed = setTimeout(() => {
     //   fetchProducts();
