@@ -130,11 +130,11 @@ const Shop = () => {
         <br />
       </div>
     ));
-  let FiltersProducts = (filterBy, operator, arg) => {
-      setTimeout(async() => {
+  let FiltersProducts = async(filterBy, operator, arg) => {
+      
         const json= await axios.get(`http://localhost:8000/api/search/filters?${filterBy}${operator}${arg}`)
         setProducts([...json.data])
-       },1000) 
+        
   }
   // handle check for categories
   const handleCheck = (e) => {
