@@ -32,7 +32,7 @@ const Footer = () => {
     <div
       className="footer-container"
       style={{
-        height: "400px",
+        
         width: "100%",
         color: "#afb4bf",
         backgroundColor: "#001f24",
@@ -44,7 +44,7 @@ const Footer = () => {
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ margin: "20px" }}>
               <Link to="/">
-                <img
+                  <img 
                   style={{ width: "150px", paddingBottom: "20px" }}
                   src={logo}
                 />
