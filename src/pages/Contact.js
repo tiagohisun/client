@@ -59,8 +59,8 @@ const Contact = () => {
 
   return (
     <div style={{ marginTop: "30px" }}>
-      <Form {...layout} name="nest-messages">
-        <Form.Item label="Name">
+      <Form {...layout} name="nest-messages" >
+        <Form.Item name="name" label="Name" rules={[ { type: 'string', required: true } ]} >
           <Input
             type="text"
             placeholder="Enter Your Name"
@@ -69,7 +69,7 @@ const Contact = () => {
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Item>
-        <Form.Item label="Email">
+        <Form.Item name="email" label="Email" rules={[ { type: 'email', required: true } ]}>
           <Input
             type="email"
             placeholder="Enter Your Email"
@@ -78,7 +78,7 @@ const Contact = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Item>
-        <Form.Item label="Phone Number">
+        <Form.Item name="phonenumber" label="Phone Number" rules={[ { type: 'string' } ]}>
           <Input
             type="text"
             placeholder="Enter Your Phonen Number (Optional)"
@@ -87,7 +87,7 @@ const Contact = () => {
           />
         </Form.Item>
 
-        <Form.Item label="Message">
+        <Form.Item name="message" label="Message" rules={[{required:true}]}>
           <Input.TextArea
             rows={4}
             placeholder="Enter Your Message......!"

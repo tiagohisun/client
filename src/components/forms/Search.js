@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { SearchOutlined } from "@ant-design/icons";
-
+import './styles.css'
 const Search = () => {
   const dispatch = useDispatch();
   const { search } = useSelector((state) => ({ ...state }));
@@ -38,7 +38,7 @@ const Search = () => {
         className="form-control mr-sm-2"
         placeholder="Search"
       />
-      <SearchOutlined  style={{ cursor: "pointer" }} />
+      <SearchOutlined className="search-icon-btn" style={{ cursor: "pointer" }} />
     </div>
   );
 };

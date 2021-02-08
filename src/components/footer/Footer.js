@@ -93,7 +93,7 @@ const Footer = () => {
     <div
       className="footer-container"
       style={{
-        height: "400px",
+        
         width: "100%",
         color: "#afb4bf",
         backgroundColor: "#001f24",
@@ -105,7 +105,7 @@ const Footer = () => {
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ margin: "20px" }}>
               <Link to="/">
-                <img
+                  <img 
                   style={{ width: "150px", paddingBottom: "20px" }}
                   src={logo}
                 />
@@ -189,7 +189,8 @@ const Footer = () => {
 
            
       <Form style={{width:"200px"}}>
-        
+
+          <p className="text-white"> Receive Our Newsletter! </p>
           <input style={{height:"25px", marginBottom:"12px", border:"none", color:"black",  width:"200px", textAlign: "center", backgroundColor:"lightGray"}}
             type="text"
             placeholder="Your Name"
