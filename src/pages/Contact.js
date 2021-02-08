@@ -30,7 +30,12 @@ const Contact = () => {
         .post(`${process.env.REACT_APP_API}/email`, {
           name: name,
           from: email,
-          text: message,
+          text: 
+         `Name: ${name}
+          Email: ${email} 
+          Phone: ${phonenumber}
+          Message: ${message}
+          `
         })
         .then((r) => {
           openNotification("Email Send Successfully", "We will contact you as soon as possible")

@@ -18,7 +18,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 	const [ isModalVisible, setIsModalVisible ] = useState(false);
 	const [ name, setName ] = useState('');
 	const [ email, setEmail ] = useState('');
-	const [ message, setMessage ] = useState('');
+	const [ message, setMessage ] = useState('I´m interested in this unit');
 	console.log('Product=>', product);
 	const showModal = () => {
 		setIsModalVisible(true);
@@ -43,7 +43,8 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 				.post(`${process.env.REACT_APP_API}/email`, {
 					name: name,
 					from: email,
-					text: `ID : ${product._id} 
+					text: 
+				`Interested in: ${product._id} 
                  Title : ${product.title}
                  Price : ${product.price}
                  Brand : ${product.brand}
@@ -143,7 +144,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 						</Form.Item>
 						<Form.Item name="message" label="Message" rules={[ { type: 'string', required: true } ]}>
 							
-							<Input.TextArea rows="4" value={message} onChange={(e) => setMessage(e.target.value)} />
+							<Input.TextArea rows="4" placeholder="I´m interested in this unit" value={message} onChange={(e) => setMessage(e.target.value)} />
 						</Form.Item>
 					</Form>
 				</Modal>
