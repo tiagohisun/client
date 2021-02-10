@@ -133,7 +133,7 @@ const Shop = () => {
     ));
   let FiltersProducts = async(filterBy, operator, arg) => {
       
-        const json= await axios.get(`http://localhost:8000/api/search/filters?${filterBy}${operator}${arg}`)
+        const json= await axios.get(`${process.env.REACT_APP_API}search/filters?${filterBy}${operator}${arg}`)
         setProducts([...json.data])
         
   }

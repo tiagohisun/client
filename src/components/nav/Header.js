@@ -57,7 +57,7 @@ const Header = () => {
 				<div className="nav-mobile-friendly">
 					<div>
 						<Link to="/">
-							<img width="85px" style={{ cursor: 'pointer' }} src={logo} />
+							<img id="logo" width="85px" style={{ cursor: 'pointer' }} src={logo} />
 						</Link>
 					</div>
 					<div>

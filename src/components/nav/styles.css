@@ -22,7 +22,8 @@
     }
     .mobileSearch{
         display: block;
-        width: 100%;
+        margin-left: 15px;
+        width: 80%;
     }
     .nav-mobile-friendly{
         display: flex;
@@ -45,7 +46,7 @@
     .nav-mobile-friendly{
         display: flex;
         justify-content: space-between;
-        
+        padding-top: 5px;
     }
     ul{
         list-style: none;

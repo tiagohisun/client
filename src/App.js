@@ -72,6 +72,8 @@ const PostCategoryHome = lazy(() => import('./pages/postcategory/PostCategoryHom
 const TagHome = lazy(() => import('./pages/posttag/TagHome'));
 const ProductUpdate = lazy(() => import('./pages/admin/product/ProductUpdate'));
 const Product = lazy(() => import('./pages/Product'));
+const Customer = lazy(() => import('./pages/admin/customers/CustomerCreate.js'));
+const Customers =lazy(() => import('./pages/admin/customers/AllCustomers.js'));
 const CategoryHome = lazy(() => import('./pages/category/CategoryHome'));
 const SubHome = lazy(() => import('./pages/sub/SubHome'));
 const Shop = lazy(() => import('./pages/Shop'));
@@ -155,8 +157,11 @@ const App = () => {
 				<AdminRoute exact path="/admin/posts" component={AllPosts} />
 				<AdminRoute exact path="/post/:slug" component={SinglePost} />
 				<AdminRoute exact path="/admin/post/:slug" component={UpdatePost} />
+				<AdminRoute exact path="/admin/customer" component={Customer} />
+				<AdminRoute exact path="/admin/customers" component={Customers} />
 				<Route exact path="/postcategory/:slug" component={PostCategoryHome} />
 				<Route exact path="/tag/:slug" component={TagHome} />
+				
 			</Switch>
 			<Footer />
 		</Suspense>

@@ -9,7 +9,16 @@ const AdminNav = () => (
           Dashboard
         </Link>
       </li>
-
+      <li className="nav-item">
+        <Link to="/admin/customer" className="nav-link">
+          Customer
+        </Link>
+      </li>
+       <li className="nav-item">
+        <Link to="/admin/customers" className="nav-link">
+          Customers
+        </Link>
+      </li>
       <li className="nav-item">
         <Link to="/admin/product" className="nav-link">
           Product
