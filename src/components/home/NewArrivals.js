@@ -25,7 +25,7 @@ const NewArrivals = () => {
       setProducts(res.data);
       setLoading(false);
     });
-  };
+  }; 
 
   return (
     <>
