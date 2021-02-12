@@ -15,9 +15,12 @@ import {
 } from "@ant-design/icons";
 import Star from "../components/forms/Star";
 import axios from "axios";
+import {useTranslation} from 'react-i18next'
+
 const { SubMenu, ItemGroup } = Menu;
 
 const Shop = () => {
+  const {t, i18n} = useTranslation();
   
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -133,7 +136,7 @@ const Shop = () => {
     ));
   let FiltersProducts = async(filterBy, operator, arg) => {
       
-        const json= await axios.get(`${process.env.REACT_APP_API}search/filters?${filterBy}${operator}${arg}`)
+        const json= await axios.get(`${process.env.REACT_APP_API}/search/filters?${filterBy}${operator}${arg}`)
         setProducts([...json.data])
         
   }
@@ -248,7 +251,7 @@ const Shop = () => {
         value="AVAILABLE"
         checked={shipping === "AVAILABLE"}
       >
-        Yes
+        {t("Y")}
       </Checkbox>
 
       <Checkbox
@@ -257,7 +260,7 @@ const Shop = () => {
         value="SOLD"
         checked={shipping === "SOLD"}
       >
-        No
+        {t("NO")}
       </Checkbox>
     </>
   );
@@ -280,7 +283,7 @@ const Shop = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-3 pt-2">
-          <h4 className="mt-3">Search/Filter</h4>
+          <h4 className="mt-3">{t("SF")}</h4>
           <hr />
 
           <Menu
@@ -292,7 +295,7 @@ const Shop = () => {
               key="1"
               title={
                 <span className="h6">
-                  <DollarOutlined /> Price
+                  <DollarOutlined /> {t("PRI")}
                 </span>
               }
             >
@@ -313,7 +316,7 @@ const Shop = () => {
               key="2"
               title={
                 <span className="h6">
-                  <DownSquareOutlined /> Categories
+                  <DownSquareOutlined /> {t("CAT")}
                 </span>
               }
             >
@@ -325,7 +328,7 @@ const Shop = () => {
               key="3"
               title={
                 <span className="h6">
-                  <StarOutlined /> Rating
+                  <StarOutlined /> {t("RT")}
                 </span>
               }
             >
@@ -339,7 +342,7 @@ const Shop = () => {
               key="5"
               title={
                 <span className="h6">
-                  <DownSquareOutlined /> Brands
+                  <DownSquareOutlined /> {t("BRA")}
                 </span>
               }
             >
@@ -354,7 +357,7 @@ const Shop = () => {
               key="7"
               title={
                 <span className="h6">
-                  <DownSquareOutlined /> Shipping
+                  <DownSquareOutlined /> {t("AV")}
                 </span>
               }
             >
@@ -367,12 +370,12 @@ const Shop = () => {
 
         <div className="col-md-9 pt-2">
           {loading ? (
-            <h4 className="text-danger">Loading...</h4>
+            <h4 className="text-danger">{t("LOA")}</h4>
           ) : (
-            <h4 className="text-danger mt-5">Products</h4>
+            <h4 className="text-danger mt-5">{t("PRO")}</h4>
           )}
 
-          {products.length < 1 && <p>No products found</p>}
+          {products.length < 1 && <p>{t("NPR")}</p>}
 
           <div className="row pb-5">
             {products.map((p) => (

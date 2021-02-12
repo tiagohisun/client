@@ -10,10 +10,12 @@ import StarRating from 'react-star-ratings';
 import RatingModal from '../modal/RatingModal';
 import { showAverage } from '../../functions/rating';
 import axios from 'axios';
+import {useTranslation} from 'react-i18next'
 const { TabPane } = Tabs;
 
 // this is childrend component of Product page
 const SingleProduct = ({ product, onStarClick, star }) => {
+	const {t, i18n} = useTranslation();
 	const { model, images, description, _id } = product;
 	const [ isModalVisible, setIsModalVisible ] = useState(false);
 	const [ name, setName ] = useState('');
@@ -79,11 +81,11 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 				)}
 
 				<Tabs type="card">
-					<TabPane tab="Description" key="1">
+					<TabPane tab={t("DES")} key="1">
 						{description && description}
 					</TabPane>
-					<TabPane tab="More" key="2">
-						Call use on xxxx xxx xxx to learn more about this product.
+					<TabPane tab={t("MO")} key="2">
+						{t("CAL")}
 					</TabPane>
 				</Tabs>
 			</div>
@@ -94,15 +96,14 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 				{product && product.ratings && product.ratings.length > 0 ? (
 					showAverage(product)
 				) : (
-					<div className="text-center pt-1 pb-3">No rating yet</div>
+					<div className="text-center pt-1 pb-3">{t("NR")}</div>
 				)}
 
 				<Card
-					onClick={showModal}
 					actions={[
 						<React.Fragment>
-							<ContactsOutlined className="text-success" /> <br />
-							Contact
+						<ContactsOutlined onClick={showModal} className="text-success" /> <br />
+							{t("CT")}
 						</React.Fragment>,
 
 						<RatingModal>
@@ -120,16 +121,16 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 					<ProductListItems product={product} />
 				</Card>
 				<Modal
-					title="Contact Us"
+					title={t("CTM")}
 					visible={isModalVisible}
 					onOk={handleOk}
 					onCancel={handleCancel}
 					footer={[
 						<Button key="back" onClick={handleCancel}>
-							Back
+							{t("BA")}
 						</Button>,
 						<Button key="enter" onClick={handleOk}>
-							Send Message
+							{t("SM")}
 						</Button>
 					]}
 				>
@@ -138,13 +139,13 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 							
 							<Input value={email} onChange={(e) => setEmail(e.target.value)} />
 						</Form.Item>
-						<Form.Item name="name" label="Name" rules={[ { type: 'string', required: true } ]}>
+						<Form.Item name="name" label={t("N")} rules={[ { type: 'string', required: true } ]}>
 							
 							<Input value={name} onChange={(e) => setName(e.target.value)} />
 						</Form.Item>
-						<Form.Item name="message" label="Message" rules={[ { type: 'string', required: true } ]}>
+						<Form.Item name="message" label={t("M")} rules={[ { type: 'string', required: true } ]}>
 							
-							<Input.TextArea rows="4" placeholder="I´m interested in this unit" value={message} onChange={(e) => setMessage(e.target.value)} />
+							<Input.TextArea rows="4" placeholder={t("IN")} value={message} onChange={(e) => setMessage(e.target.value)} />
 						</Form.Item>
 					</Form>
 				</Modal>

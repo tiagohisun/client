@@ -24,11 +24,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Search from '../forms/Search';
 import { BiMenu } from 'react-icons/bi';
+import {useTranslation} from 'react-i18next'
+import { withNamespaces } from 'react-i18next';
+
 const Shop = lazy(() => import('../../pages/Shop'));
 
 const { SubMenu, Item } = Menu;
 
 const Header = () => {
+	const{ t, i18n} = useTranslation();
+	
 	const [ current, setCurrent ] = useState('home');
 
 	let dispatch = useDispatch();
@@ -51,6 +56,7 @@ const Header = () => {
 	};
 	//navbar section
 	const [ showToggle, setShowToggle ] = useState(false);
+	
 	return (
 		<div>
 			<div className="nav-container">
@@ -69,27 +75,27 @@ const Header = () => {
 						<ul>
 							<li>
 								<Link onClick={() => setShowToggle(false)} to="/">
-								<AiFillHome />	Home
+								<AiFillHome />	{t("HO")}
 								</Link>
 							</li>
 							<li>
 								<Link onClick={() => setShowToggle(false)} to="/shop">
-									<AiFillShopping />  Shop
+									<AiFillShopping />  {t("SH")}
 								</Link>
 							</li>
 							<li>
 								<Link onClick={() => setShowToggle(false)} to="/services">
-								 <RiCustomerService2Line />	Services
+								 <RiCustomerService2Line />	{t("SE")}
 								</Link>
 							</li>
 							<li>
 								<Link onClick={() => setShowToggle(false)} to="/about">
-								<FcAbout />	About
+								<FcAbout />	{t("AB")}
 								</Link>
 							</li>
 							<li>
 								<Link onClick={() => setShowToggle(false)} to="/contact">
-								<AiFillContacts />	contact
+								<AiFillContacts />	{t("CT")}
 								</Link>
 							</li>
 						</ul>
@@ -108,11 +114,11 @@ const Header = () => {
 					</Item>
 
 					<Item key="home">
-						<Link to="/">Home</Link>
+						<Link to="/">{t("HO")}</Link>
 					</Item>
 
 					<Item key="shop">
-						<Link to="/shop">Shop</Link>
+						<Link to="/shop">{t("SH")}</Link>
 					</Item>
 
 					{/* <Item key="blog" icon={<BookOutlined />}>
@@ -120,15 +126,15 @@ const Header = () => {
       </Item> */}
 
 					<Item key="services">
-						<Link to="/services">Services</Link>
+						<Link to="/services">{t("SE")}</Link>
 					</Item>
 
 					<Item key="about">
-						<Link to="/about">About</Link>
+						<Link to="/about">{t("AB")}</Link>
 					</Item>
 
 					<Item key="contact">
-						<Link to="/contact">Contact</Link>
+						<Link to="/contact">{t("CT")}</Link>
 					</Item>
 
 					{/* {!user && (

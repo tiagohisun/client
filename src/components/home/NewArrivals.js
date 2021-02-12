@@ -29,7 +29,7 @@ const NewArrivals = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style={{transform:"translateY(-95px)"}}>
         {loading ? (
           <LoadingCard count={3} />
         ) : (
@@ -43,7 +43,7 @@ const NewArrivals = () => {
         )}
       </div>
 
-      <div className="row">
+      <div className="row" style={{transform:"translateY(-75px)"}}>
         <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
             current={page}

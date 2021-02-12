@@ -2,8 +2,10 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { SearchOutlined } from "@ant-design/icons";
+import {useTranslation} from 'react-i18next'
 import './styles.css'
 const Search = () => {
+  const {t, i18n} = useTranslation();
   const dispatch = useDispatch();
   const { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
@@ -36,7 +38,7 @@ const Search = () => {
         type="search"
         value={text}
         className="form-control mr-sm-2"
-        placeholder="Search"
+        placeholder={t("SC")}
       />
       <SearchOutlined className="search-icon-btn" style={{ cursor: "pointer" }} />
     </div>

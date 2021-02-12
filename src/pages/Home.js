@@ -7,29 +7,27 @@ import SubList from "../components/sub/SubList";
 import Banner from "../components/banner/Banner"
 import Boxes from "../components/boxes/Boxes"
 import TableGrid from "../components/tablegrid/Tablegrid"
+import {useTranslation} from 'react-i18next'
 
 const Home = () => {
+  const {t, i18n} = useTranslation();
   return (
     <>
       <Banner/>
+      <h4 className="text-center p-3" style={{transform:"translateY(-80px)"}}>
+      <div className="text-danger h2 font-weight-bold text-center">
+        <Jumbotron text={t("NA")} />
+      </div>
+      </h4>
+      <NewArrivals />
       <Boxes/>
       <TableGrid/>
     
       <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
-        Categories
+        {t("CAT")}
       </h4>
       <CategoryList />
-
-      <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
-      <div className="jumbotron text-danger h1 font-weight-bold text-center">
-        <Jumbotron text={["New Arrivals"]} />
-      </div>
-      </h4>
-      <NewArrivals />
-
-      
-
-      <br />
+  
       <br />
     </>
   );

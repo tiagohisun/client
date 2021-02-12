@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
+
 import { Form, Input, Button, notification } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './styles.css'
 //import { AiFillPhone } from "react-icons/ai";
 import { MdEmail, MdLocationOn } from 'react-icons/md';
+
 import logo from '../../static/images/logo/logonb.png';
 import '../../static/css/footer.css';
+
+import {useTranslation} from 'react-i18next'
 //import emailjs from "emailjs-com";
 const Footer = () => {
+		
 	const [ isModalVisible, setIsModalVisible ] = useState(false);
 	const [ name, setName ] = useState('');
 	const [ email, setEmail ] = useState('');
 	const [ phonenumber, setPhonenumber ] = useState(null);
 	const [ message, setMessage ] = useState('Newsletter');
-
+	
 	const showModal = () => {
 		setIsModalVisible(true);
 	};
@@ -65,29 +70,7 @@ const Footer = () => {
 			span: 12
 		}
 	};
-	//const [message, setMessage] = useState("");
-	//function sendEmail(e) {
-	//  e.preventDefault();
-	//
-	//  emailjs
-	//    .sendForm(
-	//      "testemail",
-	//      "template_flkh36l",
-	//      e.target,
-	//      "user_eyDNBhP1Z4UkiEOVAGGoc"
-	//    )
-	//    .then(
-	//      (result) => {
-	//        setMessage("Thank You...");
-	//        console.log(result.text);
-	//      },
-	//      (error) => {
-	//        setMessage("Something Wrong...");
-	//        console.log(error.text);
-	//      }
-	//    );
-	//  e.target.reset();
-	//}
+	const {t, i18n} = useTranslation();
 	return (
 		<div
 			className="footer-container"
@@ -117,13 +100,13 @@ const Footer = () => {
 								<div style={{ display: 'flex' }}>
 									<div />
 									<div style={{ marginLeft: '10px', fontSize: '15px' }}>
-										Av Yojiro Takaoka, 438, 7th floor - Alphaville - SP
-										<br /> 06541-038, Brazil
+										Av Yojiro Takaoka, 438, {t("FL")} - Alphaville - SP
+										<br /> 06541-038, {t("BZ")}
 									</div>
 								</div>
 								<div>
 									<p style={{ fontSize: '12px', paddingTop: '40px' }}>
-										&copy; DENTAL04 All Rights Reserved
+										&copy; {t("CPR")}
 									</p>
 								</div>
 							</div>
@@ -132,7 +115,7 @@ const Footer = () => {
 					<div className="col-sm-12 col-md-6">
 						<div className="row mt-5">
 							<div className="col-4">
-								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>FEATURES</p>
+								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>{t("FT")}</p>
 								<div style={{ fontSize: '14px', color: 'grey' }}>
 									<p>
 										<a style={{ color: 'grey' }} href="/posts">
@@ -141,37 +124,37 @@ const Footer = () => {
 									</p>
 									<p>
 										<a style={{ color: 'grey' }} href="/shop">
-											Classifieds
+											{t("CS")}
 										</a>
 									</p>
 								</div>
 							</div>
 							<div className="col-4">
-								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>COMPANY</p>
+								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>{t("CMP")}</p>
 								<div style={{ fontSize: '14px', color: 'grey' }}>
 									<p>
 										<a style={{ color: 'grey' }} href="/about">
-											About
+											{t("AB")}
 										</a>
 									</p>
 									<p>
 										<a style={{ color: 'grey' }} href="/about#ourMission">
-											Goal
+											{t("GL")}
 										</a>
 									</p>
 									<p>
 										<a style={{ color: 'grey' }} href="/about#privacy">
-											Policy
+											{t("PL")}
 										</a>
 									</p>
 								</div>
 							</div>
 							<div className="col-4">
-								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>GET STARTED</p>
+								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>{t("GST")}</p>
 								<div style={{ fontSize: '14px', color: 'grey' }}>
 									<p>
 										<a style={{ color: 'grey' }} href="/contact">
-											Contact
+											{t("CT")}
 										</a>
 									</p>
 								</div>
@@ -192,7 +175,7 @@ const Footer = () => {
 										backgroundColor: 'lightGray'
 									}}
 									type="text"
-									placeholder="Your Name"
+									placeholder={t("YN")}
 									required
 									value={name}
 									onChange={(e) => setName(e.target.value)}
@@ -209,7 +192,7 @@ const Footer = () => {
 										backgroundColor: 'lightGray'
 									}}
 									type="email"
-									placeholder="Your Email"
+									placeholder={t("YE")}
 									required
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
@@ -226,7 +209,7 @@ const Footer = () => {
 										backgroundColor: 'lightGray'
 									}}
 									type="text"
-									placeholder="Your Phone Number"
+									placeholder={t("YN")}
 									value={phonenumber}
 									onChange={(e) => setPhonenumber(e.target.value)}
 								/>
@@ -235,7 +218,7 @@ const Footer = () => {
 									<Input.TextArea
 										type="hidden"
 										rows={4}
-										placeholder="Enter Your Message......!"
+										placeholder={t("YP")}
 										required
 										value={message}
 										onChange={(e) => setMessage(e.target.value)}
@@ -250,7 +233,7 @@ const Footer = () => {
 											onClick={() => mailsender()}
 											block
 										>
-											Submit
+											{t("SB")}
 										</Button>
 									</div>
 								</Form.Item>

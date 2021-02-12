@@ -3,7 +3,9 @@ import { Table } from 'reactstrap';
 import { GiMedicalPack } from 'react-icons/gi';
 import { FaUserMd,FaAmbulance } from 'react-icons/fa';
 import {AiFillMedicineBox,AiOutlineCheck} from 'react-icons/ai'
+import {useTranslation} from 'react-i18next'
 const Tablegrid = (props) => {
+  const{ t, i18n} = useTranslation();
   return (
 
     <div className=" container-fluid mb-5" style={{ position: 'static', height: '300px', marginTop: '10px' }}>
@@ -12,9 +14,9 @@ const Tablegrid = (props) => {
 
         <div className="row">
           <div className="col">
-            <h4>Quick Support <br /><br /> </h4>
-            <p className="text-left">Our goal is to solve the problem as fast and efficient as possible.</p>
-            <button type="button" className="btn btn-success float-left mt-3"> <a href="/services">Check out</a></button>
+            <h4>{t("QS")} <br /><br /> </h4>
+            <p className="text-left">{t("QSM")}</p>
+            <button type="button" className="btn btn-success float-left mt-3"> <a href="/services">{t("CO")}</a></button>
 
           </div>
 
@@ -24,8 +26,8 @@ const Tablegrid = (props) => {
                 <AiOutlineCheck size={28} />
               </div>
               <div style={{ marginLeft: '10px' }}>
-                <h4>Experience <br /><br /></h4>
-                <p>We´ve more than 10 years of experience.</p>
+                <h4>{t("EX")} <br /><br /></h4>
+                <p>{t("EXM")}</p>
               </div>
             </div>
             <div style={{ display: "flex",marginTop:'15px' }}>
@@ -33,8 +35,8 @@ const Tablegrid = (props) => {
                 <AiOutlineCheck size={28} />
               </div>
               <div style={{ marginLeft: '10px' }}>
-                <h4>Trust <br /><br /></h4>
-                <p>Our services are displayed the fairer and more secure the possible.</p>
+                <h4>{t("T")} <br /><br /></h4>
+                <p>{t("TM")}</p>
               </div>
             </div>
           </div>
@@ -46,8 +48,8 @@ const Tablegrid = (props) => {
                 <AiOutlineCheck size={28} />
               </div>
               <div style={{ marginLeft: '10px' }}>
-                <h4>Credibility <br /><br /></h4>
-                <p>Checkout our commentaries section on social media.</p>
+                <h4>{t("CD")} <br /><br /></h4>
+                <p>{t("CDM")}</p>
               </div>
             </div>
             <div style={{ display: "flex" ,marginTop:'15px'}}>
@@ -55,8 +57,8 @@ const Tablegrid = (props) => {
                 <AiOutlineCheck size={28} />
               </div>
               <div style={{ marginLeft: '10px' }}>
-                <h4>Commitment <br /><br /></h4>
-                <p>We charge nothing if the case is not solved and we give all necessary attention support.</p>
+                <h4>{t("CD")} <br /><br /></h4>
+                <p>{t("CDM")}</p>
               </div>
             </div>
 

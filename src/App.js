@@ -1,4 +1,5 @@
 import React, { useEffect, lazy, Suspense } from 'react';
+import i18n from './i18n'
 import { Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

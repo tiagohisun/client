@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Input, Button, notification } from "antd";
 import axios from "axios";
+import {useTranslation} from 'react-i18next'
 const Contact = () => {
-
-
+  const {t, i18n} = useTranslation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phonenumber, setPhonenumber] = useState(null);
@@ -60,10 +60,10 @@ const Contact = () => {
   return (
     <div style={{ marginTop: "30px" }}>
       <Form {...layout} name="nest-messages" >
-        <Form.Item name="name" label="Name" rules={[ { type: 'string', required: true } ]} >
+        <Form.Item name="name" label={t("N")} rules={[ { type: 'string', required: true } ]} >
           <Input
             type="text"
-            placeholder="Enter Your Name"
+            placeholder={t("YN")}
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -72,25 +72,25 @@ const Contact = () => {
         <Form.Item name="email" label="Email" rules={[ { type: 'email', required: true } ]}>
           <Input
             type="email"
-            placeholder="Enter Your Email"
+            placeholder={t("YE")}
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Item>
-        <Form.Item name="phonenumber" label="Phone Number" rules={[ { type: 'string' } ]}>
+        <Form.Item name="phonenumber" label={t("P")} rules={[ { type: 'string' } ]}>
           <Input
             type="text"
-            placeholder="Enter Your Phonen Number (Optional)"
+            placeholder={t("YP")}
             value={phonenumber}
             onChange={(e) => setPhonenumber(e.target.value)}
           />
         </Form.Item>
 
-        <Form.Item name="message" label="Message" rules={[{required:true}]}>
+        <Form.Item name="message" label={t("M")} rules={[{required:true}]}>
           <Input.TextArea
             rows={4}
-            placeholder="Enter Your Message......!"
+            placeholder={t("YMA")}
             required
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -105,7 +105,7 @@ const Contact = () => {
               onClick={() => mailsender()}
               block
             >
-              Submit
+              {t("SB")}
             </Button>
           </div>
         </Form.Item>

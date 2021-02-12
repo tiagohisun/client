@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom';
 import { showAverage } from '../../functions/rating';
 import ProductListItems from './ProductListItems';
 import axios from 'axios';
+import {useTranslation} from 'react-i18next'
+
 const { TabPane } = Tabs;
 
 const { Meta } = Card;
 
 const ProductCard = ({ product }) => {
+	const {t, i18n} = useTranslation();
 	// destructure
 	const { title, slug, price, year, location, model, description, _id, images,  } = product;
 	const [ isModalVisible, setIsModalVisible ] = useState(false);
@@ -72,7 +75,7 @@ const ProductCard = ({ product }) => {
 			{product && product.ratings && product.ratings.length > 0 ? (
 				showAverage(product)
 			) : (
-				<div className="text-center pt-1 pb-3">No rating yet</div>
+				<div className="text-center pt-1 pb-3">{t("NR")}</div>
 			)}
 
 			<Card
@@ -86,10 +89,10 @@ const ProductCard = ({ product }) => {
 				}
 				actions={[
 					<Link to={`/product/${slug}`}>
-						<EyeOutlined className="text-warning" /> <br /> View Product
+						<EyeOutlined className="text-warning" /> <br /> {t("VP")}
 					</Link>,
 					<React.Fragment>
-						<ContactsOutlined className="text-danger" /> <br /> Contact
+						<ContactsOutlined className="text-danger" /> <br /> {t("CT")}
 					</React.Fragment>
 				]}
 			>
@@ -106,16 +109,16 @@ const ProductCard = ({ product }) => {
 				/>
 			</Card>
 			<Modal
-					title="Contact Us"
+					title={t("CTM")}
 					visible={isModalVisible}
 					onOk={handleOk}
 					onCancel={handleCancel}
 					footer={[
 						<Button key="back" onClick={handleCancel}>
-							Back
+							{t("BA")}
 						</Button>,
 						<Button key="enter" onClick={handleOk}>
-							Send Message
+							{t("SM")}
 						</Button>
 					]}
 				>
@@ -124,13 +127,13 @@ const ProductCard = ({ product }) => {
 							
 							<Input value={email} onChange={(e) => setEmail(e.target.value)} />
 						</Form.Item>
-						<Form.Item name="name" label="Name" rules={[ { type: 'string', required: true } ]}>
+						<Form.Item name="name" label={t("N")} rules={[ { type: 'string', required: true } ]}>
 							
 							<Input value={name} onChange={(e) => setName(e.target.value)} />
 						</Form.Item>
-						<Form.Item name="message" label="Message" rules={[ { type: 'string', required: true } ]}>
+						<Form.Item name="message" label={t("M")} rules={[ { type: 'string', required: true } ]}>
 							
-							<Input.TextArea rows="4" placeholder="I´m interested in this unit" value={message} onChange={(e) => setMessage(e.target.value)} />
+							<Input.TextArea rows="4" placeholder={t("IN")} value={message} onChange={(e) => setMessage(e.target.value)} />
 						</Form.Item>
 					</Form>
 				</Modal>
