@@ -1,3 +1,18 @@
 .search-icon-btn{
     display: none;
+    
+}
+
+.sb {
+    height:30px;
+    border-bottom: 1px darkgreen solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline:none
+}
+
+.form-group{
+    height: 30px;
+    transform: translateY(-7px);
 }
