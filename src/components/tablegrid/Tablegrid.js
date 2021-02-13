@@ -61,18 +61,6 @@ const Tablegrid = (props) => {
 							<p>{t('CDM')}</p>
 						</div>
 					</div>
-					<div style={{ display: 'flex', marginTop: '15px' }}>
-						<div>
-							<AiOutlineCheck size={28} />
-						</div>
-						<div style={{ marginLeft: '10px' }}>
-							<h4>
-								{t('CD')} <br />
-								<br />
-							</h4>
-							<p>{t('CDM')}</p>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

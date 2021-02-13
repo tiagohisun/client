@@ -32,12 +32,12 @@ const Search = () => {
   // };
 
   return (
-    <div className="form-inline my-2 my-lg-0" >
-      <input
+    <div className="form-group my-2 my-lg-0 mr-5" >
+      <input 
         onChange={handleChange}
         type="search"
         value={text}
-        className="form-control mr-sm-2"
+        className="sb mr-sm-2"
         placeholder={t("SC")}
       />
       <SearchOutlined className="search-icon-btn" style={{ cursor: "pointer" }} />

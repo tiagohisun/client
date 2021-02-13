@@ -283,7 +283,7 @@ const Shop = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-3 pt-2">
-          <h4 className="mt-3">{t("SF")}</h4>
+          <h4 className="mt-3">{t("FiL")}</h4>
           <hr />
 
           <Menu
