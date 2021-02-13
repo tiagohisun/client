@@ -115,7 +115,7 @@ const Footer = () => {
 								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>{t('FT')}</p>
 								<div style={{ fontSize: '14px', color: 'grey' }}>
 									<p>
-										<a style={{ color: 'grey' }} href="/posts">
+										<a style={{ color: 'grey' }} href="#">
 											Blog
 										</a>
 									</p>
