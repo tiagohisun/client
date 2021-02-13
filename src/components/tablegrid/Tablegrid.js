@@ -15,8 +15,8 @@ const Tablegrid = (props) => {
 						<br />{' '}
 					</h4>
 					<p className="text-left">{t('QSM')}</p>
-					<button type="button" className="btn btn-success float-left mt-3">
-						{' '}
+					<button style={{textAlign:'center',width:'100%',margin:'50px 0px'}} type="button" className="btn btn-success mt-3">
+						{' '} 
 						<a href="/services">{t('CO')}</a>
 					</button>
 				</div>
