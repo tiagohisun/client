@@ -44,39 +44,39 @@ const Service = () => {
 					</div>
 					<div className="col-12 mt-5">
 						<div className="container">
-							<div className="row">
+							<div className="row text-center">
 								<div className="col-sm-12 col-md-3 col-lg-3">
-									<div className="ml-4">
-										<img className="ml-5" width="40%" src={support} alt="Card image" />
+									<div className="">
+										<img  width="40%" src={support} alt="Card image" />
 									</div>
-									<div className="text-center mr-3">
+									<div className="text-center ">
 										<h3 style={{ marginTop: '42.5px' }}>{t('TS')}</h3>
 										<p> {t('WeP')}</p>
 									</div>
 								</div>
 								<div className="col-sm-12 col-md-3 col-lg-3">
-									<div className="ml-4">
-										<img className="ml-5" width="40%" src={sales} alt="Card image" />
+									<div className="">
+										<img  width="40%" src={sales} alt="Card image" />
 									</div>
-									<div className="text-center mr-3">
+									<div className="text-center ">
 										<h3 style={{ marginTop: '62.5px' }}>{t('SA')}</h3>
 										<p>{t('AS')}</p>
 									</div>
 								</div>
 								<div className="col-sm-12 col-md-3 col-lg-3">
-									<div className="ml-4">
-										<img className="ml-5" width="40%" src={leadership} alt="Card image" />
+									<div className="">
+										<img  width="40%" src={leadership} alt="Card image" />
 									</div>
-									<div className="mr-3 text-center">
+									<div className=" text-center">
 										<h3 style={{ marginTop: '40px' }}> {t('GUI')}</h3>
 										<p>{t('WePA')}</p>
 									</div>
 								</div>
 								<div className="col-sm-12 col-md-3 col-lg-3">
-									<div className="ml-4">
-										<img className="ml-5" width="40%" src={news} alt="Card image" />
+									<div className="">
+										<img  width="40%" src={news} alt="Card image" />
 									</div>
-									<div className="text-center mr-3">
+									<div className="text-center ">
 										<h3 style={{ marginTop: '40px' }}> {t('NE')}</h3>
 										<p>{t('TL')}</p>
 									</div>
@@ -93,8 +93,8 @@ const Service = () => {
 								</div>
 							</div>
 							<h3 className="text-center h2">{t('DI')}</h3> <br />
-							<div className="row m-1">
-								<div className="col-md-3">
+							<div className="row">
+								<div className="col-md-3 mb-5">
 									<img
 										style={{
                                             width: '100%',
@@ -105,7 +105,7 @@ const Service = () => {
 									/>
 									<p style={{ marginTop: '10px' }}>{t('DO')}</p>
 								</div>
-								<div className="col-md-3">
+								<div className="col-md-3 mb-5">
 									<img
 										style={{
                                             width: '100%',
@@ -116,9 +116,10 @@ const Service = () => {
 									/>
 									<p style={{ marginTop: '10px' }}>{t('CB')}</p>
 								</div>
-								<div className="col-md-3">
+								<div className="col-md-3 mb-5 ">
 									<img
 										style={{
+											
                                             width: '100%',
                                             height:"195px"
 										}}
@@ -129,7 +130,7 @@ const Service = () => {
 										{t('D2')} - {t('QA')}
 									</p>
 								</div>
-								<div className="col-md-3 ">
+								<div className="col-md-3 mb-5 ">
 									<img
 										style={{
                                             width: '100%',

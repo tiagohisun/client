@@ -57,7 +57,7 @@ const Contact = () => {
 
 	return (
 		<div style={{ marginTop: '30px' }} className="row">
-			<div className="col">
+			<div className="col m-5">
 				<div className={styles.formSize}>
 				<Form name="nest-messages">
 					<Form.Item name="name" label={t('N')} rules={[ { type: 'string', required: true } ]}>
