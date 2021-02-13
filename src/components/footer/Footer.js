@@ -158,8 +158,8 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-					<div className="col-sm-12 col-md-3 col-lg-3 ">
-						<div style={{ marginTop: '30px' }} className="footer-Newsletter">
+					<div className="col-sm-12 col-md-3 col-lg-3">
+						<div style={{ marginTop: '30px'}}>
 							<Form>
 								<input
 									style={{
@@ -177,6 +177,7 @@ const Footer = () => {
 									value={name}
 									onChange={(e) => setName(e.target.value)}
 								/>
+								<br/>
 
 								<input
 									style={{
@@ -194,7 +195,7 @@ const Footer = () => {
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
 								/>
-
+								<br/>
 								<input
 									style={{
 										height: '25px',
@@ -206,7 +207,7 @@ const Footer = () => {
 										backgroundColor: 'lightGray'
 									}}
 									type="text"
-									placeholder={t('YN')}
+									placeholder={t('YP')}
 									value={phonenumber}
 									onChange={(e) => setPhonenumber(e.target.value)}
 								/>

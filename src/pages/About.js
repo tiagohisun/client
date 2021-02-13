@@ -2,8 +2,10 @@ import React from 'react';
 import { BsArrowRightShort } from 'react-icons/bs';
 import location from '../static/images/location/location.png';
 import { HashLink as Link } from 'react-router-hash-link';
+import {useTranslation} from 'react-i18next'
 
 const About = () => {
+	const {t, i18n} = useTranslation();
 	return (
 		<div className="container mt-4">
 			<div className="row">
@@ -11,40 +13,40 @@ const About = () => {
 					<div className="card-sm-3">
 						<div className="card-body">
 							<Link to="/about#aboutUs">
-								<h5 className="mb-3">About Us</h5>
+								<h5 className="mb-3">{t("AB")}</h5>
 							</Link>
 							<Link to="/about#welcome">
-								<p>Welcome to DENTAL04!</p>
+								<p>{t("WT")}</p>
 							</Link>
 							<Link to="/about#ourVision">
-								<p>Our Vision</p>
+								<p>{t("OV")}</p>
 							</Link>
 							<Link to="/about#ourQuality">
-								<p>Our Quality</p>
+								<p>{t("OQ")}</p>
 							</Link>
 							<Link to="/about#aboutDental">
-								<p>About DENTAL04</p>
+								<p>{t("AB")} DENTAL04</p>
 							</Link>
 							<Link to="/about#ourMission">
-								<p>Our Mission</p>
+								<p>{t("OM")}</p>
 							</Link>
 							<Link to="/about#privacy">
-								<p>Privacy Policy</p>
+								<p>{t("PP")}</p>
 							</Link>
 							<Link to="/about#cookies">
 								<p>Cookies</p>
 							</Link>
 							<Link to="/about#delivery">
-								<p>Delivery Policy</p>
+								<p>{t("DP")}</p>
 							</Link>
 							<Link to="/about#guidance">
-								<p>Guides and Restrictions</p>
+								<p>{t("GR")}</p>
 							</Link>
 							<Link to="/about#warranty">
-								<p>Warranty Policy</p>
+								<p>{t("WaP")}</p>
 							</Link>
 							<Link to="/about#security">
-								<p>Security</p>
+								<p>{t("ScR")}</p>
 							</Link>
 						</div>
 					</div>
@@ -52,37 +54,31 @@ const About = () => {
 
         <div className="col-sm-12 col-md-8 col-lg-8">
         <div >
-					<h2 className="pb-3">About Us</h2>
-					<h5 id="welcome">Welcome to DENTAL04!</h5>
+					<h2 className="pb-3">{t("AB")}</h2>
+					<h5 id="welcome">{t("WT")} DENTAL04!</h5>
 					<p>
-						Welcome to DENTAL04! The company was founded in September 2018 with the aim of providing a fast
-						and reliable technical support for dental units as well as running sales negotiations by
-						intermediating customers who has used dental offices items or devices.
+						{t("TCo")}
 					</p>
 					<br />
-					<h5 id="">Who are we</h5>
+					<h5 id="">{t("WW")}</h5>
 					<p>
-						DENTAL04 is a company that provides technical assistance services, advertisements for used x-ray
-						machines and dental programs - from dental imaging centers and offices. We also support some
-						CBCT Imaging softwares such as ONDEMAND3D for CT scans used worldwide.
+						{t("DIs")}
 					</p>
 					<br />
-					<h5 id="ourVision">Our Vision</h5>
+					<h5 id="ourVision">{t("OV")}</h5>
 					<p>
-						Today we serve several radiology dental imaging centers throughout Brazilian. and some other
-						countries in Latin America.
+						{t("TwS")}
 						<br />
-						We provide fast, quality assistance and help you sell your used x-ray machines.
+						{t("WpF")}
 						<br />
-						All of that giving you satisfaction and confidence in our services.
+						{t("AoT")}
 					</p>
 					<br />
-					<h5 id="ourQuality">Our Quality</h5>
-					<p>We provide integrity and quality services. Try it!</p>
+					<h5 id="ourQuality">{t("OQ")}</h5>
+					<p>{t("WpI")}</p>
 					<br />
-					<h5 id="ourMission"> Our Mission </h5>
-					Our mission is to provide a more efficient and quick support for our customers as well as helping
-					them to sell their used dental items.
+					<h5 id="ourMission"> {t("OM")} </h5>
+					{t("OmI")}
 					<br />
 					<br />
 					<br />
