@@ -86,7 +86,7 @@ const App = () => {
 	// to check firebase auth state
 	useEffect(
 		() => {
-			ReactGA.initialize('G-076W3VKW9J');
+			ReactGA.initialize('UA-149487956-1');
 			ReactGA.pageview(window.location.pathname + window.location.search);
 			const unsubscribe = auth.onAuthStateChanged(async (user) => {
 				if (user) {
