@@ -81,11 +81,11 @@ const Footer = () => {
 		>
 			<div className="container-fluid footer-mobile">
 				<div className="row mt-5">
-					<div className="col-sm-12 col-md-3">
+					<div className="col-sm-12 col-md-3 text-center">
 						<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 							<div style={{ margin: '5px' }}>
 								<Link to="/">
-									<img style={{ width: '150px', paddingBottom: '20px' }} src={logo} />
+									<img style={{width: '150px', paddingBottom: '20px' }} src={logo} />
 								</Link>
 
 								<div style={{ display: 'flex' }} className="mb-3">
@@ -98,7 +98,7 @@ const Footer = () => {
 								</div>
 								<div style={{ display: 'flex' }}>
 									<div />
-									<div style={{ marginLeft: '10px', fontSize: '15px' }}>
+									<div style={{ textAlign:'left',marginLeft: '10px', fontSize: '15px' }}>
 										Av Yojiro Takaoka, 438, {t('FL')} - Alphaville - SP
 										<br /> 06541-038, {t('BZ')}
 									</div>
@@ -109,7 +109,7 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-					<div className="col-sm-12 col-md-6">
+					<div className="col-sm-12 col-md-6 text-center">
 						<div className="row mt-5">
 							<div className="col-sm-12 col-md-4 col-lg-4">
 								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>{t('FT')}</p>
@@ -126,7 +126,7 @@ const Footer = () => {
 									</p>
 								</div>
 							</div>
-							<div className="col-sm-12 col-md-4 col-lg-4">
+							<div className="col-sm-12 col-md-4 col-lg-4 ">
 								<p style={{ fontSize: '20px', fontWeight: 'bold' }}>{t('CMP')}</p>
 								<div style={{ fontSize: '14px', color: 'grey' }}>
 									<p>
@@ -158,7 +158,7 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-					<div className="col-sm-12 col-md-3 col-lg-3">
+					<div className="col-sm-12 col-md-3 col-lg-3 text-center">
 						<div style={{ marginTop: '30px'}}>
 							<Form>
 								<input
