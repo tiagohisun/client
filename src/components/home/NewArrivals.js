@@ -3,7 +3,7 @@ import { getProducts, getProductsCount } from "../../functions/product";
 import ProductCard from "../cards/ProductCard";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
-
+import './styles.css';
 const NewArrivals = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,13 +44,14 @@ const NewArrivals = () => {
       </div>
 
       <div className="row" style={{transform:"translateY(-75px)"}}>
-        <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
+        <div className="col-sm-12 col-md-4 col-lg-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
+            className="ant-pagination-prev"
             current={page}
             total={(productsCount / 3) * 10}
             onChange={(value) => setPage(value)}
           />
-        </nav>
+        </div>
       </div>
     </>
   );

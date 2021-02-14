@@ -1,0 +1,12 @@
+@media screen and (max-width:1100px){
+    .ant-pagination-prev{
+        padding: 0px;
+    }
+    .ant-pagination-next{
+        padding: 0px;
+    }
+    .ant-pagination-item{
+        line-height: 10px;
+        margin-right: 0px;
+    }
+}
