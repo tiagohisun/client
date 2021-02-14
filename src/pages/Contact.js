@@ -60,7 +60,8 @@ const Contact = () => {
 			<div className="col m-5">
 				<div className={styles.formSize}>
 				<Form name="nest-messages">
-					<Form.Item name="name" label={t('N')} rules={[ { type: 'string', required: true } ]}>
+						<Form.Item name="name"  rules={[{ type: 'string', required: true }]}>
+							<p>{t('N')}</p>
 						<Input
 							type="text"
 							placeholder={t('YN')}
@@ -69,8 +70,9 @@ const Contact = () => {
 							onChange={(e) => setName(e.target.value)}
 						/>
 					</Form.Item>
-					<Form.Item name="email" label="Email" rules={[ { type: 'email', required: true } ]}>
-						<Input
+					<Form.Item name="email"  rules={[ { type: 'email', required: true } ]}>
+						<p>Email</p>
+							<Input
 							type="email"
 							placeholder={t('YE')}
 							required
@@ -78,8 +80,9 @@ const Contact = () => {
 							onChange={(e) => setEmail(e.target.value)}
 						/>
 					</Form.Item>
-					<Form.Item name="phonenumber" label={t('P')} rules={[ { type: 'string' } ]}>
-						<Input
+					<Form.Item name="phonenumber"  rules={[ { type: 'string' } ]}>
+						<p>{t('P')}</p>
+							<Input
 							type="text"
 							placeholder={t('YP')}
 							value={phonenumber}
@@ -87,8 +90,9 @@ const Contact = () => {
 						/>
 					</Form.Item>
 
-					<Form.Item name="message" label={t('M')} rules={[ { required: true } ]}>
-						<Input.TextArea
+					<Form.Item name="message"  rules={[ { required: true } ]}>
+						<p>{t('M')}</p>
+							<Input.TextArea
 							rows={4}
 							placeholder={t('YMA')}
 							required
