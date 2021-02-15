@@ -155,15 +155,26 @@ function Main() {
 	const [ posts, setPosts ] = useState([]);
 	const handleSearch = (value) => {
 		axios.get(`${process.env.REACT_APP_API}/posts/${value}`).then((res) => {
-			console.log(res.data);
 			setPosts(res.data);
 		});
 	};
 	return (
 		<div className="container-fluid mt-5" style={{ width: '999px' }}>
 			<div className="row">
-				<div className="col-12" style={{ display: 'flex', justifyContent: 'space-between' }}>
-					<div>
+				<div className="col-12">
+					<div style={{ display: 'flex' }}>
+						<Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search Blog" />
+						<Button
+							onClick={() => {
+								handleSearch(search);
+							}}
+						>
+							Search
+						</Button>
+					</div>
+				</div>
+				<div className="col-12">
+					<div style={{ padding:'3px 10px'}}>
 						{posts.map((post) => {
 							return (
 								<Link to={`/posts/${post.slug}`} key={post.slug}>
@@ -171,17 +182,6 @@ function Main() {
 								</Link>
 							);
 						})}
-					</div>
-					<div style={{ display: 'flex' }}>
-						<Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search Blog" />
-						<Button
-							onClick={() => {
-								
-								handleSearch(search);
-							}}
-						>
-							Search
-						</Button>
 					</div>
 				</div>
 				<div
