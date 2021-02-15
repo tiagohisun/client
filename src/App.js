@@ -79,7 +79,6 @@ const CategoryHome = lazy(() => import('./pages/category/CategoryHome'));
 const SubHome = lazy(() => import('./pages/sub/SubHome'));
 const Shop = lazy(() => import('./pages/Shop'));
 const Posts = lazy(() => import('./pages/post/main/index.js'));
-
 const App = () => {
 	const dispatch = useDispatch();
 
@@ -144,6 +143,7 @@ const App = () => {
 				<Route exact path="/sub/:slug" component={SubHome} />
 				<Route exact path="/shop" component={Shop} />
 				<Route exact path="/posts" component={Posts} />
+				<Route exact path="/posts/:slug" component={SinglePost} />
 				<Route exact path="/posts/dentalnews" component={DentalNews} />
 				<Route exact path="/posts/technology" component={Technology} />
 				<Route exact path="/posts/education" component={Education} />

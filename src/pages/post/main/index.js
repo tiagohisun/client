@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdDateRange } from 'react-icons/md';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import {
 	AiOutlineComment,
 	AiOutlineArrowLeft,
@@ -9,17 +11,17 @@ import {
 	AiFillTwitterSquare
 } from 'react-icons/ai';
 import './style.scss';
+import { Input, Button } from 'antd';
 const MainBlogPosts = ({ right, height, width, fontSize, imgSrc }) => {
 	return (
-		<div className="mn-blg-pst" style={{ padding: '2px'}}>
+		<div className="mn-blg-pst" style={{ padding: '2px' }}>
 			<img right={right} width={width} height={height} src={imgSrc} alt="source" />
-			<div className="nsd-hr-img  ml-2" 
-			style={{transform:"translateY(-120%)"}}>
+			<div className="nsd-hr-img  ml-2" style={{ transform: 'translateY(-120%)' }}>
 				<div>
-					<h2 style={{color: 'white', fontSize: fontSize }}>
+					<h2 style={{ color: 'white', fontSize: fontSize }}>
 						Lorem Ipsum is simply dummy text of the printing
 					</h2>
-					<span style={{color: 'white'}}>
+					<span style={{ color: 'white' }}>
 						By : Someone <MdDateRange /> March 12,2017 <AiOutlineComment /> 4
 					</span>
 				</div>
@@ -38,19 +40,22 @@ const FeaturedBlog = () => {
 					alt=" source"
 				/>
 			</div>
-			<div style={{marginTop:"3px"}}>
+			<div style={{ marginTop: '3px' }}>
 				<h6>Here is heading About the blog that is related to their topics</h6>
 			</div>
 			<p style={{ fontSize: '10px', color: 'gray' }}>
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
 				industry's standard dummy text ever since the 1500s,
 			</p>
-			<br/>
-			<div style={{ display: 'flex', justifyContent: 'space-between', marginTop:"10px" }}>
+			<br />
+			<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
 				<h6 style={{ fontWeight: 'bolder', fontSize: '10px' }}>
-					Steve Jobs  &nbsp; &nbsp;<span style={{ fontWeight: 'lighter',  fontSize: '10px' }}> August 17,2018</span>
+					Steve Jobs &nbsp; &nbsp;<span style={{ fontWeight: 'lighter', fontSize: '10px' }}>
+						{' '}
+						August 17,2018
+					</span>
 				</h6>
-				<hr/>
+				<hr />
 			</div>
 		</div>
 	);
@@ -69,8 +74,8 @@ const LatestBlog = () => {
 					<h6>Develop & design</h6>
 				</div>
 			</div>
-			<div style={{marginTop:"26px"}}>
-				<h6 style={{ fontSize:"10px"}}>Here is heading About the blog that is related to their topics</h6>
+			<div style={{ marginTop: '26px' }}>
+				<h6 style={{ fontSize: '10px' }}>Here is heading About the blog that is related to their topics</h6>
 			</div>
 			<div style={{ display: 'flex' }}>
 				<p style={{ fontWeight: 'bolder', fontSize: '10px' }}>
@@ -91,15 +96,17 @@ const DesignHouse = () => {
 					alt=" source"
 				/>
 				<div className="featured-card-overly">
-					<p style={{fontSize:"10px"}}>Develop & design</p>
+					<p style={{ fontSize: '10px' }}>Develop & design</p>
 				</div>
 			</div>
 			<div style={{ padding: '5px' }}>
 				<h6>Here is heading About the blog that is related to their topics</h6>
 			</div>
 			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-				<p style={{ fontWeight: 'lighter', fontSize:"10px" }}>
-					Steve Jobs &nbsp;&nbsp;&nbsp;<span style={{ fontWeight: 'lighter', fontSize: '10px' }}>August 17,2018</span>
+				<p style={{ fontWeight: 'lighter', fontSize: '10px' }}>
+					Steve Jobs &nbsp;&nbsp;&nbsp;<span style={{ fontWeight: 'lighter', fontSize: '10px' }}>
+						August 17,2018
+					</span>
 				</p>
 			</div>
 		</div>
@@ -110,7 +117,8 @@ const MostPopular = () => {
 	return (
 		<div className="most-popular mt-3 mb-1">
 			<div>
-				<img id="mostpopularimg"
+				<img
+					id="mostpopularimg"
 					width="100px"
 					height="80px"
 					src="https://images.unsplash.com/photo-1611338522368-3fccf11b4afd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
@@ -118,9 +126,11 @@ const MostPopular = () => {
 				/>
 			</div>
 			<div>
-				<p style={{fontSize: '12px', margin:"0" }}>Here is heading about the post blog that is related to their blog</p>
-				<br/>
-				<br/>
+				<p style={{ fontSize: '12px', margin: '0' }}>
+					Here is heading about the post blog that is related to their blog
+				</p>
+				<br />
+				<br />
 				<span>August222,2020</span>
 			</div>
 		</div>
@@ -129,10 +139,10 @@ const MostPopular = () => {
 
 const SocialConnection = ({ Icon, sb, message }) => {
 	return (
-		<div style={{ display: 'flex', justifyContent: 'space-between', marginTop:"4px"}}>
+		<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px' }}>
 			<div>
 				{Icon}
-				<span style={{ marginLeft: '15px', fontWeight: 'bolder' }}></span>
+				<span style={{ marginLeft: '15px', fontWeight: 'bolder' }} />
 			</div>
 			<div style={{ marginTop: '20px', fontWeight: 'bold' }}>{message}</div>
 		</div>
@@ -140,10 +150,44 @@ const SocialConnection = ({ Icon, sb, message }) => {
 };
 
 function Main() {
+	const [ search, setSearch ] = useState('');
+	// const [ value, setValue ] = useState('');
+	const [ posts, setPosts ] = useState([]);
+	const handleSearch = (value) => {
+		axios.get(`${process.env.REACT_APP_API}/posts/${value}`).then((res) => {
+			console.log(res.data);
+			setPosts(res.data);
+		});
+	};
 	return (
-		<div className="container-fluid mt-5" style={{width:"999px"}}>
+		<div className="container-fluid mt-5" style={{ width: '999px' }}>
 			<div className="row">
-				<div className="col-sm-12 col-md-6 col-lg-6 position-relative" style={{transform:"translateX(-4px)"}}>
+				<div className="col-12" style={{ display: 'flex', justifyContent: 'space-between' }}>
+					<div>
+						{posts.map((post) => {
+							return (
+								<Link to={`/posts/${post.slug}`} key={post.slug}>
+									{post.title}
+								</Link>
+							);
+						})}
+					</div>
+					<div style={{ display: 'flex' }}>
+						<Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search Blog" />
+						<Button
+							onClick={() => {
+								
+								handleSearch(search);
+							}}
+						>
+							Search
+						</Button>
+					</div>
+				</div>
+				<div
+					className="col-sm-12 col-md-6 col-lg-6 position-relative"
+					style={{ transform: 'translateX(-4px)' }}
+				>
 					<MainBlogPosts
 						width="499px"
 						height="332.5px"
@@ -161,7 +205,7 @@ function Main() {
 								imgSrc="https://images.unsplash.com/photo-1515940175183-6798529cb860?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1187&q=80"
 							/>
 						</div>
-						<div className="col-sm-12 col-md-12 col-lg-12 position-absolute" style={{top:"182.5px"}}>
+						<div className="col-sm-12 col-md-12 col-lg-12 position-absolute" style={{ top: '182.5px' }}>
 							<div className="row position-relative">
 								<div className="col-sm-12 col-md-6 col-lg-6">
 									<MainBlogPosts
@@ -171,7 +215,7 @@ function Main() {
 										imgSrc="https://images.unsplash.com/photo-1611564393146-2819eeb1f335?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80"
 									/>
 								</div>
-								<div className="col-sm-12 col-md-6 col-lg-6" style={{transform:"translateX(-15px)"}}>
+								<div className="col-sm-12 col-md-6 col-lg-6" style={{ transform: 'translateX(-15px)' }}>
 									<MainBlogPosts
 										marginRight="5px"
 										width="107%"
@@ -185,7 +229,7 @@ function Main() {
 					</div>
 				</div>
 			</div>
-			<div className="row mt-5" id="fsectitle" style={{transform:"translateY(-110px)"}}>
+			<div className="row mt-5" id="fsectitle" style={{ transform: 'translateY(-110px)' }}>
 				<div className="col-sm-12 col-md-8 col-lg-8 d-inline">
 					<div className="black-heading d-inline-block">
 						<span style={{ backgroundColor: '#fcad03' }}>Don't Miss</span>
@@ -218,24 +262,20 @@ function Main() {
 						style={{ border: '2px solid black', backgroundColor: 'black', padding: '0px', margin: '0px' }}
 					/>
 					<SocialConnection Icon={<AiFillFacebook size={44} color="#3b5998" />} />
-					<SocialConnection
-						Icon={<AiFillYoutube size={44} color="#FF0000" />}
-					
-					/>
-					<hr/>
+					<SocialConnection Icon={<AiFillYoutube size={44} color="#FF0000" />} />
+					<hr />
 
 					<div className="col-sm-12 col-md-6 col-lg-12">
-							{[ 0, 1, 2, 3 ].map((item) => {
-								return <MostPopular />;
-							})}
-						</div>
-
+						{[ 0, 1, 2, 3 ].map((item) => {
+							return <MostPopular />;
+						})}
+					</div>
 				</div>
 			</div>
-			<div className="row mt-1" id="ssectitle" style={{transform:"translateY(-290px)"}}>
+			<div className="row mt-1" id="ssectitle" style={{ transform: 'translateY(-290px)' }}>
 				<div className="col-sm-12 col-md-8 col-lg-8">
-					<div className="black-heading" >
-						<span style={{ backgroundColor: 'green'}}>Don't Miss</span>
+					<div className="black-heading">
+						<span style={{ backgroundColor: 'green' }}>Don't Miss</span>
 						<p>All</p>
 					</div>
 					<hr
@@ -248,18 +288,17 @@ function Main() {
 					/>
 
 					<div className="row">
-					
 						<div className="col-sm-12 col-md-6 col-lg-6 mt-3">
 							<FeaturedBlog height="300px" />
-							<hr/>
+							<hr />
 							{[ 0, 1 ].map((i) => <MostPopular />)}
 						</div>
 						<div className="col-sm-12 col-md-6 col-lg-6 mt-3">
 							<FeaturedBlog height="300px" />
-							<hr/>
+							<hr />
 							{[ 0, 1 ].map((i) => <MostPopular />)}
 						</div>
-						
+
 						<div className="col-sm-12 col-md-12 col-lg-12 mt-5" id="tsectitle">
 							<div className="black-heading">
 								<span style={{ backgroundColor: 'grey' }}>House Design</span>

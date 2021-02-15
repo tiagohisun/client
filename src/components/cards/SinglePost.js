@@ -4,13 +4,13 @@ import axios from "axios";
 import AdminNav from "../../components/nav/AdminNav";
 import renderHTML from "react-render-html";
 import Laptop from "../../images/laptop.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getPostsByCount, fetchPostsByFilter } from "../../functions/post";
 
 const SinglePost = (props) => {
-  const [post, setPost] = useState("");
+  const [post, setPost] = useState([]);
   const [posts, setPosts] = useState([]);
-
+  const { slug} = useParams();
   useEffect(() => {
     getPostsByCount(20).then((p) => {
       setPosts(p.data);
@@ -19,8 +19,14 @@ const SinglePost = (props) => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/post/${props.match.params.slug}`)
-      .then((response) => setPost(response.data))
+      .get(`${process.env.REACT_APP_API}/posts/${slug}`)
+      .then((response) => {
+        if (response.data) {
+          setPost(response.data)
+          console.log("Single Post", response.data)
+        }
+        
+      })
       .catch((error) => alert("Error loading single post"));
   }, []);
   let categoreypost = [];
@@ -62,22 +68,26 @@ const SinglePost = (props) => {
         <div className="col-md-8 col-12">
           <br />
           <div>
-            <img
+            {post.map(i => {
+              return (
+                <img
               className="p-1 img-fluid"
               src={
-                post.images && post.images.length ? post.images[0].url : Laptop
+                i.images ? i.images[0].url : Laptop
               }
               style={{ width: "800px", height: "300px", objectFit: "cover" }}
             />
-            <div> {post.title} </div>
+              )
+            }).slice(0,1)}
+            
+            <div> {post.map(t=> t.title)} </div>
             <hr />
-            <div className="lead pt-3">
-              {renderHTML(post && post.description)}
-            </div>
+            <div className="lead pt-3" dangerouslySetInnerHTML={{__html:post.map(d => d.description)}} />
+             
             <p>
               Author <span className="badge">{post.user}</span> Published on{" "}
               <span className="badge">
-                {new Date(post.createdAt).toLocaleString()}
+                {new Date(post.map(c=>c.createdAt)).toLocaleString()}
               </span>
             </p>
           </div>
