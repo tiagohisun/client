@@ -85,7 +85,7 @@ const SinglePost = (props) => {
             <p>
               Author <span className="badge">{post.user}</span> Published on{" "}
               <span className="badge">
-                {new Date(post.createdAt)}
+                {new Date(post.createdAt).toString()}
               </span>
             </p>
           </div>
