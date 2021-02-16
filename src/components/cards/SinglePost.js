@@ -80,14 +80,14 @@ const SinglePost = (props) => {
               )
             }).slice(0,1)}
             
-            <div> {post.map(t=> t.title)} </div>
+            <div> {post.map(t=> t.title).slice(0,1)} </div>
             <hr />
-            <div className="lead pt-3" dangerouslySetInnerHTML={{__html:post.map(d => d.description)}} />
+            <div className="lead pt-3" dangerouslySetInnerHTML={{__html:post.map(d => d.description).slice(0,1)}} />
              
             <p>
               Author <span className="badge">{post.user}</span> Published on{" "}
               <span className="badge">
-                {new Date(post.map(c=>c.createdAt)).toLocaleString()}
+                {new Date(post.map(c=>c.createdAt).slice(0,1)).toLocaleString()}
               </span>
             </p>
           </div>

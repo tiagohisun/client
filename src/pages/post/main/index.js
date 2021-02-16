@@ -154,7 +154,7 @@ function Main() {
 	// const [ value, setValue ] = useState('');
 	const [ posts, setPosts ] = useState([]);
 	const handleSearch = (value) => {
-		axios.get(`${process.env.REACT_APP_API}/posts/${value}`).then((res) => {
+		axios.get(`${process.env.REACT_APP_API}/post/search/${value}`).then((res) => {
 			setPosts(res.data);
 		});
 	};
@@ -165,9 +165,11 @@ function Main() {
 					<div style={{ display: 'flex' }}>
 						<Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search Blog" />
 						<Button
-							onClick={() => {
-								handleSearch(search);
-							}}
+						disabled="true"
+							onClick={
+								
+								handleSearch(search)
+							}
 						>
 							Search
 						</Button>
@@ -175,13 +177,32 @@ function Main() {
 				</div>
 				<div className="col-12">
 					<div style={{ padding:'3px 10px'}}>
-						{posts.map((post) => {
+					{search.length===0 ? "" :posts ===null ?<div>Not found</div> : posts.map((post) => {
+							if (!post) {
+								return(<div>Blog Not found</div>)
+							}
 							return (
+								<div style={{fontSize:"20px"}}>
 								<Link to={`/posts/${post.slug}`} key={post.slug}>
 									{post.title}
 								</Link>
+								<br />
+								</div>
 							);
-						})}
+						})  }
+						{/* {posts ===null ?<div>Not found</div> : posts.map((post) => {
+							if (!post) {
+								return(<div>Blog Not found</div>)
+							}
+							return (
+								<div>
+								<Link to={`/posts/${post.slug}`} key={post.slug}>
+									{post.title}
+								</Link>
+								<br />
+								</div>
+							);
+						})} */}
 					</div>
 				</div>
 				<div
