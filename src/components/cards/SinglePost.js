@@ -11,6 +11,7 @@ const SinglePost = (props) => {
   const [post, setPost] = useState([]);
   const [posts, setPosts] = useState([]);
   const { slug} = useParams();
+  console.log(slug)
   useEffect(() => {
     getPostsByCount(20).then((p) => {
       setPosts(p.data);
@@ -19,7 +20,7 @@ const SinglePost = (props) => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/posts/${slug}`)
+      .get(`${process.env.REACT_APP_API}/post/${slug}`)
       .then((response) => {
         if (response.data) {
           setPost(response.data)
@@ -68,26 +69,23 @@ const SinglePost = (props) => {
         <div className="col-md-8 col-12">
           <br />
           <div>
-            {post.map(i => {
-              return (
                 <img
               className="p-1 img-fluid"
               src={
-                i.images ? i.images[0].url : Laptop
+                post.images ? post.images[0].url : Laptop
               }
               style={{ width: "800px", height: "300px", objectFit: "cover" }}
             />
-              )
-            }).slice(0,1)}
+              
             
-            <div> {post.map(t=> t.title).slice(0,1)} </div>
+            <div> {post.title} </div>
             <hr />
-            <div className="lead pt-3" dangerouslySetInnerHTML={{__html:post.map(d => d.description).slice(0,1)}} />
+            <div className="lead pt-3" dangerouslySetInnerHTML={{__html:post.description}} />
              
             <p>
               Author <span className="badge">{post.user}</span> Published on{" "}
               <span className="badge">
-                {new Date(post.map(c=>c.createdAt).slice(0,1)).toLocaleString()}
+                {new Date(post.createdAt)}
               </span>
             </p>
           </div>
