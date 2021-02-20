@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdDateRange } from 'react-icons/md';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+// import { } from '../../../functions/post'
 import {
 	AiOutlineComment,
 	AiOutlineArrowLeft,
@@ -12,15 +13,13 @@ import {
 } from 'react-icons/ai';
 import './style.scss';
 import { Input, Button } from 'antd';
-const MainBlogPosts = ({ right, height, width, fontSize, imgSrc }) => {
+const MainBlogPosts = ({ right, height, width, fontSize, imgSrc, desc, title }) => {
 	return (
 		<div className="mn-blg-pst" style={{ padding: '2px' }}>
 			<img right={right} width={width} height={height} src={imgSrc} alt="source" />
 			<div className="nsd-hr-img  ml-2" style={{ transform: 'translateY(-120%)' }}>
 				<div>
-					<h2 style={{ color: 'white', fontSize: fontSize }}>
-						Lorem Ipsum is simply dummy text of the printing
-					</h2>
+					<h2 style={{ color: 'white', fontSize: fontSize }}>{title}</h2>
 					<span style={{ color: 'white' }}>
 						By : Someone <MdDateRange /> March 12,2017 <AiOutlineComment /> 4
 					</span>
@@ -30,23 +29,17 @@ const MainBlogPosts = ({ right, height, width, fontSize, imgSrc }) => {
 	);
 };
 
-const FeaturedBlog = () => {
+const FeaturedBlog = ({ imgSrc, title, desc }) => {
 	return (
 		<div className="">
 			<div className="ftd-crd">
-				<img
-					width="100%"
-					src="https://images.unsplash.com/photo-1611338522368-3fccf11b4afd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-					alt=" source"
-				/>
+				<img width="100%" src={imgSrc} alt=" source" />
 			</div>
 			<div style={{ marginTop: '3px' }}>
-				<h6>Here is heading About the blog that is related to their topics</h6>
+				<h6>{title}</h6>
 			</div>
-			<p style={{ fontSize: '10px', color: 'gray' }}>
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-				industry's standard dummy text ever since the 1500s,
-			</p>
+			<p style={{ fontSize: '10px', color: 'gray' }} dangerouslySetInnerHTML={{ __html: desc }} />
+
 			<br />
 			<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
 				<h6 style={{ fontWeight: 'bolder', fontSize: '10px' }}>
@@ -136,6 +129,29 @@ const MostPopular = () => {
 		</div>
 	);
 };
+const DentalPopular = ({imgSrc,title,desc}) => {
+	return (
+		<div className="most-popular mt-3 mb-1">
+			<div>
+				<img
+					id="mostpopularimg"
+					width="100px"
+					height="80px"
+					src={imgSrc}
+					alt=" source"
+				/>
+			</div>
+			<div>
+				<p style={{ fontSize: '12px', margin: '0' }}>
+					{title}
+				</p>
+				<br />
+				<br />
+				<span>August 22,2020</span>
+			</div>
+		</div>
+	);
+};
 
 const SocialConnection = ({ Icon, sb, message }) => {
 	return (
@@ -153,43 +169,59 @@ function Main() {
 	const [ search, setSearch ] = useState('');
 	// const [ value, setValue ] = useState('');
 	const [ posts, setPosts ] = useState([]);
+	const [ dental, setDental ] = useState([]);
+	const [ technology, setTechnology ] = useState([]);
+	const [ education, setEducation ] = useState([]);
 	const handleSearch = (value) => {
 		axios.get(`${process.env.REACT_APP_API}/post/search/${value}`).then((res) => {
 			setPosts(res.data);
 		});
 	};
+	useEffect(() => {
+		axios.post(`${process.env.REACT_APP_API}/posts`).then((res) => {
+			if (res.data) {
+				const dentalNews = res.data.filter((i) => i.postcategory.slug === 'dental-news');
+				const techno = res.data.filter((i) => i.postcategory.slug === 'technology');
+				const edu = res.data.filter((i) => i.postcategory.slug === 'education');
+				setEducation(edu);
+				setTechnology(techno);
+				setDental(dentalNews);
+			}
+		});
+	}, []);
+	console.log(dental.map((i) => i).reverse());
 	return (
 		<div className="container-fluid mt-5" style={{ width: '999px' }}>
 			<div className="row">
 				<div className="col-12">
 					<div style={{ display: 'flex' }}>
 						<Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search Blog" />
-						<Button
-						disabled="true"
-							onClick={
-								
-								handleSearch(search)
-							}
-						>
+						<Button disabled="true" onClick={handleSearch(search)}>
 							Search
 						</Button>
 					</div>
 				</div>
 				<div className="col-12">
-					<div style={{ padding:'3px 10px'}}>
-					{search.length===0 ? "" :posts ===null ?<div>Not found</div> : posts.map((post) => {
-							if (!post) {
-								return(<div>Blog Not found</div>)
-							}
-							return (
-								<div style={{fontSize:"20px"}}>
-								<Link to={`/posts/${post.slug}`} key={post.slug}>
-									{post.title}
-								</Link>
-								<br />
-								</div>
-							);
-						})  }
+					<div style={{ padding: '3px 10px' }}>
+						{search.length === 0 ? (
+							''
+						) : posts === null ? (
+							<div>Not found</div>
+						) : (
+							posts.map((post) => {
+								if (!post) {
+									return <div>Blog Not found</div>;
+								}
+								return (
+									<div style={{ fontSize: '20px' }}>
+										<Link to={`/posts/${post.slug}`} key={post.slug}>
+											{post.title}
+										</Link>
+										<br />
+									</div>
+								);
+							})
+						)}
 						{/* {posts ===null ?<div>Not found</div> : posts.map((post) => {
 							if (!post) {
 								return(<div>Blog Not found</div>)
@@ -213,7 +245,9 @@ function Main() {
 						width="499px"
 						height="332.5px"
 						fontSize="22px"
-						imgSrc="https://images.unsplash.com/photo-1611564393146-2819eeb1f335?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80"
+						imgSrc={dental.map((i) => i.images[0].url).reverse().slice(0, 1)}
+						desc={dental.map((i) => i.description).reverse().slice(0, 1)}
+						title={dental.map((i) => i.title).reverse().slice(0, 1)}
 					/>
 				</div>
 				<div className="col-sm-12 col-md-6 col-lg-6">
@@ -223,7 +257,9 @@ function Main() {
 								width="100%"
 								height="180px"
 								fontSize="20px"
-								imgSrc="https://images.unsplash.com/photo-1515940175183-6798529cb860?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1187&q=80"
+								imgSrc={technology.map((i) => i.images[0].url).reverse().slice(0, 1)}
+								desc={technology.map((i) => i.description).reverse().slice(0, 1)}
+								title={technology.map((i) => i.title).reverse().slice(0, 1)}
 							/>
 						</div>
 						<div className="col-sm-12 col-md-12 col-lg-12 position-absolute" style={{ top: '182.5px' }}>
@@ -233,7 +269,9 @@ function Main() {
 										width="107%"
 										fontSize="12px"
 										height="150px"
-										imgSrc="https://images.unsplash.com/photo-1611564393146-2819eeb1f335?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80"
+										imgSrc={education.map((i) => i.images[0].url).reverse().slice(0, 1)}
+										desc={education.map((i) => i.description).reverse().slice(0, 1)}
+										title={education.map((i) => i.title).reverse().slice(0, 1)}
 									/>
 								</div>
 								<div className="col-sm-12 col-md-6 col-lg-6" style={{ transform: 'translateX(-15px)' }}>
@@ -242,7 +280,9 @@ function Main() {
 										width="107%"
 										fontSize="12px"
 										height="150px"
-										imgSrc="https://images.unsplash.com/photo-1611564393146-2819eeb1f335?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80"
+										imgSrc={education.map((i) => i.images[0].url).reverse().slice(1, 2)}
+										desc={education.map((i) => i.description).reverse().slice(1, 2)}
+										title={education.map((i) => i.title).reverse().slice(1, 2)}
 									/>
 								</div>
 							</div>
@@ -266,12 +306,20 @@ function Main() {
 					/>
 					<div className="row">
 						<div className="col-sm-12 col-md-6 col-lg-6 mt-3">
-							<FeaturedBlog height="300px" />
+							<FeaturedBlog
+								height="300px"
+								imgSrc={dental.map((i) => i.images[0].url).reverse().slice(1, 2)}
+								desc={dental.map((i) => i.description).reverse().slice(1, 2)}
+								title={dental.map((i) => i.title).reverse().slice(1, 2)}
+							/>
 						</div>
 						<div className="col-sm-12 col-md-6 col-lg-6">
-							{[ 0, 1, 2, 3 ].map((item) => {
-								return <MostPopular />;
-							})}
+							{dental
+								.map((i) => {
+									return <DentalPopular imgSrc={i.images[0].url} title={i.title} desc={i.desc} />;
+								})
+								.reverse()
+								.slice(2, 6)}
 						</div>
 					</div>
 				</div>
