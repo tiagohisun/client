@@ -129,22 +129,14 @@ const MostPopular = () => {
 		</div>
 	);
 };
-const DentalPopular = ({imgSrc,title,desc}) => {
+const DentalPopular = ({ imgSrc, title, desc }) => {
 	return (
 		<div className="most-popular mt-3 mb-1">
 			<div>
-				<img
-					id="mostpopularimg"
-					width="100px"
-					height="80px"
-					src={imgSrc}
-					alt=" source"
-				/>
+				<img id="mostpopularimg" width="100px" height="80px" src={imgSrc} alt=" source" />
 			</div>
 			<div>
-				<p style={{ fontSize: '12px', margin: '0' }}>
-					{title}
-				</p>
+				<p style={{ fontSize: '12px', margin: '0' }}>{title}</p>
 				<br />
 				<br />
 				<span>August 22,2020</span>
@@ -241,49 +233,57 @@ function Main() {
 					className="col-sm-12 col-md-6 col-lg-6 position-relative"
 					style={{ transform: 'translateX(-4px)' }}
 				>
-					<MainBlogPosts
-						width="499px"
-						height="332.5px"
-						fontSize="22px"
-						imgSrc={dental.map((i) => i.images[0].url).reverse().slice(0, 1)}
-						desc={dental.map((i) => i.description).reverse().slice(0, 1)}
-						title={dental.map((i) => i.title).reverse().slice(0, 1)}
-					/>
+					<Link to={`/post/${dental.map((i) => i.slug).reverse().slice(0, 1)}`}>
+						<MainBlogPosts
+							width="499px"
+							height="332.5px"
+							fontSize="22px"
+							imgSrc={dental.map((i) => i.images[0].url).reverse().slice(0, 1)}
+							desc={dental.map((i) => i.description).reverse().slice(0, 1)}
+							title={dental.map((i) => i.title).reverse().slice(0, 1)}
+						/>
+					</Link>
 				</div>
 				<div className="col-sm-12 col-md-6 col-lg-6">
 					<div className="row">
 						<div className="col-sm-12 col-md-12 col-lg-12">
-							<MainBlogPosts
-								width="100%"
-								height="180px"
-								fontSize="20px"
-								imgSrc={technology.map((i) => i.images[0].url).reverse().slice(0, 1)}
-								desc={technology.map((i) => i.description).reverse().slice(0, 1)}
-								title={technology.map((i) => i.title).reverse().slice(0, 1)}
-							/>
+							<Link to={`/post/${technology.map((i) => i.slug).reverse().slice(0, 1)}`}>
+								<MainBlogPosts
+									width="100%"
+									height="180px"
+									fontSize="20px"
+									imgSrc={technology.map((i) => i.images[0].url).reverse().slice(0, 1)}
+									desc={technology.map((i) => i.description).reverse().slice(0, 1)}
+									title={technology.map((i) => i.title).reverse().slice(0, 1)}
+								/>
+							</Link>
 						</div>
 						<div className="col-sm-12 col-md-12 col-lg-12 position-absolute" style={{ top: '182.5px' }}>
 							<div className="row position-relative">
 								<div className="col-sm-12 col-md-6 col-lg-6">
-									<MainBlogPosts
-										width="107%"
-										fontSize="12px"
-										height="150px"
-										imgSrc={education.map((i) => i.images[0].url).reverse().slice(0, 1)}
-										desc={education.map((i) => i.description).reverse().slice(0, 1)}
-										title={education.map((i) => i.title).reverse().slice(0, 1)}
-									/>
+									<Link to={`/post/${education.map((i) => i.slug).reverse().slice(0, 1)}`}>
+										<MainBlogPosts
+											width="107%"
+											fontSize="12px"
+											height="150px"
+											imgSrc={education.map((i) => i.images[0].url).reverse().slice(0, 1)}
+											desc={education.map((i) => i.description).reverse().slice(0, 1)}
+											title={education.map((i) => i.title).reverse().slice(0, 1)}
+										/>
+									</Link>
 								</div>
 								<div className="col-sm-12 col-md-6 col-lg-6" style={{ transform: 'translateX(-15px)' }}>
-									<MainBlogPosts
-										marginRight="5px"
-										width="107%"
-										fontSize="12px"
-										height="150px"
-										imgSrc={education.map((i) => i.images[0].url).reverse().slice(1, 2)}
-										desc={education.map((i) => i.description).reverse().slice(1, 2)}
-										title={education.map((i) => i.title).reverse().slice(1, 2)}
-									/>
+									<Link to={`/post/${education.map((i) => i.slug).reverse().slice(1, 2)}`}>
+										<MainBlogPosts
+											marginRight="5px"
+											width="107%"
+											fontSize="12px"
+											height="150px"
+											imgSrc={education.map((i) => i.images[0].url).reverse().slice(1, 2)}
+											desc={education.map((i) => i.description).reverse().slice(1, 2)}
+											title={education.map((i) => i.title).reverse().slice(1, 2)}
+										/>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -306,17 +306,24 @@ function Main() {
 					/>
 					<div className="row">
 						<div className="col-sm-12 col-md-6 col-lg-6 mt-3">
-							<FeaturedBlog
-								height="300px"
-								imgSrc={dental.map((i) => i.images[0].url).reverse().slice(1, 2)}
-								desc={dental.map((i) => i.description).reverse().slice(1, 2)}
-								title={dental.map((i) => i.title).reverse().slice(1, 2)}
-							/>
+							<Link to={`/post/${dental.map((i) => i.slug).reverse().slice(1, 2)}`}>
+								<FeaturedBlog
+									height="300px"
+									imgSrc={dental.map((i) => i.images[0].url).reverse().slice(1, 2)}
+									desc={dental.map((i) => i.description).reverse().slice(1, 2)}
+									title={dental.map((i) => i.title).reverse().slice(1, 2)}
+								/>
+							</Link>
 						</div>
 						<div className="col-sm-12 col-md-6 col-lg-6">
 							{dental
 								.map((i) => {
-									return <DentalPopular imgSrc={i.images[0].url} title={i.title} desc={i.desc} />;
+									return (
+										<Link to={`/post/${i.slug}`} key={i.slug}>
+											{' '}
+											<DentalPopular imgSrc={i.images[0].url} title={i.title} desc={i.desc} />
+										</Link>
+									);
 								})
 								.reverse()
 								.slice(2, 6)}
