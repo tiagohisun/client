@@ -82,141 +82,109 @@ const About = () => {
 					<br />
 					<br />
 					<br />
-					<h5 id="privacy"> Privacy Policy </h5>
-					We prioritize the privacy of our visitors to this site so we provide below the types of information
-					that are collected and handled.
+					<h5 id="privacy"> {t("PP")} </h5>
+					{t("WpT")}
 					<br />
 					<br />
-					Log Files DENTAL04 follows the standard procedure of using log files. These files log visitors while
-					they visit the site.
+					{t("LF")}
 					<br />
-					Companies do it for it´s part of the analytical service of servers. The information collected
-					includes IP addresses, ISP page type, date, referral / exit pages and possibly the number of clicks.
+					{t("CdI")}
 					<br />
 					<br />
-					This information log is not linked to any personally identifiable information. Its purpose is only
-					to analyze trends, managing the site, tracking users' movements within this website. For more
-					information, contact us at <strong>contato@dental04.com</strong>
+					{t("TiL")} <strong>{t("FmI")}</strong>
 					<br />
 					<br />
-					<h5 id="cookies"> Cookies and Web Beacons </h5>
-					Like any other website, DENTAL04 uses 'cookies'.
+					<h5 id="cookies"> {t("CaW")}</h5>
+					{t("LaO")}
 					<br />
-					They are used to store information that includes, user preferences visitors and the pages they
-					visit. They are used to optimize user experience based on that information.
-					<br />
-					<br />
-					Policy
-					<br />
-					DENTAL04 Third Party Privacy Policy does not apply to other advertisers or third party sites.
-					Therefore, we advise you to consult their respective privacy policies. You can disable the cookies
-					function in the options on your page.
-					<br />
-					We do not collect any information from individuals under the age of 18. If you find any mistake in
-					any registration, please inform us to remove such information from our records as soon as possible.
-					This Privacy Policy applies only to our online activities and is valid for visitors to our website
-					regarding the information they share or collect from DENTAL04.
+					{t("TaU")}
 					<br />
 					<br />
-					This policy does not applies to any information collected offline or by other means to this site.
-					Using this website, you declare to be aware of our Privacy Policy and agree to its Terms and
-					Conditions.
+					{t("Pl")}
+					<br />
+					{t("DTP")}
+					<br />
+					{t("WdN")}
 					<br />
 					<br />
-					<h5 id="delivery"> Delivery, Terms and Price Policies </h5>
-					Regarding Transport: In the sales negotiations for x-rays units, DENTAL04 does not provide transport
-					in any case.
+					{t("TpD")}
 					<br />
 					<br />
-					For this reason, prices and transportation terms are due to the carriers chosen by one of the
-					parties (buyer or seller).
+					<h5 id="delivery"> {t("DTPo")} </h5>
+					{t("RtI")}
 					<br />
 					<br />
-					Regarding Remote Support and Sales: The values ​​and terms of remote support or any other service
-					can be informed through <strong>contato@dental04.com</strong>.
+					{t("FtR")}
 					<br />
 					<br />
-					Carriers: The price for carrier companies to transport the units after sold, are in charge of the
-					buyer or seller.
+					{t("RRS")}
 					<br />
 					<br />
-					Payment:
-					<br />
-					Transport: DENTAL04 does NOT receive any DIRECT payment related to transportation of the negotiated
-					machines. It should be treated directly with the carrier.
+					{t("Car")}
 					<br />
 					<br />
-					On-site Assistance or Remote:
+					{t("Pay")}
 					<br />
-					DENTAL04 does not receive advance payment for its remote support or any other servic. The buyer of
-					the service (customer) transfer the payment ONLY AFTER the service is completed successfully or the
-					problem diagnosed.
+					{t("Tra")}
 					<br />
 					<br />
-					<h5 id="guidance"> Guidance and Restrictions </h5>
-					Regarding On-site or Remote Assistance:
+					{t("OS")}
 					<br />
-					DENTAL04 meets all regions including abroad in Portuguese, English and Spanish languages. About the
-					Means of Transport or Access:
+					{t("DdN")}
 					<br />
 					<br />
-					Exchange Policy and Returns In Case Transport:
+					<h5 id="guidance"> {t("GR")}</h5>
+					{t("RoS")}
 					<br />
-					In sales made or intermediated by DENTAL04, it is the responsibility of the device owner (seller) to
-					decide upon contract the term or policy for returning the device if it´s defective. Such policy is
-					informed to the buyer before the act (closing) of the sale.
-					<br />
-					<br />
-					Remote Access:
-					<br />
-					The main means used for access is the Teamviewer or Anydesk access program. For necessary reasons,
-					other access softwares, can be used ALWAYS with the client's prior consent.
+					{t("DMA")}
+					{t("AMO")}
 					<br />
 					<br />
-					<h5 id="warranty"> Warranty Policy </h5>
+					{t("EPR")}
 					<br />
-					DENTAL04 does not provide a guarantee because it only intermediate the sale. So the products-sold
-					warranty responsibility of the dea(ls) are for the seller (product owner)
-					<br />
-					However, in Brazil, it´s a federal law according to the{' '}
-					<strong>Consumer Protection - Law 8,078 / 90</strong>
-					&nbsp;, the minimum of 3 months in any sale shall be made against device defects, such defect
-					originating from of the machine, not caused by third party failures.
+					{t("ISM")}
 					<br />
 					<br />
-					<h5 id="security"> Security Policy </h5>
-					Although DENTAL04 applies certain safety filters in the treatment of sales of the machines in which
-					it is involved, it is still recommended to observe standard and additional precautions when selling
-					machines carried out customer-to-customer for more security of parts of the business treated, such
-					as:
+					{t("RA")}
+					<br />
+					{t("TMM")}
 					<br />
 					<br />
-					1. Get to know the buyer as much as possible, even if he/she has a physical workplace (clinic,
-					office, etc.), characteristic of a potential buyer of x-ray devices.
+					<h5 id="warranty"> {t("WPo")} </h5>
+					<br />
+					{t("DdNP")}
+					<br />
+					{t("HiB")}{' '}
+					<strong>{t("CP")}</strong>
+					&nbsp;, {t("TMO")}
 					<br />
 					<br />
-					2. DON´T provide any personal data from documents without finding out who the possible buyer /
-					seller.
+					<h5 id="security"> {t("SP")}</h5>
+					{t("ADA")}
 					<br />
 					<br />
-					3. DON´T buy or sell if you make a contract without registering your signatures in notary´s office.
+					{t("1")}
 					<br />
 					<br />
-					4. DON´T base your purchase or sale solely on texts or application messages, if both parties do not
-					know each other. Also notice if you suspect any subtle plots.
+					{t("2")}
 					<br />
 					<br />
-					5. NEVER meet personally without being aware of the buyer or seller previously.
+					{t("3")}
 					<br />
 					<br />
-					6. Watch out for possible misleading messages from request for payments, or personal data mainly
-					anticipated.
+					{t("4")}
 					<br />
 					<br />
-					7. Record all messages and calls or video calls of the talks in the negotiations.
+					{t("5")}
 					<br />
 					<br />
-					8. Obtain the serial number of the device or product and track it.
+					{t("6")}
+					<br />
+					<br />
+					{t("7")}
+					<br />
+					<br />
+					{t("8")}
 				</div>
         </div>
 				
