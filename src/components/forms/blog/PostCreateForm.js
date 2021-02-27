@@ -23,7 +23,7 @@ const PostCreateForm = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="form-group mt-3">
         <label>Title</label>
         <input
           type="text"
@@ -34,20 +34,7 @@ const PostCreateForm = ({
         />
       </div>
 
-      <div className="form-group">
-        <label>Description</label>
-        <ReactQuill
-          type="text"
-          name="description"
-          className="form-control"
-          value={body}
-          onChange={handleBody}
-          theme="snow"
-          modules={QuillModules}
-          formats={QuillFormats}
-        />
-      </div>
-      <div className="form-group">
+      <div className="form-group mt-5">
         <label>Post Category</label>
         <select
           name="postcategory"
@@ -63,6 +50,8 @@ const PostCreateForm = ({
             ))}
         </select>
       </div>
+         <br/>
+         <br/>
 
       {showTag && (
         <div>
@@ -83,6 +72,20 @@ const PostCreateForm = ({
           </Select>
         </div>
       )}
+
+      <div className="mt-3 pb-3">
+        <label>Description</label>
+        <ReactQuill
+          type="text"
+          name="description"
+          className="form-control mt-3 pb-3"
+          value={body}
+          onChange={handleBody}
+          theme="snow"
+          modules={QuillModules}
+          formats={QuillFormats}
+        />
+      </div>
 
       <br />
       <button className="btn btn-outline-info">Save</button>

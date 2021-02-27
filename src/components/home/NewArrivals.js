@@ -29,7 +29,7 @@ const NewArrivals = () => {
 
   return (
     <>
-      <div className="container" style={{transform:"translateY(-95px)"}}>
+      <div className="container" style={{transform:"translateY(-20px)"}}>
         {loading ? (
           <LoadingCard count={3} />
         ) : (
@@ -43,7 +43,7 @@ const NewArrivals = () => {
         )}
       </div>
 
-      <div className="row" style={{transform:"translateY(-75px)"}}>
+      <div className="row" style={{transform:"translateY(-35px)"}}>
         <div className="col-sm-12 col-md-4 col-lg-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
             className="ant-pagination-prev"

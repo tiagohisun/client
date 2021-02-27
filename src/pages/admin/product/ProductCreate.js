@@ -113,7 +113,7 @@ const ProductCreate = () => {
 
           {/* {JSON.stringify(values.images)} */}
 
-          <div className="pl-2">
+          <div className="pl-2 d-inline">
             <FileUpload
               values={values}
               setValues={setValues}

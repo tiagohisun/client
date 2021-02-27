@@ -15,10 +15,11 @@ const Tablegrid = (props) => {
 						<br />{' '}
 					</h4>
 					<p className="text-left">{t('QSM')}</p>
-					<button style={{textAlign:'center',width:'100%',margin:'50px 0px'}} type="button" className="btn btn-success mt-3">
-						{' '} 
-						<a href="/services">{t('CO')}</a>
+					<a href="/services">
+					<button style={{textAlign:'center',width:'30%',margin:'50px 0px'}} type="button" className="btn btn-success mt-3">
+						{' '} {t('CO')}
 					</button>
+						</a>
 				</div>
 
 				<div className="col-sm-12 col-md-4 col-lg-4">

@@ -69,7 +69,7 @@ const Banner = (props) => {
 						imaging
 					</p>
 
-					<img className="img" style={{ maxHeight: '300px' }} src={Slide1} alt={item.altText} />
+					<img className="img" style={{ minHeight: '500px', maxHeight: '800px' }} src={Slide1} alt={item.altText} />
 				</CarouselItem>
 			);
 		} else if (item.id === 2) {
@@ -94,7 +94,7 @@ const Banner = (props) => {
 					<button type="button" className=" button2 btn btn-success fadeInRight">
 						<a href="/shop">Check out</a>
 					</button>
-					<img className="img" style={{ maxHeight: '300px' }} src={Slide2} alt={item.altText} />
+					<img className="img" style={{ minHeight: '500px', maxHeight: '800px' }} src={Slide2} alt={item.altText} />
 				</CarouselItem>
 			);
 		} else {
@@ -120,7 +120,7 @@ const Banner = (props) => {
 					<button type="button" className="button3 btn btn-success fadeInLeft">
 						<a>Check out</a>
 					</button>
-					<img className="img" style={{ maxHeight: '300px' }} src={Slide3} alt={item.altText} />
+					<img className="img" style={{minHeight: '500px', maxHeight: '800px' }} src={Slide3} alt={item.altText} />
 				</CarouselItem>
 			);
 		}
@@ -152,15 +152,15 @@ const Banner = (props) => {
               position:absolute;
               background-color:#001f24;
               font-weight: 500; 
-              margin-top: 18%;
-              margin-left: 77.0%;
+              margin-top: 14%;
+              margin-left: 79.0%;
             }
 
             .button3 {
               position: absolute;
               background-color:#001f24;
-              margin-top: 17%;
-              margin-left: 14.0%;
+              margin-top: 10%;
+              margin-left: 15.0%;
             }
 
             .caption {
@@ -187,8 +187,8 @@ const Banner = (props) => {
               position:absolute;
               color:#001f24;
               font-weight: 500; 
-              margin-top: 13%;
-              padding-left: 56.0%;
+              margin-top: 10%;
+              padding-left: 66.0%;
               z-index:1;
             }
 
