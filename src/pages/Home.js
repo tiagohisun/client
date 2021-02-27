@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       <Banner/>
-      <h4 className="text-center p-3" style={{transform:"translateY(-80px)"}}>
+      <h4 className="text-center p-3" style={{transform:"translateY(-0px)"}}>
       <div className="text-danger h2 font-weight-bold text-center">
         <Jumbotron text={t("NA")} />
       </div>

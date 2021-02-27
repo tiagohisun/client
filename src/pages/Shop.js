@@ -332,7 +332,7 @@ const Shop = () => {
                 </span>
               }
             >
-              <div style={{ maringTop: "-10px" }}>{showStars()}</div>
+              <div style={{ maringTop: "-10px"}}>{showStars()}</div>
             </SubMenu>
 
             
@@ -346,9 +346,8 @@ const Shop = () => {
                 </span>
               }
             >
-              <div style={{ maringTop: "-10px" }} className="pr-5">
-                {showBrands()}
-              </div>
+              <div style={{ maringTop: "-10px", maxWidth:"200px" }}>{showBrands()} </div>
+            
             </SubMenu>
 
            

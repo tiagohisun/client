@@ -43,8 +43,9 @@ const ProductCreateForm = ({
           onChange={handleChange}
         />
       </div>
+      <br/>
 
-      <div className="form-group">
+      <div className="form-group pt-1">
         <label>Model</label>
         <select name="model" className="form-control" onChange={handleChange}>
           <option>Please select</option>
@@ -55,8 +56,9 @@ const ProductCreateForm = ({
           ))}
         </select>
       </div>
-
-      <div className="form-group">
+     <br/>
+      
+      <div className="form-group pt-3">
         <label>Year</label>
         <input
           type="number"
@@ -66,8 +68,9 @@ const ProductCreateForm = ({
           onChange={handleChange}
         />
       </div>
-
-      <div className="form-group">
+     <br/>
+         
+      <div className="form-group mt-2 pt-3">
         <label>Brand</label>
         <select name="brand" className="form-control" onChange={handleChange}>
           <option>Please select</option>
@@ -78,8 +81,9 @@ const ProductCreateForm = ({
           ))}
         </select>
       </div>
-
-      <div className="form-group">
+     <br/>
+    
+      <div className="form-group mt-2 pt-3">
         <label>Category</label>
         <select
           name="category"
@@ -95,8 +99,9 @@ const ProductCreateForm = ({
             ))}
         </select>
       </div>
-
-      <div className="form-group">
+     <br/>
+      
+      <div className="form-group mt-2 pt-3">
         <label>Location</label>
         <input
           type="location"
@@ -106,8 +111,9 @@ const ProductCreateForm = ({
           onChange={handleChange}
         />
       </div>
-      
-      <div className="form-group">
+           <br/>
+  
+      <div className="form-group mt-2 pt-3">
         <label>Availability</label>
         <select
           name="availability"
@@ -119,8 +125,9 @@ const ProductCreateForm = ({
           <option value="AVAILABLE">AVAILABLE</option>
         </select>
       </div>
-
-      <div className="form-group">
+     <br/>
+  
+      <div className="form-group mt-2 pt-3">
         <label>Quantity</label>
         <input
           type="number"
@@ -130,8 +137,9 @@ const ProductCreateForm = ({
           onChange={handleChange}
         />
       </div>
-
-      <div className="form-group">
+     <br/>
+  
+      <div className="form-group mt-2 pt-3">
         <label>Price</label>
         <input
           type="number"
@@ -141,8 +149,9 @@ const ProductCreateForm = ({
           onChange={handleChange}
         />
       </div>
-
-      <div className="form-group">
+     <br/>
+   
+      <div className="form-group mt-2 pt-3">
         <label>Description</label>
         <input
           type="text"
@@ -174,7 +183,7 @@ const ProductCreateForm = ({
               )}*/}
 
       <br />
-      <button className="btn btn-outline-info">Save</button>
+      <button className="btn btn-outline-info mt-3">Save</button>
     </form>
   );
 };
