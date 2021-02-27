@@ -170,8 +170,9 @@ function Main() {
 		});
 	};
 	useEffect(() => {
-		axios.post(`${process.env.REACT_APP_API}/posts`).then((res) => {
+		axios.get(`${process.env.REACT_APP_API}/postslist`).then((res) => {
 			if (res.data) {
+				console.log("useEffect",res.data)
 				const dentalNews = res.data.filter((i) => i.postcategory.slug === 'dental-news');
 				const techno = res.data.filter((i) => i.postcategory.slug === 'technology');
 				const edu = res.data.filter((i) => i.postcategory.slug === 'education');
@@ -181,7 +182,9 @@ function Main() {
 			}
 		});
 	}, []);
-	console.log(dental.map((i) => i).reverse());
+	// console.log("dental", dental);
+	// console.log("education", education);
+	// console.log("technology",technology);
 	return (
 		<div className="container-fluid mt-5" style={{ width: '999px' }}>
 			<div className="row">
