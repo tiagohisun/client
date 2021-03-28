@@ -34,7 +34,7 @@ const Service = () => {
 					<div className="col-12 mt-5 text-center">
 						<div className={styles.headingParagraph}>
 							<h1 style={{ fontSize: '40px', fontWeight: 'bold', marginBottom: '20px' }}>
-								{t('SERVIÇO COMPLETO')}
+								{t('COS')}
 							</h1>
 							<p>
 								{t('WP')}
