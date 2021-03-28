@@ -145,7 +145,7 @@ const Header = () => {
 
 					{!user && (
 						<Item key="login" className="float-right">
-							<Link to="/login">Login</Link>
+							<Link to="/login" style={{color:'white'}}>Login</Link>
 						</Item>
 					)}
 
