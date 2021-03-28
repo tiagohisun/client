@@ -15,10 +15,10 @@ const Boxes = (props) => {
 			className="container"
 		
 		>
-			<div className="row">
+			<div className="row" style={{marginLeft:'28px'}}>
 				<div className="col-sm-12 col-md-4 col-lg-4">
 					<Link to="/">
-						<div style={{ width: '350px', minheight: '300px' }} />
+						<div style={{width:'350px', minheight: '300px' }} />
 						<CardImg top style={{ width: '350px', height: '230px' }} src={blog} alt="Card image cap" />
 						<Card
 							style={{

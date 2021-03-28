@@ -85,7 +85,7 @@ const Footer = () => {
 						<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 							<div style={{ margin: '5px' }}>
 								<Link to="/">
-									<img style={{width: '150px', paddingBottom: '20px' }} src={logo} />
+									<img style={{transform: 'translateX(-80px)', width: '150px', padding: '20px' }} src={logo} />
 								</Link>
 
 								<div style={{ display: 'flex' }} className="mb-3">
@@ -104,7 +104,7 @@ const Footer = () => {
 									</div>
 								</div>
 								<div>
-									<p style={{ fontSize: '12px', paddingTop: '40px' }}>&copy; {t('CPR')}</p>
+									<p style={{transform: 'translateX(-40px)', fontSize: '12px', paddingTop: '40px' }}>&copy; {t('CPR')}</p>
 								</div>
 							</div>
 						</div>
