@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
-//import Nav from './Nav';
 import axios from "axios";
-import AdminNav from "../../components/nav/AdminNav";
 import renderHTML from "react-render-html";
-import Laptop from "../../images/laptop.png";
+
 import { Link, useParams } from "react-router-dom";
-import { getPostsByCount, fetchPostsByFilter } from "../../functions/post";
+import { getPostsByCount } from "../../functions/post";
+
+import "../../pages/post/main/css/woocommerce-layout.css";
+import "../../pages/post/main/css/woocommerce-smallscreen.css";
+import "../../pages/post/main/css/woocommerce.css";
+import "../../pages/post/main/css/woocommerce.css";
+import "../../pages/post/main/css/font-awesome.min.css";
+import "../../pages/post/main/css/easy-responsive-shortcodes.css";
+import "../../pages/post/main/style.css";
 
 const SinglePost = (props) => {
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState(null);
   const [posts, setPosts] = useState([]);
-  const { slug} = useParams();
-  console.log(slug)
+  const { slug } = useParams();
+
   useEffect(() => {
     getPostsByCount(20).then((p) => {
       setPosts(p.data);
@@ -23,204 +29,126 @@ const SinglePost = (props) => {
       .get(`${process.env.REACT_APP_API}/post/${slug}`)
       .then((response) => {
         if (response.data) {
-          setPost(response.data)
-          console.log("Single Post", response.data)
+          setPost(response.data);
         }
-        
       })
       .catch((error) => alert("Error loading single post"));
-  }, []);
-  let categoreypost = [];
-  let latestpost = [];
-  let educategorypostdesc = [];
-  let techcategorypostdesc = [];
-
-  //latestpost.push(posts[0]);
-  for (let i = 0; i < posts.length; i++) {
-    const element = posts[i];
-    if (i === posts.length - 1) {
-      latestpost.push(posts[i]);
-    }
-    //console.log(element.postcategory.name === "Dental News");
-    if (element.postcategory.name === "Dental News") {
-      // console.log(i, ":", element.postcategory.name);
-      categoreypost.push(posts[i]);
-    }
-    if (element.postcategory.name === "Education") {
-      educategorypostdesc.push(posts[i]);
-    }
-    if (element.postcategory.name === "Technology") {
-      techcategorypostdesc.push(posts[i]);
-    }
-  }
-
-  let six_card = [
-    ...categoreypost.slice(-2),
-    ...educategorypostdesc.slice(-2),
-    ...techcategorypostdesc.slice(-2),
-  ];
+  }, [slug]);
 
   return (
-    <div
-      className="container"
-      //   style={{ position: "relative", width: "700px", left: "200px" }}
-    >
-      <div className="row">
-        <div className="col-md-8 col-12">
-          <br />
-          <div>
-                <img
-              className="p-1 img-fluid"
-              src={
-                post.images ? post.images[0].url : Laptop
-              }
-              style={{ width: "800px", height: "300px", objectFit: "cover" }}
-            />
-              
-            
-            <div> {post.title} </div>
-            <hr />
-            <div className="lead pt-3" dangerouslySetInnerHTML={{__html:post.description}} />
-             
-            <p>
-              Author <span className="badge">{post.user}</span> Published on{" "}
-              <span className="badge">
-                {new Date(post.createdAt).toString()}
-              </span>
-            </p>
+    <div id="page">
+      <div className="container">
+        <header id="masthead" className="site-header">
+          <div className="site-branding">
+            <h1 className="site-title">
+              <Link to="/">Logo</Link>
+            </h1>
+          </div>
+          <nav id="site-navigation" className="main-navigation">
+            <button className="menu-toggle">Menu</button>
+            <a className="skip-link screen-reader-text" href="#content">
+              Skip to content
+            </a>
+            <div className="menu-menu-1-container">
+              <ul id="menu-menu-1" className="menu">
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/posts/category/dentalnews">Dental News</Link>
+                </li>
+                <li>
+                  <Link to="/posts/category/technology">Technology</Link>
+                </li>
+                <li>
+                  <Link to="/posts/category/education">Education</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+        <div id="content" className="site-content">
+          <div id="primary" className="content-area column two-thirds">
+            <main id="main" className="site-main" role="main">
+              {post && (
+                <article>
+                  <header className="entry-header">
+                    <h1 className="entry-title">{post.title}</h1>
+                    <div className="entry-meta">
+                      <span className="posted-on">
+                        <time className="entry-date published">
+                          {post.createdAt}
+                        </time>
+                      </span>
+                      <span className="comments-link">
+                        <a href="#">Leave a comment</a>
+                      </span>
+                    </div>
+                    <div className="entry-thumbnail">
+                      <img
+                        src={
+                          post.images.length > 0
+                            ? post.images[0].url
+                            : "https://www.themepush.com/demo-moschino/wp-content/uploads/sites/15/2015/09/p1.jpg"
+                        }
+                        alt=""
+                      />
+                    </div>
+                  </header>
+                  <div className="entry-content">
+                    {renderHTML(post.description)}
+                  </div>
+                </article>
+              )}
+            </main>
+          </div>
+          <div id="secondary" className="column third">
+            <div id="sidebar-1" className="widget-area" role="complementary">
+              <aside
+                id="recent-posts-2"
+                className="widget widget_recent_entries"
+              >
+                <h4 className="widget-title">Recent Posts</h4>
+                <ul>
+                  {posts.reverse().map((post) => {
+                    return (
+                      <li>
+                        <Link to={`/posts/${post.slug}`} key={post.slug}>
+                          {post.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </aside>
+            </div>
           </div>
         </div>
-        <div
-          className="col-md-4 col-12"
-          style={{
-            //     position: "absolute",
-            //     height: "700px",
-            //     //   width: "250px",
-            //     left: "800px",
-            //     top: "25px",
-            backgroundColor: "blue",
-          }}
-        >
-          ADS
-          {six_card.map((p) => {
-            return (
-              <div
-                style={{
-                  backgroundColor: "white",
-                  padding: "6px",
-                  marginBottom: "11px",
-                }}
-              >
-                <div
-                  className="img-section d-inline-block"
-                  style={{ maxWidth: "100px" }}
-                >
-                  <img
-                    className="card-img"
-                    src={
-                      p.images && p.images.length ? p.images[0].url : p.laptop
-                    }
-                    style={{
-                      minHeight: "67px",
-                      maxHeight: "67px",
-                      minWidth: "100px",
-                      maxWidth: "100px",
-                      //   marginTop: "4px",
-                      //   marginLeft: "2px",
-                    }}
-                  />
-                </div>
-                <div
-                  className="title-section d-inline-block pt-2 pl-3"
-                  style={{}}
-                >
-                  <Link to={`/post/${p.slug}`}>
-                    <span
-                      style={{
-                        color: "#000034",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {p.title}
-                    </span>
-                  </Link>
-                  <br />
-                  <span style={{ color: "#000034" }}>
-                    {renderHTML(`${p.description.substring(0, 25)}`)}
-                  </span>
-                </div>
-              </div>
-
-              //   <div
-              //     className="card"
-              //     style={{
-              //       minHeight: "75px",
-              //       maxWidth: "400px",
-              //       maxHeight: "75px",
-              //       transform: "translateY(14px)",
-              //       marginBottom: "15px",
-              //     }}
-              //   >
-              //     <img
-              //       className="card-img"
-              //       src={p.images && p.images.length ? p.images[0].url : p.laptop}
-              //       style={{
-              //         minHeight: "67px",
-              //         maxHeight: "67px",
-              //         minWidth: "100px",
-              //         maxWidth: "100px",
-              //         marginTop: "4px",
-              //         marginLeft: "2px",
-              //       }}
-              //     />
-
-              //     <div
-              //       className=""
-              //       // style={{ width: "600px" }}
-              //     >
-              //       <Link to={`/post/${p.slug}`}>
-              //         <p
-              //           //className="card-text font-weight-bold text-white"
-              //           className="card-text font-weight-bold"
-              //           // style={{
-              //           //   padding: "10px",
-              //           //   backgroundColor: "rgba(0, 0, 52, 0.6)",
-              //           //   position: "absolute",
-              //           //   bottom: "60px",
-              //           //   right: "0px",
-              //           // }}
-              //           style={{
-              //             padding: "10px",
-              //             color: "#000034",
-              //             //   backgroundColor: "rgba(0, 0, 52, 0.6)",
-              //             position: "absolute",
-              //             // bottom: "60px",
-              //             bottom: "38px",
-              //             // right: "250px",
-              //             right: "2px",
-              //             left: "100px",
-              //           }}
-              //         >
-              //           {p.title}
-              //         </p>
-              //       </Link>
-
-              //       <span
-              //         className="card-text"
-              //         style={{
-              //           //   position: "absolute",
-              //           //   bottom: "10px",
-              //           color: "white",
-              //         }}
-              //       >
-              //         {renderHTML(`${p.description.substring(0, 70)}...`)}
-              //       </span>
-              //     </div>
-              //   </div>
-            );
-          })}
-        </div>
       </div>
+      <footer id="colophon" className="site-footer">
+        <div className="container">
+          <div className="site-info">
+            <h1
+              style={{
+                fontFamily: "Herr Von Muellerhoff",
+                color: "#ccc",
+                fontWeight: "300",
+                textAlign: "center",
+                marginBottom: 0,
+                marginTop: 0,
+                lineHeight: 1.4,
+                fontSize: "46px",
+              }}
+            >
+              DENTAL04
+            </h1>
+            <p>&copy; DENTAL04 All Rights Reserved</p>
+          </div>
+        </div>
+      </footer>
+      <a href="#top" className="smoothup" title="Back to top">
+        <span className="genericon genericon-collapse"></span>
+      </a>
     </div>
   );
 };
