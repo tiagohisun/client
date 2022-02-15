@@ -131,10 +131,6 @@ const Header = () => {
             <Link to="/shop">{t("SH")}</Link>
           </Item>
 
-          {/* <Item key="blog" icon={<BookOutlined />}>
-        <Link to="/posts">Blog</Link>
-      </Item> */}
-
           <Item key="services">
             <Link to="/services">{t("SE")}</Link>
           </Item>
@@ -146,6 +142,10 @@ const Header = () => {
           <Item key="contact">
             <Link to="/contact">{t("CT")}</Link>
           </Item>
+
+          {/* <Item key="blog" icon={<BookOutlined />}>
+            <Link to="/posts">Blog</Link>
+          </Item> */}
 
           {/*{!user && (
 						 <Item key="register" icon={<UserAddOutlined />

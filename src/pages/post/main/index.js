@@ -17,15 +17,17 @@ const PostCard = ({ post }) => {
       <header className="entry-header">
         <div className="entry-thumbnail">
           <Link to={`/posts/${post.slug}`} key={post.slug}>
-            <img
-              src={
-                post.images.length > 0
-                  ? post.images[0].url
-                  : "https://www.themepush.com/demo-moschino/wp-content/uploads/sites/15/2015/09/p1.jpg"
-              }
-              className="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-              alt="p1"
-            />
+            <div style={{height:'210px'}}>
+              <img
+                src={
+                  post.images.length > 0
+                    ? post.images[0].url
+                    : "https://www.themepush.com/demo-moschino/wp-content/uploads/sites/15/2015/09/p1.jpg"
+                }
+                className="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+                alt="p1"
+              />
+            </div>
           </Link>
         </div>
         <h2 className="entry-title">
@@ -91,7 +93,7 @@ function Main() {
         <header id="masthead" className="site-header">
           <div className="site-branding">
             <h1 className="site-title">
-              <Link to="/">Logo</Link>
+              <Link to="/">Dental04</Link>
             </h1>
           </div>
           <nav id="site-navigation" className="main-navigation">
@@ -102,7 +104,7 @@ function Main() {
             <div className="menu-menu-1-container">
               <ul id="menu-menu-1" className="menu">
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/posts">Home</Link>
                 </li>
                 <li>
                   <Link to="/posts/category/dentalnews">Dental News</Link>
