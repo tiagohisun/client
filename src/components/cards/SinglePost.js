@@ -41,7 +41,7 @@ const SinglePost = (props) => {
         <header id="masthead" className="site-header">
           <div className="site-branding">
             <h1 className="site-title">
-              <Link to="/">Logo</Link>
+              <Link to="/">DENTAL04</Link>
             </h1>
           </div>
           <nav id="site-navigation" className="main-navigation">
@@ -52,7 +52,7 @@ const SinglePost = (props) => {
             <div className="menu-menu-1-container">
               <ul id="menu-menu-1" className="menu">
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/posts">Home</Link>
                 </li>
                 <li>
                   <Link to="/posts/category/dentalnews">Dental News</Link>
@@ -80,11 +80,8 @@ const SinglePost = (props) => {
                           {post.createdAt}
                         </time>
                       </span>
-                      <span className="comments-link">
-                        <a href="#">Leave a comment</a>
-                      </span>
                     </div>
-                    <div className="entry-thumbnail">
+                    <div className="entry-thumbnail thumbnail">
                       <img
                         src={
                           post.images.length > 0

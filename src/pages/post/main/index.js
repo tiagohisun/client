@@ -17,7 +17,6 @@ const PostCard = ({ post }) => {
       <header className="entry-header">
         <div className="entry-thumbnail">
           <Link to={`/posts/${post.slug}`} key={post.slug}>
-            <div style={{height:'210px'}}>
               <img
                 src={
                   post.images.length > 0
@@ -27,7 +26,6 @@ const PostCard = ({ post }) => {
                 className="attachment-post-thumbnail size-post-thumbnail wp-post-image"
                 alt="p1"
               />
-            </div>
           </Link>
         </div>
         <h2 className="entry-title">
@@ -131,7 +129,7 @@ function Main() {
                   onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
-              <div className="grid portfoliogrid">
+              <div className="grid portfoliogrid d-flex">
                 {posts.map((post) => {
                   return <PostCard post={post} />;
                 })}

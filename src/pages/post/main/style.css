@@ -2239,6 +2239,9 @@ h6 { font-size: 12px; }
 	text-align: left;
 	text-transform: uppercase;
 }
+html{
+	border: none;
+}
 body,
 button,
 input,
