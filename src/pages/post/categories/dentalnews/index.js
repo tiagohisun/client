@@ -1,179 +1,140 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import renderHTML from "react-render-html";
+import React from 'react';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import './style.scss';
 
-import "../../main/css/woocommerce-layout.css";
-import "../../main/css/woocommerce-smallscreen.css";
-import "../../main/css/woocommerce.css";
-import "../../main/css/woocommerce.css";
-import "../../main/css/font-awesome.min.css";
-import "../../main/css/easy-responsive-shortcodes.css";
-import "../../main/style.css";
-
-const PostCard = ({ post }) => {
-  return (
-    <article className="hentry">
-      <header className="entry-header">
-        <div className="entry-thumbnail">
-          <Link to={`/posts/${post.slug}`} key={post.slug}>
-              <img
-                src={
-                  post.images.length > 0
-                    ? post.images[0].url
-                    : "https://www.themepush.com/demo-moschino/wp-content/uploads/sites/15/2015/09/p1.jpg"
-                }
-                className="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                alt="p1"
-              />
-          </Link>
-        </div>
-        <h2 className="entry-title">
-          <Link to={`/posts/${post.slug}`} key={post.slug}>
-            {post.title}
-          </Link>
-        </h2>
-        <p>{renderHTML(post.description.substring(0, 25))}</p>
-      </header>
-    </article>
-  );
+const TradingImageLeftAndRight = () => {
+	return (
+		<div className="trading-img">
+			<img
+				width="100%"
+				src="https://images.unsplash.com/photo-1611327874895-af173dfe0e54?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=952&q=80"
+				alt=" source"
+			/>
+			<div className="image-overly">
+				<h6>Here is Title of the Blog Here is Title</h6>
+				<div>
+					<p>World</p>
+					<span>Writer</span>
+					<span style={{ color: 'white' }}>Date</span>
+				</div>
+			</div>
+		</div>
+	);
 };
 
-function Main() {
-  const [search, setSearch] = useState("");
-  const [posts, setPosts] = useState([]);
-  const [dental, setDental] = useState([]);
-  const [technology, setTechnology] = useState([]);
-  const [education, setEducation] = useState([]);
+const TradingImageCenter = () => {
+	return (
+		<div className="trading-img">
+			<img
+				width="100%"
+				src="https://images.unsplash.com/photo-1611327874895-af173dfe0e54?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=952&q=80"
+				alt=" source"
+			/>
+			<div className="image-overly-center">
+				<h3>Here is Title of the Blog Here is Title of the Blog Here is Title of the Blog</h3>
+				<div>
+					<p>World</p>
+					<span>Writer</span>
+					<span style={{ color: 'white' }}>Date</span>
+				</div>
+			</div>
+		</div>
+	);
+};
 
-  const getAllPost = () => {
-    axios.get(`${process.env.REACT_APP_API}/postcategory/dental-news-page`).then((res) => {
-      if (res.data) {
-        setPosts(res.data);
-        const dentalNews = res.data.filter(
-          (i) => i.postcategory.slug === "dental-news"
-        );
-        const techno = res.data.filter(
-          (i) => i.postcategory.slug === "technology"
-        );
-        const edu = res.data.filter((i) => i.postcategory.slug === "education");
-        setEducation(edu);
-        setTechnology(techno);
-        setDental(dentalNews);
-      }
-    });
-  };
+const FeaturedBlog = () => {
+	return (
+		<div className="shadow p-1 bg-white rounded">
+			<div className="featured-card">
+				<img
+					width="100%"
+					src="https://images.unsplash.com/photo-1611338522368-3fccf11b4afd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+					alt=" source"
+				/>
+				<div className="featured-card-overly1">
+					<p>Develop & design</p>
+				</div>
+			</div>
+			<div style={{position:"relative", bottom:"65px", padding: '5px' }}>
+				<h5>Here is heading</h5>
+			</div>
+		</div>
+	);
+};
 
-  const handleSearch = (value) => {
-    if (value) {
-      setSearch(value);
-      axios
-        .get(`${process.env.REACT_APP_API}/post/search/${value}`)
-        .then((res) => {
-          setPosts(res.data);
-        });
-    } else {
-      setSearch("");
-      getAllPost();
-    }
-  };
+const MostPopular = () => {
+	return (
+		<div className="most-popular">
+			<div>
+				<img
+					width="60px"
+					height="60px"
+					src="https://images.unsplash.com/photo-1611338522368-3fccf11b4afd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+					alt=" source"
+				/>
+			</div>
+			<div>
+				<h6 className="ml-1">Here is heading about the post blog</h6>
+				<p style={{fontSize:"10px", position:"relative", bottom:"3px"}}>August 9,2020</p>
+			</div>
+		</div>
+	);
+};
 
-  useEffect(() => {
-    getAllPost();
-  }, []);
-
-  return (
-    <div
-      id="page"
-      className="home page page-template page-template-template-portfolio page-template-template-portfolio-php"
-    >
-      <div className="container">
-        <header id="masthead" className="site-header">
-          <div className="site-branding">
-            <h1 className="site-title">
-              <Link to="/">Dental04</Link>
-            </h1>
-          </div>
-          <nav id="site-navigation" className="main-navigation">
-            <button className="menu-toggle">Menu</button>
-            <a className="skip-link screen-reader-text" href="#content">
-              Skip to content
-            </a>
-            <div className="menu-menu-1-container">
-              <ul id="menu-menu-1" className="menu">
-                <li>
-                  <Link to="/posts">Home</Link>
-                </li>
-                <li>
-                  <Link to="/posts/category/dentalnews">Dental News</Link>
-                </li>
-                <li>
-                  <Link to="/posts/category/technology">Technology</Link>
-                </li>
-                <li>
-                  <Link to="/posts/category/education">Education</Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </header>
-        <div id="content" className="site-content">
-          <div id="primary" className="content-area column full">
-            <main id="main" className="site-main">
-              <div>
-                <input
-                  type="text"
-                  style={{ width: "100%", marginBottom: "10px" }}
-                  placeholder="Search here"
-                  value={search}
-                  onChange={(e) => handleSearch(e.target.value)}
-                />
-              </div>
-              <div className="grid portfoliogrid d-flex">
-                {posts.posts.map((post) => {
-                  return <PostCard post={post} />;
-                })}
-              </div>
-              <nav className="pagination">
-                <span className="page-numbers current">1</span>
-                <a className="page-numbers" href="#">
-                  2
-                </a>
-                <a className="next page-numbers" href="#">
-                  Next »
-                </a>
-              </nav>
-              <br />
-            </main>
-          </div>
-        </div>
-      </div>
-      <footer id="colophon" className="site-footer">
-        <div className="container">
-          <div className="site-info">
-            <h1
-              style={{
-                fontFamily: "Herr Von Muellerhoff",
-                color: "#ccc",
-                fontWeight: "300",
-                textAlign: "center",
-                marginBottom: 0,
-                marginTop: 0,
-                lineHeight: 1.4,
-                fontSize: "46px",
-              }}
-            >
-              DENTAL04
-            </h1>
-            <p>&copy; DENTAL04 All Rights Reserved</p>
-          </div>
-        </div>
-      </footer>
-      <a href="#top" className="smoothup" title="Back to top">
-        <span className="genericon genericon-collapse"></span>
-      </a>
-    </div>
-  );
+function DentalNews() {
+	return (
+		<div className="container-fluid mt-3" style={{width:"999px"}}>
+			
+			<div className="row">
+				<div className="col-sm-12 col-md-3 col-lg-3">
+					<TradingImageLeftAndRight />
+					<TradingImageLeftAndRight />
+				</div>
+				<div className="col-sm-12 col-md-6 col-lg-6">
+					<TradingImageCenter />
+				</div>
+				<div className="col-sm-12 col-md-3 col-lg-3">
+					<TradingImageLeftAndRight />
+					<TradingImageLeftAndRight />
+				</div>
+			</div>
+			<div className="row mt-4">
+				<div className="col-sm-12 col-md-9 col-lg-9">
+					<div className="row">
+						<div className="col-sm-12 col-md-4 col-lg-4">
+							<FeaturedBlog />
+						</div>
+						<div className="col-sm-12 col-md-4 col-lg-4">
+							<FeaturedBlog />
+						</div>
+						<div className="col-sm-12 col-md-4 col-lg-4">
+							<FeaturedBlog />
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-sm-12 col-md-4 col-lg-4">
+							<FeaturedBlog />
+						</div>
+						<div className="col-sm-12 col-md-4 col-lg-4">
+							<FeaturedBlog />
+						</div>
+						<div className="col-sm-12 col-md-4 col-lg-4">
+							<FeaturedBlog />
+						</div>
+					</div>
+				</div>
+				<div className="col-sm-12 col-md-3 col-lg-3">
+					<h5 style={{ width:"210px", backgroundColor: 'black', color: 'white', padding: '5px 10px', marginRight: '150px' }}>
+						Most Popular
+					</h5>
+					<hr />
+					{[ 1, 2, 3, 4 ].map((most) => {
+						return <MostPopular />;
+					})}
+				</div>
+			</div>
+		</div>
+	);
 }
 
-export default Main;
+export default DentalNews;
