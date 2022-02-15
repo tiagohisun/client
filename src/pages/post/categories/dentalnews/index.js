@@ -130,7 +130,7 @@ function Main() {
                 />
               </div>
               <div className="grid portfoliogrid d-flex">
-                {posts.map((post) => {
+                {posts.posts.map((post) => {
                   return <PostCard post={post} />;
                 })}
               </div>
