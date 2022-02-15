@@ -3,13 +3,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import renderHTML from "react-render-html";
 
-import "./css/woocommerce-layout.css";
-import "./css/woocommerce-smallscreen.css";
-import "./css/woocommerce.css";
-import "./css/woocommerce.css";
-import "./css/font-awesome.min.css";
-import "./css/easy-responsive-shortcodes.css";
-import "./style.css";
+import "../../main/css/woocommerce-layout.css";
+import "../../main/css/woocommerce-smallscreen.css";
+import "../../main/css/woocommerce.css";
+import "../../main/css/woocommerce.css";
+import "../../main/css/font-awesome.min.css";
+import "../../main/css/easy-responsive-shortcodes.css";
+import "../../main/style.css";
 
 const PostCard = ({ post }) => {
   return (
