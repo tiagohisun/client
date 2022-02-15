@@ -47,7 +47,7 @@ function Main() {
   const [education, setEducation] = useState([]);
 
   const getAllPost = () => {
-    axios.get(`${process.env.REACT_APP_API}/category/dental-news-page`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API}/postcategory/dental-news-page`).then((res) => {
       if (res.data) {
         setPosts(res.data);
         const dentalNews = res.data.filter(
