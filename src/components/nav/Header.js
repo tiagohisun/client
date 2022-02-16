@@ -143,9 +143,9 @@ const Header = () => {
             <Link to="/contact">{t("CT")}</Link>
           </Item>
 
-          {/* <Item key="blog" icon={<BookOutlined />}>
+           <Item key="blog" icon={<BookOutlined />}>
             <Link to="/posts">Blog</Link>
-          </Item> */}
+          </Item>
 
           {/*{!user && (
 						 <Item key="register" icon={<UserAddOutlined />
