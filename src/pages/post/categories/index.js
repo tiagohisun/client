@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import renderHTML from "react-render-html";
 
-import "./css/woocommerce-layout.css";
-import "./css/woocommerce-smallscreen.css";
-import "./css/woocommerce.css";
-import "./css/woocommerce.css";
-import "./css/font-awesome.min.css";
-import "./css/easy-responsive-shortcodes.css";
-import "./style.css";
+import "../main/css/woocommerce-layout.css";
+import "../main/css/woocommerce-smallscreen.css";
+import "../main/css/woocommerce.css";
+import "../main/css/woocommerce.css";
+import "../main/css/font-awesome.min.css";
+import "../main/css/easy-responsive-shortcodes.css";
+import "../main/style.css";
 
 const PostCard = ({ post }) => {
   return (
@@ -39,29 +39,21 @@ const PostCard = ({ post }) => {
   );
 };
 
-function Main() {
-  const [search, setSearch] = useState("");
+function CategoryPost() {
+  const { slug } = useParams();
+
   const [posts, setPosts] = useState([]);
-  const [dental, setDental] = useState([]);
-  const [technology, setTechnology] = useState([]);
-  const [education, setEducation] = useState([]);
+  const [search, setSearch] = useState("");
+  const [postCategories, setPostCategories] = useState({});
 
   const getAllPost = () => {
-    axios.get(`${process.env.REACT_APP_API}/postslist`).then((res) => {
-      if (res.data) {
-        setPosts(res.data);
-        const dentalNews = res.data.filter(
-          (i) => i.postcategory.slug === "dental-news"
-        );
-        const techno = res.data.filter(
-          (i) => i.postcategory.slug === "technology"
-        );
-        const edu = res.data.filter((i) => i.postcategory.slug === "education");
-        setEducation(edu);
-        setTechnology(techno);
-        setDental(dentalNews);
-      }
-    });
+    axios
+      .get(`${process.env.REACT_APP_API}/postcategory/${slug}`)
+      .then((res) => {
+        if (res.data.posts.length > 0) {
+          setPosts(res.data.posts);
+        }
+      });
   };
 
   const handleSearch = (value) => {
@@ -70,7 +62,10 @@ function Main() {
       axios
         .get(`${process.env.REACT_APP_API}/post/search/${value}`)
         .then((res) => {
-          setPosts(res.data);
+          const postsData = res.data.filter(
+            (i) => postCategories[i.postcategory] === slug
+          );
+          setPosts(postsData);
         });
     } else {
       setSearch("");
@@ -79,8 +74,19 @@ function Main() {
   };
 
   useEffect(() => {
+    setSearch("");
     getAllPost();
-  }, []);
+    axios.get(`${process.env.REACT_APP_API}/postcategories`).then((res) => {
+      if (res.data) {
+        const postCategoryData = {};
+        for (let i = 0; i < res.data.length; i++) {
+          const postCategory = res.data[i];
+          postCategoryData[postCategory._id] = postCategory.slug;
+        }
+        setPostCategories(postCategoryData);
+      }
+    });
+  }, [slug]);
 
   return (
     <div
@@ -176,4 +182,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default CategoryPost;

@@ -15,12 +15,13 @@ import "../../pages/post/main/style.css";
 
 const SinglePost = (props) => {
   const [post, setPost] = useState(null);
+  const [postTime, setPostTime] = useState("");
   const [posts, setPosts] = useState([]);
   const { slug } = useParams();
 
   useEffect(() => {
     getPostsByCount(20).then((p) => {
-      setPosts(p.data);
+      setPosts(p.data.reverse());
     });
   }, []);
 
@@ -30,9 +31,18 @@ const SinglePost = (props) => {
       .then((response) => {
         if (response.data) {
           setPost(response.data);
+          const date = new Date(response.data.createdAt);
+          const month = date.toLocaleString("en-us", {
+            month: "long",
+          });
+          const day = date.getDate();
+          const year = date.getFullYear();
+          setPostTime(`${month} ${day}, ${year}`);
         }
       })
-      .catch((error) => alert("Error loading single post"));
+      .catch((error) => {
+        console.log(`Error loading single post - ${error}`);
+      });
   }, [slug]);
 
   return (
@@ -55,7 +65,7 @@ const SinglePost = (props) => {
                   <Link to="/posts">Home</Link>
                 </li>
                 <li>
-                  <Link to="/posts/category/dentalnews">Dental News</Link>
+                  <Link to="/posts/category/dental-news">Dental News</Link>
                 </li>
                 <li>
                   <Link to="/posts/category/technology">Technology</Link>
@@ -76,9 +86,7 @@ const SinglePost = (props) => {
                     <h1 className="entry-title">{post.title}</h1>
                     <div className="entry-meta">
                       <span className="posted-on">
-                        <time className="entry-date published">
-                          {post.createdAt}
-                        </time>
+                        <time className="entry-date published">{postTime}</time>
                       </span>
                     </div>
                     <div className="entry-thumbnail thumbnail">
@@ -107,7 +115,7 @@ const SinglePost = (props) => {
               >
                 <h4 className="widget-title">Recent Posts</h4>
                 <ul>
-                  {posts.reverse().map((post) => {
+                  {posts.map((post) => {
                     return (
                       <li>
                         <Link to={`/posts/${post.slug}`} key={post.slug}>

@@ -72,15 +72,7 @@ const ProductCreate = lazy(() => import("./pages/admin/product/ProductCreate"));
 const PostCreate = lazy(() => import("./pages/admin/post/PostCreate"));
 const AllProducts = lazy(() => import("./pages/admin/product/AllProducts"));
 const AllPosts = lazy(() => import("./pages/admin/post/AllPosts"));
-const DentalNews = lazy(() =>
-  import("./pages/post/categories/dentalnews/index.js")
-);
-const Education = lazy(() =>
-  import("./pages/post/categories/education/index.js")
-);
-const Technology = lazy(() =>
-  import("./pages/post/categories/technology/index.js")
-);
+const CategoryPost = lazy(() => import("./pages/post/categories/index.js"));
 const SinglePost = lazy(() => import("./components/cards/SinglePost"));
 const UpdatePost = lazy(() => import("./pages/admin/post/PostUpdate"));
 const PostCategoryHome = lazy(() =>
@@ -167,9 +159,7 @@ const App = () => {
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/posts" component={Posts} />
         <Route exact path="/posts/:slug" component={SinglePost} />
-        <Route exact path="/posts/category/dentalnews" component={DentalNews} />
-        <Route exact path="/posts/category/technology" component={Technology} />
-        <Route exact path="/posts/category/education" component={Education} />
+        <Route exact path="/posts/category/:slug" component={CategoryPost} />
 
         <Route exact path="/product/:slug" component={Product} />
 
