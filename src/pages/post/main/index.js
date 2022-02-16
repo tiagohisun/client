@@ -23,17 +23,17 @@ const PostCard = ({ post }) => {
                   ? post.images[0].url
                   : "https://www.themepush.com/demo-moschino/wp-content/uploads/sites/15/2015/09/p1.jpg"
               }
-              className="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+              className="attachment-post-thumbnail size-post-thumbnail wp-post-image img-fluid img-thumbnail"
               alt="p1"
             />
           </Link>
         </div>
-        <h2 className="entry-title">
+        <h2 className="entry-title mt-2">
           <Link to={`/posts/${post.slug}`} key={post.slug}>
             {post.title}
           </Link>
         </h2>
-        <p>{renderHTML(post.description.substring(0, 25))}</p>
+        <p>{renderHTML(post.description.substring(0, 55))}</p>
       </header>
     </article>
   );
@@ -134,7 +134,7 @@ function Main() {
                   return <PostCard post={post} />;
                 })}
               </div>
-              <nav className="pagination">
+              {/*<nav className="pagination">
                 <span className="page-numbers current">1</span>
                 <a className="page-numbers" href="#">
                   2
@@ -142,7 +142,7 @@ function Main() {
                 <a className="next page-numbers" href="#">
                   Next »
                 </a>
-              </nav>
+              </nav>*/}
               <br />
             </main>
           </div>
