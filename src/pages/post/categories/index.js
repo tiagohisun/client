@@ -24,7 +24,7 @@ const PostCard = ({ post }) => {
                   : "https://www.themepush.com/demo-moschino/wp-content/uploads/sites/15/2015/09/p1.jpg"
               }
               className="attachment-post-thumbnail size-post-thumbnail wp-post-image img-fluid img-thumbnail"
-              alt="p1"
+              alt="p1" style={{ height: '250px'}}
             />
           </Link>
         </div>
@@ -135,7 +135,7 @@ function CategoryPost() {
                   onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
-              <div className="grid portfoliogrid d-flex">
+              <div className="grid portfoliogrid row d-flex">
                 {posts.map((post) => {
                   return <PostCard post={post} />;
                 })}
