@@ -79,7 +79,7 @@ const Footer = () => {
     },
   };
   const { t, i18n } = useTranslation();
-  return pathname.startsWith("/posts") ? null : (
+  return (
     <div
       className="footer-container"
       style={{
