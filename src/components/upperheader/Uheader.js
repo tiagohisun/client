@@ -16,7 +16,7 @@ const changeLanguage = (ln) => {
 const Uheader = (props) => {
   const { pathname } = useLocation();
   const { t, i18n } = useTranslation();
-  return pathname.startsWith("/posts") ? null : (
+  return (
     <>
       <header
         className="col pt-1"

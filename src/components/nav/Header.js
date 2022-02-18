@@ -58,7 +58,7 @@ const Header = () => {
   //navbar section
   const [showToggle, setShowToggle] = useState(false);
 
-  return pathname.startsWith("/posts") ? null : (
+  return (
     <div>
       <div className="nav-container">
         <div className="nav-mobile-friendly">
