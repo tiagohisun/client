@@ -8,7 +8,7 @@ import { getPostsByCount } from "../../../functions/post";
 const PostCard = ({ post }) => {
   return (
     <div
-      className="col-md-4 wow slideInUp mb-4"
+      className="col-md-4 wow slideInUp mb-4 shadow-lg"
       data-wow-delay="0.1s"
       style={{
         visibility: "visible",
@@ -81,14 +81,14 @@ function CategoryPost() {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentLimit, setCurrentLimit] = useState(10);
+  const [currentLimit, setCurrentLimit] = useState(15);
   const [totalResult, setTotalResult] = useState(0);
 
   const [recentposts, setRecentPosts] = useState([]);
   const [bannerposts, setBannerPosts] = useState([]);
 
   useEffect(() => {
-    getPostsByCount(10).then((p) => {
+    getPostsByCount(7).then((p) => {
       setRecentPosts(p.data.reverse());
     });
   }, []);
@@ -107,7 +107,7 @@ function CategoryPost() {
   const handleSearch = (value) => {
     if (value) {
       setCurrentPage(1);
-      setCurrentLimit(10);
+      setCurrentLimit(15);
       setSearch(value);
     } else {
       setSearch("");
@@ -165,6 +165,9 @@ function CategoryPost() {
 
       <div className="row mt-5">
         <div className="col-lg-8">
+          <div className="section-title section-title-sm position-relative mb-4" style={{ borderBottom: '3px solid #d8dcdf', fontSize:'20px'}}>
+            <h3 className="mb-0 badge badge-dark text-uppercase">{posts.length > 0 ? posts[0].postcategory.name : ''}</h3>
+          </div>
           <div className="row">
             {posts.map((post) => {
               return <PostCard post={post} />;
