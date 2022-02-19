@@ -12,7 +12,7 @@ const SinglePost = (props) => {
   const { slug } = useParams();
 
   useEffect(() => {
-    getPostsByCount(10).then((p) => {
+    getPostsByCount(7).then((p) => {
       setPosts(p.data.reverse());
     });
   }, []);
