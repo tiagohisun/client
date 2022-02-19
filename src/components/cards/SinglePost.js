@@ -63,6 +63,7 @@ const SinglePost = (props) => {
             {post && (
               <div className="bg-light p-4">
                   <h1 className="entry-title">{post.title}</h1>
+                  <hr/>
                   <div className="entry-meta mb-3">
                     <span className="posted-on">
                       <time className="entry-date published">{postTime}</time>
