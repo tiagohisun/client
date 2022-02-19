@@ -61,7 +61,7 @@ const SinglePost = (props) => {
       <div className="row mt-5">
         <div className="col-lg-8">
             {post && (
-              <div className="bg-light">
+              <div className="bg-light p-4">
                   <h1 className="entry-title">{post.title}</h1>
                   <div className="entry-meta mb-3">
                     <span className="posted-on">
