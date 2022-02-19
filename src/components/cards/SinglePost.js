@@ -70,7 +70,7 @@ const SinglePost = (props) => {
                     </span>
                   </div>
                   <div className="entry-thumbnail thumbnail">
-                    <img
+                    <img className="img-fluid"
                       src={
                         post.images.length > 0
                           ? post.images[0].url
